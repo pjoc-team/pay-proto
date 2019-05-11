@@ -5,7 +5,7 @@ gen:
 #	go get github.com/mwitkow/go-proto-validators
 #	go install github.com/mwitkow/go-proto-validators/protoc-gen-govalidators
 #	export GO111MODULE=on
-#		docker run --rm -v `pwd`/entrypoint.sh:/usr/local/bin/entrypoint.sh -v ${GOPATH}/bin/protoc-gen-govalidators:/bin/protoc-gen-govalidators -v `pwd`:/defs -v ${GOPATH}:/go registry.gitlab.com/pjoc/docker-protoc -i /defs/proto -i /go/src -d $$base_dir -l $$l -o $$l --debug -a "--govalidators_out=/defs/go" $addition;\
+#		docker run --rm -v `pwd`/entrypoint.sh:/usr/local/bin/entrypoint.sh -v ${GOPATH}/bin/protoc-gen-govalidators:/bin/protoc-gen-govalidators -v `pwd`:/defs -v ${GOPATH}:/go registry.github.com/pjoc-team/docker-protoc -i /defs/proto -i /go/src -d $$base_dir -l $$l -o $$l --debug -a "--govalidators_out=/defs/go" $addition;\
 	# build go and java
 	base_dir="/defs/"; for l in go java ; do \
 		[[ "$$l" == "go" ]] && addition=" --with-gateway"; \

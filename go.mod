@@ -1,4 +1,4 @@
-module gitlab.com/pjoc/proto
+module github.com/pjoc-team/proto
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect

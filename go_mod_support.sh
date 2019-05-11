@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo '[url "ssh://git@gitlab.com/pjoc/"]
-    insteadOf = https://gitlab.com/pjoc/' >> ~/.gitconfig
+echo '[url "ssh://git@github.com/pjoc-team/"]
+    insteadOf = https://github.com/pjoc-team/' >> ~/.gitconfig
