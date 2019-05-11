@@ -1,0 +1,185 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pay_gateway.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/pay/{method}": {
+      "post": {
+        "operationId": "pay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "method",
+            "description": "例如：二维码支付，银联支付等。",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PayGateway"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "payPayRequest": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "out_trade_no": {
+          "type": "string",
+          "title": "业务订单号"
+        },
+        "pay_amount": {
+          "type": "integer",
+          "format": "int64",
+          "title": "支付金额（分）"
+        },
+        "currency": {
+          "type": "string",
+          "title": "币种"
+        },
+        "notify_url": {
+          "type": "string",
+          "title": "接收通知的地址，不能带参数（即：不能包含问号）"
+        },
+        "return_url": {
+          "type": "string",
+          "title": "支付后跳转的前端地址"
+        },
+        "app_id": {
+          "type": "string",
+          "title": "系统给商户分配的app_id"
+        },
+        "sign_type": {
+          "type": "string",
+          "title": "加密方法，RSA和MD5，默认RSA"
+        },
+        "sign": {
+          "type": "string",
+          "title": "签名"
+        },
+        "order_time": {
+          "type": "string",
+          "title": "业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05"
+        },
+        "user_ip": {
+          "type": "string",
+          "title": "发起支付的用户ip"
+        },
+        "user_id": {
+          "type": "string",
+          "title": "用户在业务系统的id"
+        },
+        "payer_account": {
+          "type": "string",
+          "title": "支付者账号，可选"
+        },
+        "product_id": {
+          "type": "string",
+          "title": "业务系统的产品id"
+        },
+        "product_name": {
+          "type": "string",
+          "title": "商品名称"
+        },
+        "product_describe": {
+          "type": "string",
+          "title": "商品描述"
+        },
+        "charset": {
+          "type": "string",
+          "title": "参数编码，只允许utf-8编码；签名时一定要使用该编码获取字节然后再进行签名"
+        },
+        "callback_json": {
+          "type": "string",
+          "title": "回调业务系统时需要带上的字符串"
+        },
+        "ext_json": {
+          "type": "string",
+          "title": "扩展json"
+        },
+        "channel_id": {
+          "type": "string",
+          "title": "渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id"
+        },
+        "method": {
+          "type": "string",
+          "title": "例如：二维码支付，银联支付等。"
+        }
+      }
+    },
+    "payPayResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "#/definitions/payReturnResult"
+        },
+        "gateway_order_id": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "payReturnResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/payReturnResultCode"
+        },
+        "message": {
+          "type": "string"
+        },
+        "describe": {
+          "type": "string"
+        }
+      }
+    },
+    "payReturnResultCode": {
+      "type": "string",
+      "enum": [
+        "CODE_SUCCESS",
+        "CODE_PARAMS_ERROR",
+        "CODE_CHECK_SIGN_ERROR",
+        "CODE_SYSTEM_ERROR"
+      ],
+      "default": "CODE_SUCCESS",
+      "title": "- CODE_PARAMS_ERROR: Params error start--------------------------------\nParams validate error\n - CODE_CHECK_SIGN_ERROR: Check sign error\n - CODE_SYSTEM_ERROR: --------------------------------"
+    }
+  }
+}

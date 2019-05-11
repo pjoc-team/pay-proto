@@ -1,0 +1,11 @@
+build:
+  stage: build
+  script:
+  - env
+  - ls
+  - pwd
+  - docker run -i --rm -v `pwd`:/defs golang sh -c "ls /defs"
+  - make verify
+  tags:
+  - docker
+  - group-runner

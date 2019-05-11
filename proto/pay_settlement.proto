@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+
+package pay;
+option java_package = "pub.pjoc.pay.settlement";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+import "pay_db_service.proto";
+//https://github.com/mwitkow/go-proto-validators
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+
+message SettlementRequest {
+    string version = 1;
+    string gateway_order_id = 2;
+}
+message SettlementPayOrder {
+    string version = 1;
+    PayOrder order = 2;
+}
+
+message SettlementResponse {
+    ReturnResult result = 1;
+}
+
+service SettlementGateway {
+    rpc ProcessSuccess (SettlementRequest) returns (SettlementResponse) {
+        option (google.api.http) = {
+			post: "/v1/settlement/{gateway_order_id}"
+			body:"*"
+        };
+    }
+    rpc ProcessOrderSuccess (SettlementPayOrder) returns (SettlementResponse) {
+        option (google.api.http) = {
+			post: "/v1/settlement"
+			body:"*"
+        };
+    }
+
+    rpc NotifyOrder (SettlementPayOrder) returns (SettlementResponse) {
+        option (google.api.http) = {
+			post: "/v1/notify"
+			body:"*"
+        };
+    }
+}
+
+

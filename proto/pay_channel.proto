@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package pay;
+
+option java_package = "pub.pjoc.pay.channel";
+
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+
+
+service PayChannel {
+    rpc pay (ChannelPayRequest) returns (ChannelPayResponse){
+        option (google.api.http) = {
+			post: "/v1/pay/{method}"
+			body:"*"
+        };
+    }
+
+    rpc notify (NotifyRequest) returns (NotifyResponse) {
+        option (google.api.http) = {
+			post: "/v1/notify/{payment_account}"
+			body:"*"
+        };
+    }
+}
+
+message ChannelPayRequest {
+    string gateway_order_id = 1;
+    string channel_account = 2;
+    uint32 pay_amount = 3;
+    Product product = 4;
+    string notify_url = 5;
+    string return_url = 6;
+    string user_ip = 7;
+    string method = 98;
+    map<string, string> meta = 99;
+}
+
+message ChannelPayResponse  {
+    string channel_order_id = 4;
+    map<string, string> data = 5;
+}
+
+//来自第三方的请求的Notify
+message NotifyRequest {
+    //支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件
+    string payment_account = 1;
+    //支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。
+    PayType type = 2;
+    //请求的HTTP详情
+    HTTPRequest request = 3;
+
+    //可选，支付方式， 可用于统一网关层
+    string method = 99;
+}
+
+//来自第三方的请求的Notify
+message NotifyResponse {
+    //付款状态
+    PayStatus status = 1;
+    //同步返回的数据
+    HTTPResponse response = 2;
+}
+
+//来自第三方的请求body
+message HTTPRequest {
+    enum HttpMehod {
+        GET = 0;
+        POST = 1;
+    }
+    //请求方法： GET or POST
+    HttpMehod method = 1;
+    //其他附加信息，可选返回商户返回的meta信息
+    map<string, string> header = 2;
+    //请求的第三方的url，包含 /some?a=b&c=d, 也可以简化为：?a=b&c=d,不填写具体URL PATH
+    string url = 3;
+    //请求二进制，可能是：xml或json
+    bytes body = 4;
+}
+
+//向第三方响应的Response
+message HTTPResponse {
+    //其他附加信息，可选返回商户返回的meta信息
+    map<string, string> header = 1;
+    //请求二进制，可能是：xml或json
+    bytes body = 2;
+    //请求响应状态码，默认200
+    int32 status = 3;
+}

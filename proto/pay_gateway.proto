@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package pay;
+option java_package = "pub.pjoc.pay.gateway";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+//https://github.com/mwitkow/go-proto-validators
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+
+service PayGateway {
+    rpc pay (PayRequest) returns (PayResponse){
+        option (google.api.http) = {
+			post: "/v1/pay/{method}"
+			body:"*"
+        };
+    }
+}
+
+message PayRequest {
+    string version = 100;
+    // 业务订单号
+    string out_trade_no = 1 [(validator.field) = {regex: "^[A-Za-z0-9_-]+$"}];
+    // 支付金额（分）
+    uint32 pay_amount = 3 [(validator.field) = {int_gt: 0, int_lt: 1000000000}];
+    // 币种
+    string currency = 20;
+    // 接收通知的地址，不能带参数（即：不能包含问号）
+    string notify_url = 4;
+    // 支付后跳转的前端地址
+    string return_url = 5;
+    // 系统给商户分配的app_id
+    string app_id = 6 [(validator.field) = {regex: "^\\w+$"}];
+    // 加密方法，RSA和MD5，默认RSA
+    string sign_type = 7;
+    // 签名
+    string sign = 14 [(validator.field) = {regex: "^[A-Za-z0-9+/=\\s\\n\\r]+$"}];
+    // 业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05
+    string order_time = 8 [(validator.field) = {regex: "^[0-9]{4}(-[0-9]{2}){2}\\s[0-9]{2}(:[0-9]{2}){2}$"}];
+    // 发起支付的用户ip
+    string user_ip = 9;
+    // 用户在业务系统的id
+    string user_id = 18;
+    // 支付者账号，可选
+    string payer_account = 10;
+    // 业务系统的产品id
+    string product_id = 11;
+    // 商品名称
+    string product_name = 12;
+    // 商品描述
+    string product_describe = 13;
+    // 参数编码，只允许utf-8编码；签名时一定要使用该编码获取字节然后再进行签名
+    string charset = 15;
+    // 回调业务系统时需要带上的字符串
+    string callback_json = 16;
+    // 扩展json
+    string ext_json = 17;
+    // 渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id
+    string channel_id = 19;
+    // 例如：二维码支付，银联支付等。
+    string method = 98 [(validator.field) = {msg_exists : true}];
+}
+
+message PayResponse  {
+    ReturnResult result = 1;
+    string gateway_order_id = 2;
+    map<string, string> data = 5;
+}
