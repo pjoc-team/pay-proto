@@ -3,7 +3,7 @@ module github.com/pjoc-team/pay-proto
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/gogo/protobuf v1.1.1 // indirect
-	github.com/golang/protobuf v1.2.0
+	github.com/golang/protobuf v1.3.1
 	github.com/grpc-ecosystem/grpc-gateway v1.5.1
 	github.com/mwitkow/go-proto-validators v0.0.0-20180403085117-0950a7990007
 	github.com/pmezard/go-difflib v1.0.0 // indirect

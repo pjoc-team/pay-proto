@@ -90,3 +90,4 @@ grpc
 googleapis
 pay-grpc-gateway
 channel-grpc-gateway
+go.sum
