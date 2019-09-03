@@ -3,10 +3,12 @@
 
 package pay
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "github.com/golang/protobuf/protoc-gen-go/descriptor"
+import (
+	fmt "fmt"
+	math "math"
+	proto "github.com/golang/protobuf/proto"
+	_ "github.com/golang/protobuf/protoc-gen-go/descriptor"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

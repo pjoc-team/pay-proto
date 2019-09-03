@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.15.2-SNAPSHOT)",
+    value = "by gRPC proto compiler (version 1.23.1-SNAPSHOT)",
     comments = "Source: pay_channel.proto")
 public final class PayChannelGrpc {
 
@@ -41,22 +41,21 @@ public final class PayChannelGrpc {
     if ((getPayMethod = PayChannelGrpc.getPayMethod) == null) {
       synchronized (PayChannelGrpc.class) {
         if ((getPayMethod = PayChannelGrpc.getPayMethod) == null) {
-          PayChannelGrpc.getPayMethod = getPayMethod = 
+          PayChannelGrpc.getPayMethod = getPayMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest, pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayChannel", "pay"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "pay"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayChannelMethodDescriptorSupplier("pay"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayChannelMethodDescriptorSupplier("pay"))
+              .build();
         }
-     }
-     return getPayMethod;
+      }
+    }
+    return getPayMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.channel.PayChannelOuterClass.NotifyRequest,
@@ -73,22 +72,21 @@ public final class PayChannelGrpc {
     if ((getNotifyMethod = PayChannelGrpc.getNotifyMethod) == null) {
       synchronized (PayChannelGrpc.class) {
         if ((getNotifyMethod = PayChannelGrpc.getNotifyMethod) == null) {
-          PayChannelGrpc.getNotifyMethod = getNotifyMethod = 
+          PayChannelGrpc.getNotifyMethod = getNotifyMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.channel.PayChannelOuterClass.NotifyRequest, pub.pjoc.pay.channel.PayChannelOuterClass.NotifyResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayChannel", "notify"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "notify"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.channel.PayChannelOuterClass.NotifyRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.channel.PayChannelOuterClass.NotifyResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayChannelMethodDescriptorSupplier("notify"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayChannelMethodDescriptorSupplier("notify"))
+              .build();
         }
-     }
-     return getNotifyMethod;
+      }
+    }
+    return getNotifyMethod;
   }
 
   /**

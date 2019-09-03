@@ -145,11 +145,17 @@ public final class PayChannelOuterClass {
     private ChannelPayRequest() {
       gatewayOrderId_ = "";
       channelAccount_ = "";
-      payAmount_ = 0;
       notifyUrl_ = "";
       returnUrl_ = "";
       userIp_ = "";
       method_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelPayRequest();
     }
 
     @java.lang.Override
@@ -231,10 +237,10 @@ public final class PayChannelOuterClass {
               break;
             }
             case 794: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 meta_ = com.google.protobuf.MapField.newMapField(
                     MetaDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               meta__ = input.readMessage(
@@ -244,7 +250,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -287,7 +293,6 @@ public final class PayChannelOuterClass {
               pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest.class, pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest.Builder.class);
     }
 
-    private int bitField0_;
     public static final int GATEWAY_ORDER_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object gatewayOrderId_;
     /**
@@ -702,30 +707,29 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest other = (pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest) obj;
 
-      boolean result = true;
-      result = result && getGatewayOrderId()
-          .equals(other.getGatewayOrderId());
-      result = result && getChannelAccount()
-          .equals(other.getChannelAccount());
-      result = result && (getPayAmount()
-          == other.getPayAmount());
-      result = result && (hasProduct() == other.hasProduct());
+      if (!getGatewayOrderId()
+          .equals(other.getGatewayOrderId())) return false;
+      if (!getChannelAccount()
+          .equals(other.getChannelAccount())) return false;
+      if (getPayAmount()
+          != other.getPayAmount()) return false;
+      if (hasProduct() != other.hasProduct()) return false;
       if (hasProduct()) {
-        result = result && getProduct()
-            .equals(other.getProduct());
+        if (!getProduct()
+            .equals(other.getProduct())) return false;
       }
-      result = result && getNotifyUrl()
-          .equals(other.getNotifyUrl());
-      result = result && getReturnUrl()
-          .equals(other.getReturnUrl());
-      result = result && getUserIp()
-          .equals(other.getUserIp());
-      result = result && getMethod()
-          .equals(other.getMethod());
-      result = result && internalGetMeta().equals(
-          other.internalGetMeta());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getNotifyUrl()
+          .equals(other.getNotifyUrl())) return false;
+      if (!getReturnUrl()
+          .equals(other.getReturnUrl())) return false;
+      if (!getUserIp()
+          .equals(other.getUserIp())) return false;
+      if (!getMethod()
+          .equals(other.getMethod())) return false;
+      if (!internalGetMeta().equals(
+          other.internalGetMeta())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -960,7 +964,6 @@ public final class PayChannelOuterClass {
       public pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest buildPartial() {
         pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest result = new pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayRequest(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.gatewayOrderId_ = gatewayOrderId_;
         result.channelAccount_ = channelAccount_;
         result.payAmount_ = payAmount_;
@@ -975,42 +978,41 @@ public final class PayChannelOuterClass {
         result.method_ = method_;
         result.meta_ = internalGetMeta();
         result.meta_.makeImmutable();
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1250,7 +1252,7 @@ public final class PayChannelOuterClass {
         return this;
       }
 
-      private pub.pjoc.channel.Common.Product product_ = null;
+      private pub.pjoc.channel.Common.Product product_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.channel.Common.Product, pub.pjoc.channel.Common.Product.Builder, pub.pjoc.channel.Common.ProductOrBuilder> productBuilder_;
       /**
@@ -1768,7 +1770,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1883,6 +1885,13 @@ public final class PayChannelOuterClass {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ChannelPayResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1913,10 +1922,10 @@ public final class PayChannelOuterClass {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 data_ = com.google.protobuf.MapField.newMapField(
                     DataDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               data__ = input.readMessage(
@@ -1926,7 +1935,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1969,7 +1978,6 @@ public final class PayChannelOuterClass {
               pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse.class, pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse.Builder.class);
     }
 
-    private int bitField0_;
     public static final int CHANNEL_ORDER_ID_FIELD_NUMBER = 4;
     private volatile java.lang.Object channelOrderId_;
     /**
@@ -2140,13 +2148,12 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse other = (pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse) obj;
 
-      boolean result = true;
-      result = result && getChannelOrderId()
-          .equals(other.getChannelOrderId());
-      result = result && internalGetData().equals(
-          other.internalGetData());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getChannelOrderId()
+          .equals(other.getChannelOrderId())) return false;
+      if (!internalGetData().equals(
+          other.internalGetData())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2347,46 +2354,44 @@ public final class PayChannelOuterClass {
       public pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse buildPartial() {
         pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse result = new pub.pjoc.pay.channel.PayChannelOuterClass.ChannelPayResponse(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.channelOrderId_ = channelOrderId_;
         result.data_ = internalGetData();
         result.data_.makeImmutable();
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2630,7 +2635,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2785,6 +2790,13 @@ public final class PayChannelOuterClass {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NotifyRequest();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2797,7 +2809,6 @@ public final class PayChannelOuterClass {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2840,7 +2851,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -3077,19 +3088,18 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.NotifyRequest other = (pub.pjoc.pay.channel.PayChannelOuterClass.NotifyRequest) obj;
 
-      boolean result = true;
-      result = result && getPaymentAccount()
-          .equals(other.getPaymentAccount());
-      result = result && type_ == other.type_;
-      result = result && (hasRequest() == other.hasRequest());
+      if (!getPaymentAccount()
+          .equals(other.getPaymentAccount())) return false;
+      if (type_ != other.type_) return false;
+      if (hasRequest() != other.hasRequest()) return false;
       if (hasRequest()) {
-        result = result && getRequest()
-            .equals(other.getRequest());
+        if (!getRequest()
+            .equals(other.getRequest())) return false;
       }
-      result = result && getMethod()
-          .equals(other.getMethod());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getMethod()
+          .equals(other.getMethod())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3298,35 +3308,35 @@ public final class PayChannelOuterClass {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3537,7 +3547,7 @@ public final class PayChannelOuterClass {
         return this;
       }
 
-      private pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest request_ = null;
+      private pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest request_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest, pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest.Builder, pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequestOrBuilder> requestBuilder_;
       /**
@@ -3781,7 +3791,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -3898,6 +3908,13 @@ public final class PayChannelOuterClass {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NotifyResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3910,7 +3927,6 @@ public final class PayChannelOuterClass {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3941,7 +3957,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -4082,15 +4098,14 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.NotifyResponse other = (pub.pjoc.pay.channel.PayChannelOuterClass.NotifyResponse) obj;
 
-      boolean result = true;
-      result = result && status_ == other.status_;
-      result = result && (hasResponse() == other.hasResponse());
+      if (status_ != other.status_) return false;
+      if (hasResponse() != other.hasResponse()) return false;
       if (hasResponse()) {
-        result = result && getResponse()
-            .equals(other.getResponse());
+        if (!getResponse()
+            .equals(other.getResponse())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -4289,35 +4304,35 @@ public final class PayChannelOuterClass {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4431,7 +4446,7 @@ public final class PayChannelOuterClass {
         return this;
       }
 
-      private pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse response_ = null;
+      private pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse response_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse, pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse.Builder, pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponseOrBuilder> responseBuilder_;
       /**
@@ -4586,7 +4601,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4761,6 +4776,13 @@ public final class PayChannelOuterClass {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HTTPRequest();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4791,10 +4813,10 @@ public final class PayChannelOuterClass {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 header_ = com.google.protobuf.MapField.newMapField(
                     HeaderDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               header__ = input.readMessage(
@@ -4815,7 +4837,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -4956,7 +4978,6 @@ public final class PayChannelOuterClass {
       // @@protoc_insertion_point(enum_scope:pay.HTTPRequest.HttpMehod)
     }
 
-    private int bitField0_;
     public static final int METHOD_FIELD_NUMBER = 1;
     private int method_;
     /**
@@ -5203,16 +5224,15 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest other = (pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest) obj;
 
-      boolean result = true;
-      result = result && method_ == other.method_;
-      result = result && internalGetHeader().equals(
-          other.internalGetHeader());
-      result = result && getUrl()
-          .equals(other.getUrl());
-      result = result && getBody()
-          .equals(other.getBody());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (method_ != other.method_) return false;
+      if (!internalGetHeader().equals(
+          other.internalGetHeader())) return false;
+      if (!getUrl()
+          .equals(other.getUrl())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5425,48 +5445,46 @@ public final class PayChannelOuterClass {
       public pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest buildPartial() {
         pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest result = new pub.pjoc.pay.channel.PayChannelOuterClass.HTTPRequest(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.method_ = method_;
         result.header_ = internalGetHeader();
         result.header_.makeImmutable();
         result.url_ = url_;
         result.body_ = body_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5870,7 +5888,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6014,7 +6032,13 @@ public final class PayChannelOuterClass {
     }
     private HTTPResponse() {
       body_ = com.google.protobuf.ByteString.EMPTY;
-      status_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HTTPResponse();
     }
 
     @java.lang.Override
@@ -6042,7 +6066,7 @@ public final class PayChannelOuterClass {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 header_ = com.google.protobuf.MapField.newMapField(
                     HeaderDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
@@ -6065,7 +6089,7 @@ public final class PayChannelOuterClass {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -6108,7 +6132,6 @@ public final class PayChannelOuterClass {
               pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse.class, pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse.Builder.class);
     }
 
-    private int bitField0_;
     public static final int HEADER_FIELD_NUMBER = 1;
     private static final class HeaderDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
@@ -6295,15 +6318,14 @@ public final class PayChannelOuterClass {
       }
       pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse other = (pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse) obj;
 
-      boolean result = true;
-      result = result && internalGetHeader().equals(
-          other.internalGetHeader());
-      result = result && getBody()
-          .equals(other.getBody());
-      result = result && (getStatus()
-          == other.getStatus());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!internalGetHeader().equals(
+          other.internalGetHeader())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (getStatus()
+          != other.getStatus()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6512,47 +6534,45 @@ public final class PayChannelOuterClass {
       public pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse buildPartial() {
         pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse result = new pub.pjoc.pay.channel.PayChannelOuterClass.HTTPResponse(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.header_ = internalGetHeader();
         result.header_.makeImmutable();
         result.body_ = body_;
         result.status_ = status_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -6836,7 +6856,7 @@ public final class PayChannelOuterClass {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6979,21 +6999,13 @@ public final class PayChannelOuterClass {
       "sponse\"\'\202\323\344\223\002!\"\034/v1/notify/{payment_acco" +
       "unt}:\001*B\026\n\024pub.pjoc.pay.channelb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.api.AnnotationsProto.getDescriptor(),
           com.google.protobuf.TimestampProto.getDescriptor(),
           pub.pjoc.channel.Common.getDescriptor(),
-        }, assigner);
+        });
     internal_static_pay_ChannelPayRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_pay_ChannelPayRequest_fieldAccessorTable = new

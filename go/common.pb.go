@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type ReturnResultCode int32
 
@@ -56,19 +56,19 @@ func (ReturnResultCode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_555bd8c177793206, []int{0}
 }
 
-// 付款状态类型
+//付款状态类型
 type PayType int32
 
 const (
-	// 直接付款
+	//直接付款
 	PayType_PAY PayType = 0
-	// 签约付款
+	//签约付款
 	PayType_SIGN_PAY PayType = 1
-	// 退款
+	//退款
 	PayType_REFUND PayType = 2
-	// 取消签约
+	//取消签约
 	PayType_UNSIGN PayType = 3
-	// 向用户转账
+	//向用户转账
 	PayType_TRANSFER PayType = 4
 )
 
@@ -99,11 +99,11 @@ func (PayType) EnumDescriptor() ([]byte, []int) {
 type PayStatus int32
 
 const (
-	// 成功
+	//成功
 	PayStatus_SUCCESS PayStatus = 0
-	// 处理中
+	//处理中
 	PayStatus_DEALING PayStatus = 1
-	// 失败
+	//失败
 	PayStatus_FAIL PayStatus = 2
 )
 
@@ -141,7 +141,7 @@ const (
 	// 二维码支付
 	// 跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码
 	Method_QR_CODE Method = 5
-	// 用于后台转账
+	//用于后台转账
 	Method_SERVER Method = 4
 )
 
@@ -227,11 +227,11 @@ func (m *ReturnResult) GetDescribe() string {
 }
 
 type Product struct {
-	// 产品ID
+	//产品ID
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// 产品名称
+	//产品名称
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// 描述
+	//描述
 	Description          string   `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

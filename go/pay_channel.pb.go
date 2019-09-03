@@ -4,12 +4,14 @@
 package pay
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -22,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type HTTPRequest_HttpMehod int32
 
@@ -199,15 +201,15 @@ func (m *ChannelPayResponse) GetData() map[string]string {
 	return nil
 }
 
-// 来自第三方的请求的Notify
+//来自第三方的请求的Notify
 type NotifyRequest struct {
-	// 支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件
+	//支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件
 	PaymentAccount string `protobuf:"bytes,1,opt,name=payment_account,json=paymentAccount,proto3" json:"payment_account,omitempty"`
-	// 支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。
+	//支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。
 	Type PayType `protobuf:"varint,2,opt,name=type,proto3,enum=pay.PayType" json:"type,omitempty"`
-	// 请求的HTTP详情
+	//请求的HTTP详情
 	Request *HTTPRequest `protobuf:"bytes,3,opt,name=request,proto3" json:"request,omitempty"`
-	// 可选，支付方式， 可用于统一网关层
+	//可选，支付方式， 可用于统一网关层
 	Method               string   `protobuf:"bytes,99,opt,name=method,proto3" json:"method,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -267,11 +269,11 @@ func (m *NotifyRequest) GetMethod() string {
 	return ""
 }
 
-// 来自第三方的请求的Notify
+//来自第三方的请求的Notify
 type NotifyResponse struct {
-	// 付款状态
+	//付款状态
 	Status PayStatus `protobuf:"varint,1,opt,name=status,proto3,enum=pay.PayStatus" json:"status,omitempty"`
-	// 同步返回的数据
+	//同步返回的数据
 	Response             *HTTPResponse `protobuf:"bytes,2,opt,name=response,proto3" json:"response,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
@@ -317,15 +319,15 @@ func (m *NotifyResponse) GetResponse() *HTTPResponse {
 	return nil
 }
 
-// 来自第三方的请求body
+//来自第三方的请求body
 type HTTPRequest struct {
-	// 请求方法： GET or POST
+	//请求方法： GET or POST
 	Method HTTPRequest_HttpMehod `protobuf:"varint,1,opt,name=method,proto3,enum=pay.HTTPRequest_HttpMehod" json:"method,omitempty"`
-	// 其他附加信息，可选返回商户返回的meta信息
+	//其他附加信息，可选返回商户返回的meta信息
 	Header map[string]string `protobuf:"bytes,2,rep,name=header,proto3" json:"header,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// 请求的第三方的url，包含 /some?a=b&c=d, 也可以简化为：?a=b&c=d,不填写具体URL PATH
+	//请求的第三方的url，包含 /some?a=b&c=d, 也可以简化为：?a=b&c=d,不填写具体URL PATH
 	Url string `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
-	// 请求二进制，可能是：xml或json
+	//请求二进制，可能是：xml或json
 	Body                 []byte   `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -385,13 +387,13 @@ func (m *HTTPRequest) GetBody() []byte {
 	return nil
 }
 
-// 向第三方响应的Response
+//向第三方响应的Response
 type HTTPResponse struct {
-	// 其他附加信息，可选返回商户返回的meta信息
+	//其他附加信息，可选返回商户返回的meta信息
 	Header map[string]string `protobuf:"bytes,1,rep,name=header,proto3" json:"header,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// 请求二进制，可能是：xml或json
+	//请求二进制，可能是：xml或json
 	Body []byte `protobuf:"bytes,2,opt,name=body,proto3" json:"body,omitempty"`
-	// 请求响应状态码，默认200
+	//请求响应状态码，默认200
 	Status               int32    `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -557,6 +559,17 @@ func (c *payChannelClient) Notify(ctx context.Context, in *NotifyRequest, opts .
 type PayChannelServer interface {
 	Pay(context.Context, *ChannelPayRequest) (*ChannelPayResponse, error)
 	Notify(context.Context, *NotifyRequest) (*NotifyResponse, error)
+}
+
+// UnimplementedPayChannelServer can be embedded to have forward compatible implementations.
+type UnimplementedPayChannelServer struct {
+}
+
+func (*UnimplementedPayChannelServer) Pay(ctx context.Context, req *ChannelPayRequest) (*ChannelPayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Pay not implemented")
+}
+func (*UnimplementedPayChannelServer) Notify(ctx context.Context, req *NotifyRequest) (*NotifyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Notify not implemented")
 }
 
 func RegisterPayChannelServer(s *grpc.Server, srv PayChannelServer) {

@@ -489,7 +489,6 @@ public final class PayDbService {
       channelAccount_ = "";
       channelOrderId_ = "";
       gatewayOrderId_ = "";
-      payAmount_ = 0;
       currency_ = "";
       notifyUrl_ = "";
       returnUrl_ = "";
@@ -514,6 +513,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new BasePayOrder();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -526,7 +532,6 @@ public final class PayDbService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -699,7 +704,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -2012,63 +2017,62 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.BasePayOrder other = (pub.pjoc.pay.dbservice.PayDbService.BasePayOrder) obj;
 
-      boolean result = true;
-      result = result && getVersion()
-          .equals(other.getVersion());
-      result = result && getOutTradeNo()
-          .equals(other.getOutTradeNo());
-      result = result && getChannelAccount()
-          .equals(other.getChannelAccount());
-      result = result && getChannelOrderId()
-          .equals(other.getChannelOrderId());
-      result = result && getGatewayOrderId()
-          .equals(other.getGatewayOrderId());
-      result = result && (getPayAmount()
-          == other.getPayAmount());
-      result = result && getCurrency()
-          .equals(other.getCurrency());
-      result = result && getNotifyUrl()
-          .equals(other.getNotifyUrl());
-      result = result && getReturnUrl()
-          .equals(other.getReturnUrl());
-      result = result && getAppId()
-          .equals(other.getAppId());
-      result = result && getSignType()
-          .equals(other.getSignType());
-      result = result && getOrderTime()
-          .equals(other.getOrderTime());
-      result = result && getRequestTime()
-          .equals(other.getRequestTime());
-      result = result && getCreateDate()
-          .equals(other.getCreateDate());
-      result = result && getUserIp()
-          .equals(other.getUserIp());
-      result = result && getUserId()
-          .equals(other.getUserId());
-      result = result && getPayerAccount()
-          .equals(other.getPayerAccount());
-      result = result && getProductId()
-          .equals(other.getProductId());
-      result = result && getProductName()
-          .equals(other.getProductName());
-      result = result && getProductDescribe()
-          .equals(other.getProductDescribe());
-      result = result && getCallbackJson()
-          .equals(other.getCallbackJson());
-      result = result && getExtJson()
-          .equals(other.getExtJson());
-      result = result && getChannelResponseJson()
-          .equals(other.getChannelResponseJson());
-      result = result && getErrorMessage()
-          .equals(other.getErrorMessage());
-      result = result && getChannelId()
-          .equals(other.getChannelId());
-      result = result && getMethod()
-          .equals(other.getMethod());
-      result = result && getRemark()
-          .equals(other.getRemark());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getVersion()
+          .equals(other.getVersion())) return false;
+      if (!getOutTradeNo()
+          .equals(other.getOutTradeNo())) return false;
+      if (!getChannelAccount()
+          .equals(other.getChannelAccount())) return false;
+      if (!getChannelOrderId()
+          .equals(other.getChannelOrderId())) return false;
+      if (!getGatewayOrderId()
+          .equals(other.getGatewayOrderId())) return false;
+      if (getPayAmount()
+          != other.getPayAmount()) return false;
+      if (!getCurrency()
+          .equals(other.getCurrency())) return false;
+      if (!getNotifyUrl()
+          .equals(other.getNotifyUrl())) return false;
+      if (!getReturnUrl()
+          .equals(other.getReturnUrl())) return false;
+      if (!getAppId()
+          .equals(other.getAppId())) return false;
+      if (!getSignType()
+          .equals(other.getSignType())) return false;
+      if (!getOrderTime()
+          .equals(other.getOrderTime())) return false;
+      if (!getRequestTime()
+          .equals(other.getRequestTime())) return false;
+      if (!getCreateDate()
+          .equals(other.getCreateDate())) return false;
+      if (!getUserIp()
+          .equals(other.getUserIp())) return false;
+      if (!getUserId()
+          .equals(other.getUserId())) return false;
+      if (!getPayerAccount()
+          .equals(other.getPayerAccount())) return false;
+      if (!getProductId()
+          .equals(other.getProductId())) return false;
+      if (!getProductName()
+          .equals(other.getProductName())) return false;
+      if (!getProductDescribe()
+          .equals(other.getProductDescribe())) return false;
+      if (!getCallbackJson()
+          .equals(other.getCallbackJson())) return false;
+      if (!getExtJson()
+          .equals(other.getExtJson())) return false;
+      if (!getChannelResponseJson()
+          .equals(other.getChannelResponseJson())) return false;
+      if (!getErrorMessage()
+          .equals(other.getErrorMessage())) return false;
+      if (!getChannelId()
+          .equals(other.getChannelId())) return false;
+      if (!getMethod()
+          .equals(other.getMethod())) return false;
+      if (!getRemark()
+          .equals(other.getRemark())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2378,35 +2382,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4850,7 +4854,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4944,6 +4948,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayOrder();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4956,7 +4967,6 @@ public final class PayDbService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4987,7 +4997,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -5124,16 +5134,15 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayOrder other = (pub.pjoc.pay.dbservice.PayDbService.PayOrder) obj;
 
-      boolean result = true;
-      result = result && (hasBasePayOrder() == other.hasBasePayOrder());
+      if (hasBasePayOrder() != other.hasBasePayOrder()) return false;
       if (hasBasePayOrder()) {
-        result = result && getBasePayOrder()
-            .equals(other.getBasePayOrder());
+        if (!getBasePayOrder()
+            .equals(other.getBasePayOrder())) return false;
       }
-      result = result && getOrderStatus()
-          .equals(other.getOrderStatus());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getOrderStatus()
+          .equals(other.getOrderStatus())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5328,35 +5337,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5406,7 +5415,7 @@ public final class PayDbService {
         return this;
       }
 
-      private pub.pjoc.pay.dbservice.PayDbService.BasePayOrder basePayOrder_ = null;
+      private pub.pjoc.pay.dbservice.PayDbService.BasePayOrder basePayOrder_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.pay.dbservice.PayDbService.BasePayOrder, pub.pjoc.pay.dbservice.PayDbService.BasePayOrder.Builder, pub.pjoc.pay.dbservice.PayDbService.BasePayOrderOrBuilder> basePayOrderBuilder_;
       /**
@@ -5594,7 +5603,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5716,9 +5725,14 @@ public final class PayDbService {
     private PayOrderOk() {
       successTime_ = "";
       balanceDate_ = "";
-      fareAmt_ = 0;
-      factAmt_ = 0;
       sendNoticeStats_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayOrderOk();
     }
 
     @java.lang.Override
@@ -5734,7 +5748,6 @@ public final class PayDbService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5787,7 +5800,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -6036,24 +6049,23 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayOrderOk other = (pub.pjoc.pay.dbservice.PayDbService.PayOrderOk) obj;
 
-      boolean result = true;
-      result = result && (hasBasePayOrder() == other.hasBasePayOrder());
+      if (hasBasePayOrder() != other.hasBasePayOrder()) return false;
       if (hasBasePayOrder()) {
-        result = result && getBasePayOrder()
-            .equals(other.getBasePayOrder());
+        if (!getBasePayOrder()
+            .equals(other.getBasePayOrder())) return false;
       }
-      result = result && getSuccessTime()
-          .equals(other.getSuccessTime());
-      result = result && getBalanceDate()
-          .equals(other.getBalanceDate());
-      result = result && (getFareAmt()
-          == other.getFareAmt());
-      result = result && (getFactAmt()
-          == other.getFactAmt());
-      result = result && getSendNoticeStats()
-          .equals(other.getSendNoticeStats());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getSuccessTime()
+          .equals(other.getSuccessTime())) return false;
+      if (!getBalanceDate()
+          .equals(other.getBalanceDate())) return false;
+      if (getFareAmt()
+          != other.getFareAmt()) return false;
+      if (getFactAmt()
+          != other.getFactAmt()) return false;
+      if (!getSendNoticeStats()
+          .equals(other.getSendNoticeStats())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6268,35 +6280,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -6360,7 +6372,7 @@ public final class PayDbService {
         return this;
       }
 
-      private pub.pjoc.pay.dbservice.PayDbService.BasePayOrder basePayOrder_ = null;
+      private pub.pjoc.pay.dbservice.PayDbService.BasePayOrder basePayOrder_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.pay.dbservice.PayDbService.BasePayOrder, pub.pjoc.pay.dbservice.PayDbService.BasePayOrder.Builder, pub.pjoc.pay.dbservice.PayDbService.BasePayOrderOrBuilder> basePayOrderBuilder_;
       /**
@@ -6738,7 +6750,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -6872,11 +6884,17 @@ public final class PayDbService {
     private PayNotice() {
       gatewayOrderId_ = "";
       createDate_ = "";
-      failTimes_ = 0;
       noticeTime_ = "";
       status_ = "";
       nextNotifyTime_ = "";
       errorMessage_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayNotice();
     }
 
     @java.lang.Override
@@ -6892,7 +6910,6 @@ public final class PayDbService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6945,7 +6962,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -7270,23 +7287,22 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayNotice other = (pub.pjoc.pay.dbservice.PayDbService.PayNotice) obj;
 
-      boolean result = true;
-      result = result && getGatewayOrderId()
-          .equals(other.getGatewayOrderId());
-      result = result && getCreateDate()
-          .equals(other.getCreateDate());
-      result = result && (getFailTimes()
-          == other.getFailTimes());
-      result = result && getNoticeTime()
-          .equals(other.getNoticeTime());
-      result = result && getStatus()
-          .equals(other.getStatus());
-      result = result && getNextNotifyTime()
-          .equals(other.getNextNotifyTime());
-      result = result && getErrorMessage()
-          .equals(other.getErrorMessage());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getGatewayOrderId()
+          .equals(other.getGatewayOrderId())) return false;
+      if (!getCreateDate()
+          .equals(other.getCreateDate())) return false;
+      if (getFailTimes()
+          != other.getFailTimes()) return false;
+      if (!getNoticeTime()
+          .equals(other.getNoticeTime())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!getNextNotifyTime()
+          .equals(other.getNextNotifyTime())) return false;
+      if (!getErrorMessage()
+          .equals(other.getErrorMessage())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7496,35 +7512,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -8036,7 +8052,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -8140,8 +8156,14 @@ public final class PayDbService {
     private PayNoticeOk() {
       gatewayOrderId_ = "";
       createDate_ = "";
-      failTimes_ = 0;
       noticeTime_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayNoticeOk();
     }
 
     @java.lang.Override
@@ -8157,7 +8179,6 @@ public final class PayDbService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8192,7 +8213,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -8397,17 +8418,16 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk other = (pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk) obj;
 
-      boolean result = true;
-      result = result && getGatewayOrderId()
-          .equals(other.getGatewayOrderId());
-      result = result && getCreateDate()
-          .equals(other.getCreateDate());
-      result = result && (getFailTimes()
-          == other.getFailTimes());
-      result = result && getNoticeTime()
-          .equals(other.getNoticeTime());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getGatewayOrderId()
+          .equals(other.getGatewayOrderId())) return false;
+      if (!getCreateDate()
+          .equals(other.getCreateDate())) return false;
+      if (getFailTimes()
+          != other.getFailTimes()) return false;
+      if (!getNoticeTime()
+          .equals(other.getNoticeTime())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -8602,35 +8622,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -8923,7 +8943,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -9018,6 +9038,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayOrderResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -9042,7 +9069,7 @@ public final class PayDbService {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 payOrders_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayOrder>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -9051,7 +9078,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -9065,7 +9092,7 @@ public final class PayDbService {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           payOrders_ = java.util.Collections.unmodifiableList(payOrders_);
         }
         this.unknownFields = unknownFields.build();
@@ -9165,11 +9192,10 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse other = (pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse) obj;
 
-      boolean result = true;
-      result = result && getPayOrdersList()
-          .equals(other.getPayOrdersList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPayOrdersList()
+          .equals(other.getPayOrdersList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -9351,7 +9377,7 @@ public final class PayDbService {
         pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse result = new pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse(this);
         int from_bitField0_ = bitField0_;
         if (payOrdersBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             payOrders_ = java.util.Collections.unmodifiableList(payOrders_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -9365,35 +9391,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -9466,7 +9492,7 @@ public final class PayDbService {
       private java.util.List<pub.pjoc.pay.dbservice.PayDbService.PayOrder> payOrders_ =
         java.util.Collections.emptyList();
       private void ensurePayOrdersIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           payOrders_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayOrder>(payOrders_);
           bitField0_ |= 0x00000001;
          }
@@ -9695,7 +9721,7 @@ public final class PayDbService {
           payOrdersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               pub.pjoc.pay.dbservice.PayDbService.PayOrder, pub.pjoc.pay.dbservice.PayDbService.PayOrder.Builder, pub.pjoc.pay.dbservice.PayDbService.PayOrderOrBuilder>(
                   payOrders_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           payOrders_ = null;
@@ -9705,7 +9731,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -9800,6 +9826,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayOrderOkResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -9824,7 +9857,7 @@ public final class PayDbService {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 payOrderOks_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -9833,7 +9866,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -9847,7 +9880,7 @@ public final class PayDbService {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           payOrderOks_ = java.util.Collections.unmodifiableList(payOrderOks_);
         }
         this.unknownFields = unknownFields.build();
@@ -9947,11 +9980,10 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse other = (pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse) obj;
 
-      boolean result = true;
-      result = result && getPayOrderOksList()
-          .equals(other.getPayOrderOksList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPayOrderOksList()
+          .equals(other.getPayOrderOksList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -10133,7 +10165,7 @@ public final class PayDbService {
         pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse result = new pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse(this);
         int from_bitField0_ = bitField0_;
         if (payOrderOksBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             payOrderOks_ = java.util.Collections.unmodifiableList(payOrderOks_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -10147,35 +10179,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -10248,7 +10280,7 @@ public final class PayDbService {
       private java.util.List<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk> payOrderOks_ =
         java.util.Collections.emptyList();
       private void ensurePayOrderOksIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           payOrderOks_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk>(payOrderOks_);
           bitField0_ |= 0x00000001;
          }
@@ -10477,7 +10509,7 @@ public final class PayDbService {
           payOrderOksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               pub.pjoc.pay.dbservice.PayDbService.PayOrderOk, pub.pjoc.pay.dbservice.PayDbService.PayOrderOk.Builder, pub.pjoc.pay.dbservice.PayDbService.PayOrderOkOrBuilder>(
                   payOrderOks_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           payOrderOks_ = null;
@@ -10487,7 +10519,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -10582,6 +10614,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayNoticeResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -10606,7 +10645,7 @@ public final class PayDbService {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 payNotices_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayNotice>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -10615,7 +10654,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -10629,7 +10668,7 @@ public final class PayDbService {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           payNotices_ = java.util.Collections.unmodifiableList(payNotices_);
         }
         this.unknownFields = unknownFields.build();
@@ -10729,11 +10768,10 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse other = (pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse) obj;
 
-      boolean result = true;
-      result = result && getPayNoticesList()
-          .equals(other.getPayNoticesList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPayNoticesList()
+          .equals(other.getPayNoticesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -10915,7 +10953,7 @@ public final class PayDbService {
         pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse result = new pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse(this);
         int from_bitField0_ = bitField0_;
         if (payNoticesBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             payNotices_ = java.util.Collections.unmodifiableList(payNotices_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -10929,35 +10967,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -11030,7 +11068,7 @@ public final class PayDbService {
       private java.util.List<pub.pjoc.pay.dbservice.PayDbService.PayNotice> payNotices_ =
         java.util.Collections.emptyList();
       private void ensurePayNoticesIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           payNotices_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayNotice>(payNotices_);
           bitField0_ |= 0x00000001;
          }
@@ -11259,7 +11297,7 @@ public final class PayDbService {
           payNoticesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               pub.pjoc.pay.dbservice.PayDbService.PayNotice, pub.pjoc.pay.dbservice.PayDbService.PayNotice.Builder, pub.pjoc.pay.dbservice.PayDbService.PayNoticeOrBuilder>(
                   payNotices_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           payNotices_ = null;
@@ -11269,7 +11307,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -11364,6 +11402,13 @@ public final class PayDbService {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PayNoticeOkResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -11388,7 +11433,7 @@ public final class PayDbService {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 payNoticeOks_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -11397,7 +11442,7 @@ public final class PayDbService {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -11411,7 +11456,7 @@ public final class PayDbService {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           payNoticeOks_ = java.util.Collections.unmodifiableList(payNoticeOks_);
         }
         this.unknownFields = unknownFields.build();
@@ -11511,11 +11556,10 @@ public final class PayDbService {
       }
       pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse other = (pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse) obj;
 
-      boolean result = true;
-      result = result && getPayNoticeOksList()
-          .equals(other.getPayNoticeOksList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPayNoticeOksList()
+          .equals(other.getPayNoticeOksList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -11697,7 +11741,7 @@ public final class PayDbService {
         pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse result = new pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse(this);
         int from_bitField0_ = bitField0_;
         if (payNoticeOksBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             payNoticeOks_ = java.util.Collections.unmodifiableList(payNoticeOks_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -11711,35 +11755,35 @@ public final class PayDbService {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -11812,7 +11856,7 @@ public final class PayDbService {
       private java.util.List<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk> payNoticeOks_ =
         java.util.Collections.emptyList();
       private void ensurePayNoticeOksIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           payNoticeOks_ = new java.util.ArrayList<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk>(payNoticeOks_);
           bitField0_ |= 0x00000001;
          }
@@ -12041,7 +12085,7 @@ public final class PayDbService {
           payNoticeOksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk, pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk.Builder, pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkOrBuilder>(
                   payNoticeOks_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           payNoticeOks_ = null;
@@ -12051,7 +12095,7 @@ public final class PayDbService {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -12221,21 +12265,13 @@ public final class PayDbService {
       "\034\202\323\344\223\002\026\032\021/v1/pay_notice_ok:\001*B\030\n\026pub.pjo" +
       "c.pay.dbserviceb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.api.AnnotationsProto.getDescriptor(),
           com.google.protobuf.TimestampProto.getDescriptor(),
           pub.pjoc.channel.Common.getDescriptor(),
-        }, assigner);
+        });
     internal_static_pay_BasePayOrder_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_pay_BasePayOrder_fieldAccessorTable = new

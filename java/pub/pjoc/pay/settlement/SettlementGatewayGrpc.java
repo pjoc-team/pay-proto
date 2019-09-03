@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.15.2-SNAPSHOT)",
+    value = "by gRPC proto compiler (version 1.23.1-SNAPSHOT)",
     comments = "Source: pay_settlement.proto")
 public final class SettlementGatewayGrpc {
 
@@ -41,22 +41,21 @@ public final class SettlementGatewayGrpc {
     if ((getProcessSuccessMethod = SettlementGatewayGrpc.getProcessSuccessMethod) == null) {
       synchronized (SettlementGatewayGrpc.class) {
         if ((getProcessSuccessMethod = SettlementGatewayGrpc.getProcessSuccessMethod) == null) {
-          SettlementGatewayGrpc.getProcessSuccessMethod = getProcessSuccessMethod = 
+          SettlementGatewayGrpc.getProcessSuccessMethod = getProcessSuccessMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.settlement.PaySettlement.SettlementRequest, pub.pjoc.pay.settlement.PaySettlement.SettlementResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.SettlementGateway", "ProcessSuccess"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessSuccess"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("ProcessSuccess"))
-                  .build();
-          }
+              .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("ProcessSuccess"))
+              .build();
         }
-     }
-     return getProcessSuccessMethod;
+      }
+    }
+    return getProcessSuccessMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder,
@@ -73,22 +72,21 @@ public final class SettlementGatewayGrpc {
     if ((getProcessOrderSuccessMethod = SettlementGatewayGrpc.getProcessOrderSuccessMethod) == null) {
       synchronized (SettlementGatewayGrpc.class) {
         if ((getProcessOrderSuccessMethod = SettlementGatewayGrpc.getProcessOrderSuccessMethod) == null) {
-          SettlementGatewayGrpc.getProcessOrderSuccessMethod = getProcessOrderSuccessMethod = 
+          SettlementGatewayGrpc.getProcessOrderSuccessMethod = getProcessOrderSuccessMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder, pub.pjoc.pay.settlement.PaySettlement.SettlementResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.SettlementGateway", "ProcessOrderSuccess"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessOrderSuccess"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("ProcessOrderSuccess"))
-                  .build();
-          }
+              .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("ProcessOrderSuccess"))
+              .build();
         }
-     }
-     return getProcessOrderSuccessMethod;
+      }
+    }
+    return getProcessOrderSuccessMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder,
@@ -105,22 +103,21 @@ public final class SettlementGatewayGrpc {
     if ((getNotifyOrderMethod = SettlementGatewayGrpc.getNotifyOrderMethod) == null) {
       synchronized (SettlementGatewayGrpc.class) {
         if ((getNotifyOrderMethod = SettlementGatewayGrpc.getNotifyOrderMethod) == null) {
-          SettlementGatewayGrpc.getNotifyOrderMethod = getNotifyOrderMethod = 
+          SettlementGatewayGrpc.getNotifyOrderMethod = getNotifyOrderMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder, pub.pjoc.pay.settlement.PaySettlement.SettlementResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.SettlementGateway", "NotifyOrder"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "NotifyOrder"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.settlement.PaySettlement.SettlementResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("NotifyOrder"))
-                  .build();
-          }
+              .setSchemaDescriptor(new SettlementGatewayMethodDescriptorSupplier("NotifyOrder"))
+              .build();
         }
-     }
-     return getNotifyOrderMethod;
+      }
+    }
+    return getNotifyOrderMethod;
   }
 
   /**

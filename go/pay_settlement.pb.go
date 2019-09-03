@@ -4,13 +4,15 @@
 package pay
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -23,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type SettlementRequest struct {
 	Version              string   `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
@@ -254,6 +256,20 @@ type SettlementGatewayServer interface {
 	ProcessSuccess(context.Context, *SettlementRequest) (*SettlementResponse, error)
 	ProcessOrderSuccess(context.Context, *SettlementPayOrder) (*SettlementResponse, error)
 	NotifyOrder(context.Context, *SettlementPayOrder) (*SettlementResponse, error)
+}
+
+// UnimplementedSettlementGatewayServer can be embedded to have forward compatible implementations.
+type UnimplementedSettlementGatewayServer struct {
+}
+
+func (*UnimplementedSettlementGatewayServer) ProcessSuccess(ctx context.Context, req *SettlementRequest) (*SettlementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProcessSuccess not implemented")
+}
+func (*UnimplementedSettlementGatewayServer) ProcessOrderSuccess(ctx context.Context, req *SettlementPayOrder) (*SettlementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProcessOrderSuccess not implemented")
+}
+func (*UnimplementedSettlementGatewayServer) NotifyOrder(ctx context.Context, req *SettlementPayOrder) (*SettlementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotifyOrder not implemented")
 }
 
 func RegisterSettlementGatewayServer(s *grpc.Server, srv SettlementGatewayServer) {

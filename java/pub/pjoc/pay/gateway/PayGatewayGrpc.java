@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.15.2-SNAPSHOT)",
+    value = "by gRPC proto compiler (version 1.23.1-SNAPSHOT)",
     comments = "Source: pay_gateway.proto")
 public final class PayGatewayGrpc {
 
@@ -41,22 +41,21 @@ public final class PayGatewayGrpc {
     if ((getPayMethod = PayGatewayGrpc.getPayMethod) == null) {
       synchronized (PayGatewayGrpc.class) {
         if ((getPayMethod = PayGatewayGrpc.getPayMethod) == null) {
-          PayGatewayGrpc.getPayMethod = getPayMethod = 
+          PayGatewayGrpc.getPayMethod = getPayMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.gateway.PayGatewayOuterClass.PayRequest, pub.pjoc.pay.gateway.PayGatewayOuterClass.PayResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayGateway", "pay"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "pay"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.gateway.PayGatewayOuterClass.PayRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.gateway.PayGatewayOuterClass.PayResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayGatewayMethodDescriptorSupplier("pay"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayGatewayMethodDescriptorSupplier("pay"))
+              .build();
         }
-     }
-     return getPayMethod;
+      }
+    }
+    return getPayMethod;
   }
 
   /**

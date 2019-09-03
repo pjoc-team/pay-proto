@@ -4,12 +4,14 @@
 package pay
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -22,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type BasePayOrder struct {
 	Version string `protobuf:"bytes,100,opt,name=version,proto3" json:"version,omitempty"`
@@ -987,6 +989,50 @@ type PayDatabaseServiceServer interface {
 	SavePayNotifyOk(context.Context, *PayNoticeOk) (*ReturnResult, error)
 	FindPayNotifyOk(context.Context, *PayNoticeOk) (*PayNoticeOkResponse, error)
 	UpdatePayNoticeOk(context.Context, *PayNoticeOk) (*ReturnResult, error)
+}
+
+// UnimplementedPayDatabaseServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPayDatabaseServiceServer struct {
+}
+
+func (*UnimplementedPayDatabaseServiceServer) SavePayOrder(ctx context.Context, req *PayOrder) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SavePayOrder not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) UpdatePayOrder(ctx context.Context, req *PayOrder) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePayOrder not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) FindPayOrder(ctx context.Context, req *PayOrder) (*PayOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPayOrder not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) SavePayOrderOk(ctx context.Context, req *PayOrderOk) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SavePayOrderOk not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) UpdatePayOrderOk(ctx context.Context, req *PayOrderOk) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePayOrderOk not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) FindPayOrderOk(ctx context.Context, req *PayOrderOk) (*PayOrderOkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPayOrderOk not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) SavePayNotice(ctx context.Context, req *PayNotice) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SavePayNotice not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) UpdatePayNotice(ctx context.Context, req *PayNotice) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePayNotice not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) FindPayNotice(ctx context.Context, req *PayNotice) (*PayNoticeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPayNotice not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) FindPayNoticeLessThenTime(ctx context.Context, req *PayNotice) (*PayNoticeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPayNoticeLessThenTime not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) SavePayNotifyOk(ctx context.Context, req *PayNoticeOk) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SavePayNotifyOk not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) FindPayNotifyOk(ctx context.Context, req *PayNoticeOk) (*PayNoticeOkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPayNotifyOk not implemented")
+}
+func (*UnimplementedPayDatabaseServiceServer) UpdatePayNoticeOk(ctx context.Context, req *PayNoticeOk) (*ReturnResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePayNoticeOk not implemented")
 }
 
 func RegisterPayDatabaseServiceServer(s *grpc.Server, srv PayDatabaseServiceServer) {

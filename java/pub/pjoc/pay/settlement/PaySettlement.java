@@ -56,6 +56,13 @@ public final class PaySettlement {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SettlementRequest();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -68,7 +75,6 @@ public final class PaySettlement {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -92,7 +98,7 @@ public final class PaySettlement {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -241,13 +247,12 @@ public final class PaySettlement {
       }
       pub.pjoc.pay.settlement.PaySettlement.SettlementRequest other = (pub.pjoc.pay.settlement.PaySettlement.SettlementRequest) obj;
 
-      boolean result = true;
-      result = result && getVersion()
-          .equals(other.getVersion());
-      result = result && getGatewayOrderId()
-          .equals(other.getGatewayOrderId());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getVersion()
+          .equals(other.getVersion())) return false;
+      if (!getGatewayOrderId()
+          .equals(other.getGatewayOrderId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -432,35 +437,35 @@ public final class PaySettlement {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -651,7 +656,7 @@ public final class PaySettlement {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -745,6 +750,13 @@ public final class PaySettlement {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SettlementPayOrder();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -757,7 +769,6 @@ public final class PaySettlement {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -788,7 +799,7 @@ public final class PaySettlement {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -925,16 +936,15 @@ public final class PaySettlement {
       }
       pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder other = (pub.pjoc.pay.settlement.PaySettlement.SettlementPayOrder) obj;
 
-      boolean result = true;
-      result = result && getVersion()
-          .equals(other.getVersion());
-      result = result && (hasOrder() == other.hasOrder());
+      if (!getVersion()
+          .equals(other.getVersion())) return false;
+      if (hasOrder() != other.hasOrder()) return false;
       if (hasOrder()) {
-        result = result && getOrder()
-            .equals(other.getOrder());
+        if (!getOrder()
+            .equals(other.getOrder())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1129,35 +1139,35 @@ public final class PaySettlement {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1276,7 +1286,7 @@ public final class PaySettlement {
         return this;
       }
 
-      private pub.pjoc.pay.dbservice.PayDbService.PayOrder order_ = null;
+      private pub.pjoc.pay.dbservice.PayDbService.PayOrder order_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.pay.dbservice.PayDbService.PayOrder, pub.pjoc.pay.dbservice.PayDbService.PayOrder.Builder, pub.pjoc.pay.dbservice.PayDbService.PayOrderOrBuilder> orderBuilder_;
       /**
@@ -1395,7 +1405,7 @@ public final class PaySettlement {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1478,6 +1488,13 @@ public final class PaySettlement {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SettlementResponse();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1490,7 +1507,6 @@ public final class PaySettlement {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1515,7 +1531,7 @@ public final class PaySettlement {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1612,14 +1628,13 @@ public final class PaySettlement {
       }
       pub.pjoc.pay.settlement.PaySettlement.SettlementResponse other = (pub.pjoc.pay.settlement.PaySettlement.SettlementResponse) obj;
 
-      boolean result = true;
-      result = result && (hasResult() == other.hasResult());
+      if (hasResult() != other.hasResult()) return false;
       if (hasResult()) {
-        result = result && getResult()
-            .equals(other.getResult());
+        if (!getResult()
+            .equals(other.getResult())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1809,35 +1824,35 @@ public final class PaySettlement {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1883,7 +1898,7 @@ public final class PaySettlement {
         return this;
       }
 
-      private pub.pjoc.channel.Common.ReturnResult result_ = null;
+      private pub.pjoc.channel.Common.ReturnResult result_;
       private com.google.protobuf.SingleFieldBuilderV3<
           pub.pjoc.channel.Common.ReturnResult, pub.pjoc.channel.Common.ReturnResult.Builder, pub.pjoc.channel.Common.ReturnResultOrBuilder> resultBuilder_;
       /**
@@ -2002,7 +2017,7 @@ public final class PaySettlement {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2096,15 +2111,7 @@ public final class PaySettlement {
       "\"\n/v1/notify:\001*B\031\n\027pub.pjoc.pay.settleme" +
       "ntb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.api.AnnotationsProto.getDescriptor(),
@@ -2112,7 +2119,7 @@ public final class PaySettlement {
           pub.pjoc.channel.Common.getDescriptor(),
           pub.pjoc.pay.dbservice.PayDbService.getDescriptor(),
           validator.Validator.getDescriptor(),
-        }, assigner);
+        });
     internal_static_pay_SettlementRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_pay_SettlementRequest_fieldAccessorTable = new

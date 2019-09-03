@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.15.2-SNAPSHOT)",
+    value = "by gRPC proto compiler (version 1.23.1-SNAPSHOT)",
     comments = "Source: pay_db_service.proto")
 public final class PayDatabaseServiceGrpc {
 
@@ -41,22 +41,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getSavePayOrderMethod = PayDatabaseServiceGrpc.getSavePayOrderMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getSavePayOrderMethod = PayDatabaseServiceGrpc.getSavePayOrderMethod) == null) {
-          PayDatabaseServiceGrpc.getSavePayOrderMethod = getSavePayOrderMethod = 
+          PayDatabaseServiceGrpc.getSavePayOrderMethod = getSavePayOrderMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrder, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "SavePayOrder"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SavePayOrder"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrder.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayOrder"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayOrder"))
+              .build();
         }
-     }
-     return getSavePayOrderMethod;
+      }
+    }
+    return getSavePayOrderMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayOrder,
@@ -73,22 +72,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getUpdatePayOrderMethod = PayDatabaseServiceGrpc.getUpdatePayOrderMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getUpdatePayOrderMethod = PayDatabaseServiceGrpc.getUpdatePayOrderMethod) == null) {
-          PayDatabaseServiceGrpc.getUpdatePayOrderMethod = getUpdatePayOrderMethod = 
+          PayDatabaseServiceGrpc.getUpdatePayOrderMethod = getUpdatePayOrderMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrder, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "UpdatePayOrder"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePayOrder"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrder.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayOrder"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayOrder"))
+              .build();
         }
-     }
-     return getUpdatePayOrderMethod;
+      }
+    }
+    return getUpdatePayOrderMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayOrder,
@@ -105,22 +103,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getFindPayOrderMethod = PayDatabaseServiceGrpc.getFindPayOrderMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getFindPayOrderMethod = PayDatabaseServiceGrpc.getFindPayOrderMethod) == null) {
-          PayDatabaseServiceGrpc.getFindPayOrderMethod = getFindPayOrderMethod = 
+          PayDatabaseServiceGrpc.getFindPayOrderMethod = getFindPayOrderMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrder, pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "FindPayOrder"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindPayOrder"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrder.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrderResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayOrder"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayOrder"))
+              .build();
         }
-     }
-     return getFindPayOrderMethod;
+      }
+    }
+    return getFindPayOrderMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk,
@@ -137,22 +134,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getSavePayOrderOkMethod = PayDatabaseServiceGrpc.getSavePayOrderOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getSavePayOrderOkMethod = PayDatabaseServiceGrpc.getSavePayOrderOkMethod) == null) {
-          PayDatabaseServiceGrpc.getSavePayOrderOkMethod = getSavePayOrderOkMethod = 
+          PayDatabaseServiceGrpc.getSavePayOrderOkMethod = getSavePayOrderOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "SavePayOrderOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SavePayOrderOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrderOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayOrderOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayOrderOk"))
+              .build();
         }
-     }
-     return getSavePayOrderOkMethod;
+      }
+    }
+    return getSavePayOrderOkMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk,
@@ -169,22 +165,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getUpdatePayOrderOkMethod = PayDatabaseServiceGrpc.getUpdatePayOrderOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getUpdatePayOrderOkMethod = PayDatabaseServiceGrpc.getUpdatePayOrderOkMethod) == null) {
-          PayDatabaseServiceGrpc.getUpdatePayOrderOkMethod = getUpdatePayOrderOkMethod = 
+          PayDatabaseServiceGrpc.getUpdatePayOrderOkMethod = getUpdatePayOrderOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "UpdatePayOrderOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePayOrderOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrderOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayOrderOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayOrderOk"))
+              .build();
         }
-     }
-     return getUpdatePayOrderOkMethod;
+      }
+    }
+    return getUpdatePayOrderOkMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk,
@@ -201,22 +196,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getFindPayOrderOkMethod = PayDatabaseServiceGrpc.getFindPayOrderOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getFindPayOrderOkMethod = PayDatabaseServiceGrpc.getFindPayOrderOkMethod) == null) {
-          PayDatabaseServiceGrpc.getFindPayOrderOkMethod = getFindPayOrderOkMethod = 
+          PayDatabaseServiceGrpc.getFindPayOrderOkMethod = getFindPayOrderOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayOrderOk, pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "FindPayOrderOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindPayOrderOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrderOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayOrderOkResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayOrderOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayOrderOk"))
+              .build();
         }
-     }
-     return getFindPayOrderOkMethod;
+      }
+    }
+    return getFindPayOrderOkMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNotice,
@@ -233,22 +227,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getSavePayNoticeMethod = PayDatabaseServiceGrpc.getSavePayNoticeMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getSavePayNoticeMethod = PayDatabaseServiceGrpc.getSavePayNoticeMethod) == null) {
-          PayDatabaseServiceGrpc.getSavePayNoticeMethod = getSavePayNoticeMethod = 
+          PayDatabaseServiceGrpc.getSavePayNoticeMethod = getSavePayNoticeMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNotice, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "SavePayNotice"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SavePayNotice"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNotice.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayNotice"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayNotice"))
+              .build();
         }
-     }
-     return getSavePayNoticeMethod;
+      }
+    }
+    return getSavePayNoticeMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNotice,
@@ -265,22 +258,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getUpdatePayNoticeMethod = PayDatabaseServiceGrpc.getUpdatePayNoticeMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getUpdatePayNoticeMethod = PayDatabaseServiceGrpc.getUpdatePayNoticeMethod) == null) {
-          PayDatabaseServiceGrpc.getUpdatePayNoticeMethod = getUpdatePayNoticeMethod = 
+          PayDatabaseServiceGrpc.getUpdatePayNoticeMethod = getUpdatePayNoticeMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNotice, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "UpdatePayNotice"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePayNotice"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNotice.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayNotice"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayNotice"))
+              .build();
         }
-     }
-     return getUpdatePayNoticeMethod;
+      }
+    }
+    return getUpdatePayNoticeMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNotice,
@@ -297,22 +289,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getFindPayNoticeMethod = PayDatabaseServiceGrpc.getFindPayNoticeMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getFindPayNoticeMethod = PayDatabaseServiceGrpc.getFindPayNoticeMethod) == null) {
-          PayDatabaseServiceGrpc.getFindPayNoticeMethod = getFindPayNoticeMethod = 
+          PayDatabaseServiceGrpc.getFindPayNoticeMethod = getFindPayNoticeMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNotice, pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "FindPayNotice"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindPayNotice"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNotice.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNotice"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNotice"))
+              .build();
         }
-     }
-     return getFindPayNoticeMethod;
+      }
+    }
+    return getFindPayNoticeMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNotice,
@@ -329,22 +320,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getFindPayNoticeLessThenTimeMethod = PayDatabaseServiceGrpc.getFindPayNoticeLessThenTimeMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getFindPayNoticeLessThenTimeMethod = PayDatabaseServiceGrpc.getFindPayNoticeLessThenTimeMethod) == null) {
-          PayDatabaseServiceGrpc.getFindPayNoticeLessThenTimeMethod = getFindPayNoticeLessThenTimeMethod = 
+          PayDatabaseServiceGrpc.getFindPayNoticeLessThenTimeMethod = getFindPayNoticeLessThenTimeMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNotice, pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "FindPayNoticeLessThenTime"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindPayNoticeLessThenTime"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNotice.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNoticeLessThenTime"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNoticeLessThenTime"))
+              .build();
         }
-     }
-     return getFindPayNoticeLessThenTimeMethod;
+      }
+    }
+    return getFindPayNoticeLessThenTimeMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk,
@@ -361,22 +351,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getSavePayNotifyOkMethod = PayDatabaseServiceGrpc.getSavePayNotifyOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getSavePayNotifyOkMethod = PayDatabaseServiceGrpc.getSavePayNotifyOkMethod) == null) {
-          PayDatabaseServiceGrpc.getSavePayNotifyOkMethod = getSavePayNotifyOkMethod = 
+          PayDatabaseServiceGrpc.getSavePayNotifyOkMethod = getSavePayNotifyOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "SavePayNotifyOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SavePayNotifyOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayNotifyOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("SavePayNotifyOk"))
+              .build();
         }
-     }
-     return getSavePayNotifyOkMethod;
+      }
+    }
+    return getSavePayNotifyOkMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk,
@@ -393,22 +382,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getFindPayNotifyOkMethod = PayDatabaseServiceGrpc.getFindPayNotifyOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getFindPayNotifyOkMethod = PayDatabaseServiceGrpc.getFindPayNotifyOkMethod) == null) {
-          PayDatabaseServiceGrpc.getFindPayNotifyOkMethod = getFindPayNotifyOkMethod = 
+          PayDatabaseServiceGrpc.getFindPayNotifyOkMethod = getFindPayNotifyOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk, pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "FindPayNotifyOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindPayNotifyOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeOkResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNotifyOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("FindPayNotifyOk"))
+              .build();
         }
-     }
-     return getFindPayNotifyOkMethod;
+      }
+    }
+    return getFindPayNotifyOkMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk,
@@ -425,22 +413,21 @@ public final class PayDatabaseServiceGrpc {
     if ((getUpdatePayNoticeOkMethod = PayDatabaseServiceGrpc.getUpdatePayNoticeOkMethod) == null) {
       synchronized (PayDatabaseServiceGrpc.class) {
         if ((getUpdatePayNoticeOkMethod = PayDatabaseServiceGrpc.getUpdatePayNoticeOkMethod) == null) {
-          PayDatabaseServiceGrpc.getUpdatePayNoticeOkMethod = getUpdatePayNoticeOkMethod = 
+          PayDatabaseServiceGrpc.getUpdatePayNoticeOkMethod = getUpdatePayNoticeOkMethod =
               io.grpc.MethodDescriptor.<pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk, pub.pjoc.channel.Common.ReturnResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "pay.PayDatabaseService", "UpdatePayNoticeOk"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePayNoticeOk"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.pay.dbservice.PayDbService.PayNoticeOk.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   pub.pjoc.channel.Common.ReturnResult.getDefaultInstance()))
-                  .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayNoticeOk"))
-                  .build();
-          }
+              .setSchemaDescriptor(new PayDatabaseServiceMethodDescriptorSupplier("UpdatePayNoticeOk"))
+              .build();
         }
-     }
-     return getUpdatePayNoticeOkMethod;
+      }
+    }
+    return getUpdatePayNoticeOkMethod;
   }
 
   /**

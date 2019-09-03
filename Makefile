@@ -9,7 +9,7 @@ gen:
 	# build go and java
 	base_dir="/defs/"; for l in go java ; do \
 		[[ "$$l" == "go" ]] && addition=" --with-gateway"; \
-		docker run --rm -v `pwd`:/defs pjoc/docker-protoc:v0.0.2 -i /defs/proto -i /go/src -d $$base_dir -l $$l -o $$l -a "--govalidators_out=/defs/go" $$addition;\
+		docker run --rm -v `pwd`:/defs blademainer/protoc-all:1.23_v0.0.3 -i /defs/proto -i /go/src -d $$base_dir/proto -l $$l -o $$l -a "--govalidators_out=/defs/go" $$addition;\
 		addition=""; \
     done;
 
