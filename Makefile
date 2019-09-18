@@ -29,8 +29,8 @@ gateway:
 #	else
 #	  $(info "pay-grpc-gateway exists")
 #	endif
-	docker run --rm -v `pwd`:/defs -v `pwd`/channel-grpc-gateway:/defs/channel-grpc-gateway namely/gen-grpc-gateway -f /defs/proto/pay_channel.proto -s PayChannel -o channel-grpc-gateway
-	docker run --rm -v `pwd`:/defs -v `pwd`/channel-grpc-gateway:/defs/channel-grpc-gateway namely/gen-grpc-gateway -f /defs/proto/pay_gateway.proto -s PayGateway -o pay-grpc-gateway
+	docker run --rm -v `pwd`:/defs -v `pwd`/channel-grpc-gateway:/defs/channel-grpc-gateway blademainer/gen-grpc-gateway -i /defs/proto -i /go/src -f /defs/proto/pay_channel.proto -s PayChannel -o channel-grpc-gateway
+	docker run --rm -v `pwd`:/defs -v `pwd`/channel-grpc-gateway:/defs/channel-grpc-gateway blademainer/gen-grpc-gateway -i /defs/proto -i /go/src -f /defs/proto/pay_gateway.proto -s PayGateway -o pay-grpc-gateway
 #	docker run --rm -v `pwd`/proto/pjoc/pay/gateway:/defs/proto/pjoc/pay/gateway -v `pwd`/pay-grpc-gateway:/defs/pay-grpc-gateway namely/gen-grpc-gateway -f /defs/proto/pjoc -s PayGateway -o pay-grpc-gateway
 
 #	docker run --rm -v `pwd`:/defs namely/gen-grpc-gateway -f /defs/proto/pjoc/pay/gateway -s PayGateway -o pay-grpc-gateway
