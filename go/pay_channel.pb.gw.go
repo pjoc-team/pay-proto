@@ -42,6 +42,7 @@ func request_PayChannel_Pay_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -52,11 +53,13 @@ func request_PayChannel_Pay_0(ctx context.Context, marshaler runtime.Marshaler, 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "method")
 	}
 
-	protoReq.Method, err = runtime.String(val)
+	e, err = runtime.Enum(val, Method_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "method", err)
 	}
+
+	protoReq.Method = Method(e)
 
 	msg, err := client.Pay(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -77,6 +80,7 @@ func local_request_PayChannel_Pay_0(ctx context.Context, marshaler runtime.Marsh
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -87,11 +91,13 @@ func local_request_PayChannel_Pay_0(ctx context.Context, marshaler runtime.Marsh
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "method")
 	}
 
-	protoReq.Method, err = runtime.String(val)
+	e, err = runtime.Enum(val, Method_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "method", err)
 	}
+
+	protoReq.Method = Method(e)
 
 	msg, err := server.Pay(ctx, &protoReq)
 	return msg, metadata, err

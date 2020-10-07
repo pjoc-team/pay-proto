@@ -29,12 +29,12 @@ service PayChannel {
 message ChannelPayRequest {
   string gateway_order_id = 1;
   string channel_account = 2;
-  uint32 pay_amount = 3;
+  uint64 pay_amount = 3;
   Product product = 4;
   string notify_url = 5;
   string return_url = 6;
   string user_ip = 7;
-  string method = 98;
+  Method method = 98;
   map<string, string> meta = 99;
 }
 

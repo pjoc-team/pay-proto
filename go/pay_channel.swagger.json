@@ -64,7 +64,15 @@
             "name": "method",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "WEB",
+              "WAP",
+              "APP",
+              "SDK",
+              "QR_CODE",
+              "SERVER"
+            ]
           },
           {
             "name": "body",
@@ -100,8 +108,8 @@
           "type": "string"
         },
         "pay_amount": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string",
+          "format": "uint64"
         },
         "product": {
           "$ref": "#/definitions/payProduct"
@@ -116,7 +124,7 @@
           "type": "string"
         },
         "method": {
-          "type": "string"
+          "$ref": "#/definitions/payMethod"
         },
         "meta": {
           "type": "object",
@@ -188,6 +196,19 @@
         }
       },
       "title": "向第三方响应的Response"
+    },
+    "payMethod": {
+      "type": "string",
+      "enum": [
+        "WEB",
+        "WAP",
+        "APP",
+        "SDK",
+        "QR_CODE",
+        "SERVER"
+      ],
+      "default": "WEB",
+      "title": "- WEB: 银联\n - WAP: 手机wap支付\n - APP: 原生扫码支付\n - SDK: SDK支付\n - QR_CODE: 二维码支付\n跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码\n - SERVER: 用于后台转账"
     },
     "payNotifyRequest": {
       "type": "object",
