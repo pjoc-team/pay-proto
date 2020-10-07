@@ -17,7 +17,7 @@
   "paths": {
     "/v1/notify/{payment_account}": {
       "post": {
-        "operationId": "notify",
+        "operationId": "Notify",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -50,7 +50,7 @@
     },
     "/v1/pay/{method}": {
       "post": {
-        "operationId": "pay",
+        "operationId": "Pay",
         "responses": {
           "200": {
             "description": "A successful response.",

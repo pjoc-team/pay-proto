@@ -6,68 +6,68 @@ option java_package = "pub.pjoc.channel";
 import "google/protobuf/descriptor.proto";
 
 message ReturnResult {
-    ReturnResultCode code = 1;
-    string message = 2;
-    string describe = 3;
+  ReturnResultCode code = 1;
+  string message = 2;
+  string describe = 3;
 }
 
 enum ReturnResultCode {
-    CODE_SUCCESS = 0;
-    // Params error start--------------------------------
-    // Params validate error
-    CODE_PARAMS_ERROR = 100;
-    // Check sign error
-    CODE_CHECK_SIGN_ERROR = 101;
-    // --------------------------------
-    CODE_SYSTEM_ERROR = 999;
+  CODE_SUCCESS = 0;
+  // Params error start--------------------------------
+  // Params validate error
+  CODE_PARAMS_ERROR = 100;
+  // Check sign error
+  CODE_CHECK_SIGN_ERROR = 101;
+  // --------------------------------
+  CODE_SYSTEM_ERROR = 999;
 
 }
 
 //付款状态类型
 enum PayType {
-    //直接付款
-    PAY = 0;
-    //签约付款
-    SIGN_PAY = 1;
-    //退款
-    REFUND = 2;
-    //取消签约
-    UNSIGN = 3;
-    //向用户转账
-    TRANSFER = 4;
+  //直接付款
+  PAY = 0;
+  //签约付款
+  SIGN_PAY = 1;
+  //退款
+  REFUND = 2;
+  //取消签约
+  UNSIGN = 3;
+  //向用户转账
+  TRANSFER = 4;
 }
 
 
 message Product {
-    //产品ID
-    string id = 1;
-    //产品名称
-    string name = 2;
-    //描述
-    string description = 3;
+  //产品ID
+  string id = 1;
+  //产品名称
+  string name = 2;
+  //描述
+  string description = 3;
 }
 
 enum PayStatus {
-    //成功
-    SUCCESS = 0;
-    //处理中
-    DEALING = 1;
-    //失败
-    FAIL = 2;
+  //成功
+  SUCCESS = 0;
+  //处理中
+  DEALING = 1;
+  //失败
+  FAIL = 2;
 }
 
 enum Method {
-    // 银联
-    WEB = 0;
-    // 手机wap支付
-    WAP = 1;
-    // 原生扫码支付
-    APP = 2;
-    // SDK支付
-    SDK = 3;
-    // 二维码支付
-    // 跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码
-    QR_CODE = 5;
-    //用于后台转账
-    SERVER = 4;
+  // 银联
+  WEB = 0;
+  // 手机wap支付
+  WAP = 1;
+  // 原生扫码支付
+  APP = 2;
+  // SDK支付
+  SDK = 3;
+  // 二维码支付
+  // 跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码
+  QR_CODE = 5;
+  //用于后台转账
+  SERVER = 4;
 }
