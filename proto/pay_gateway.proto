@@ -47,7 +47,7 @@ message PayRequest {
   string sign = 14 [(validate.rules).string = {pattern:"^[A-Za-z0-9+/=\\s\\n\\r]+$", min_len: 1}];
 
   // 业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05
-  google.protobuf.Timestamp order_time = 8 [(validate.rules).timestamp = {required: true, gt_now: true}];
+  google.protobuf.Timestamp order_time = 8 [(validate.rules).timestamp = {required: true}];
 
   // 发起支付的用户ip
   string user_ip = 9;

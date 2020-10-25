@@ -109,27 +109,6 @@ func (m *PayRequest) Validate() error {
 		}
 	}
 
-	if t := m.GetOrderTime(); t != nil {
-		ts, err := ptypes.Timestamp(t)
-		if err != nil {
-			return PayRequestValidationError{
-				field:  "OrderTime",
-				reason: "value is not a valid timestamp",
-				cause:  err,
-			}
-		}
-
-		now := time.Now()
-
-		if ts.Sub(now) <= 0 {
-			return PayRequestValidationError{
-				field:  "OrderTime",
-				reason: "value must be greater than now",
-			}
-		}
-
-	}
-
 	// no validation rules for UserIp
 
 	// no validation rules for UserId
