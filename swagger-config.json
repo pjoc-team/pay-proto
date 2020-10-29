@@ -1,1 +1,1 @@
-{"url":"pay_gateway.swagger.json","deepLinking":true}
+{"urls":[{"name":"common.swagger.json","url":"apis/common.swagger.json"},{"name":"pay_channel.swagger.json","url":"apis/pay_channel.swagger.json"},{"name":"pay_db_service.swagger.json","url":"apis/pay_db_service.swagger.json"},{"name":"pay_gateway.swagger.json","url":"apis/pay_gateway.swagger.json"},{"name":"pay_settlement.swagger.json","url":"apis/pay_settlement.swagger.json"},{"name":"refund_channel.swagger.json","url":"apis/refund_channel.swagger.json"}]}

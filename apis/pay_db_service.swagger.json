@@ -1,0 +1,1087 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pay_db_service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/pay_notice": {
+      "get": {
+        "operationId": "FindPayNotice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayNoticeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fail_times",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "notice_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "next_notify_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "error_message",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "post": {
+        "operationId": "SavePayNotice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayNotice"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "put": {
+        "operationId": "UpdatePayNotice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayNotice"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      }
+    },
+    "/v1/pay_notice/before_time": {
+      "get": {
+        "operationId": "FindPayNoticeLessThenTime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayNoticeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fail_times",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "notice_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "next_notify_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "error_message",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      }
+    },
+    "/v1/pay_notice_ok": {
+      "get": {
+        "operationId": "FindPayNotifyOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayNoticeOkResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fail_times",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "notice_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "post": {
+        "operationId": "SavePayNotifyOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayNoticeOk"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "put": {
+        "operationId": "UpdatePayNoticeOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayNoticeOk"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      }
+    },
+    "/v1/pay_order": {
+      "get": {
+        "operationId": "FindPayOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "base_pay_order.version",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.out_trade_no",
+            "description": "业务订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_account",
+            "description": "渠道账号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_order_id",
+            "description": "渠道订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.gateway_order_id",
+            "description": "网关订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.pay_amount",
+            "description": "支付金额（分）.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "base_pay_order.currency",
+            "description": "币种.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.notify_url",
+            "description": "接收通知的地址，不能带参数（即：不能包含问号）.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.return_url",
+            "description": "支付后跳转的前端地址.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.app_id",
+            "description": "系统给商户分配的app_id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.sign_type",
+            "description": "加密方法，rsa和md5，默认rsa.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.order_time",
+            "description": "下单时间.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.request_time",
+            "description": "请求到网关的时间.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.create_date",
+            "description": "订单创建日期.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.user_ip",
+            "description": "发起支付的用户ip.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.user_id",
+            "description": "用户在业务系统的id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.payer_account",
+            "description": "支付者账号，可选.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_id",
+            "description": "产品id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_name",
+            "description": "商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_describe",
+            "description": "商品描述.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.callback_json",
+            "description": "回调业务系统时需要带上的字符串.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.ext_json",
+            "description": "扩展json.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_response_json",
+            "description": "渠道返回的json.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.error_message",
+            "description": "下单错误信息.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_id",
+            "description": "渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.remark",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "post": {
+        "operationId": "SavePayOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayOrder"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "put": {
+        "operationId": "UpdatePayOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayOrder"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      }
+    },
+    "/v1/pay_order_ok": {
+      "get": {
+        "operationId": "FindPayOrderOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payPayOrderOkResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "base_pay_order.version",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.out_trade_no",
+            "description": "业务订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_account",
+            "description": "渠道账号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_order_id",
+            "description": "渠道订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.gateway_order_id",
+            "description": "网关订单号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.pay_amount",
+            "description": "支付金额（分）.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "base_pay_order.currency",
+            "description": "币种.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.notify_url",
+            "description": "接收通知的地址，不能带参数（即：不能包含问号）.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.return_url",
+            "description": "支付后跳转的前端地址.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.app_id",
+            "description": "系统给商户分配的app_id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.sign_type",
+            "description": "加密方法，rsa和md5，默认rsa.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.order_time",
+            "description": "下单时间.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.request_time",
+            "description": "请求到网关的时间.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.create_date",
+            "description": "订单创建日期.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.user_ip",
+            "description": "发起支付的用户ip.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.user_id",
+            "description": "用户在业务系统的id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.payer_account",
+            "description": "支付者账号，可选.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_id",
+            "description": "产品id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_name",
+            "description": "商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.product_describe",
+            "description": "商品描述.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.callback_json",
+            "description": "回调业务系统时需要带上的字符串.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.ext_json",
+            "description": "扩展json.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_response_json",
+            "description": "渠道返回的json.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.error_message",
+            "description": "下单错误信息.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.channel_id",
+            "description": "渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "base_pay_order.remark",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "success_time",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "balance_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fare_amt",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "fact_amt",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "send_notice_stats",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "post": {
+        "operationId": "SavePayOrderOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayOrderOk"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      },
+      "put": {
+        "operationId": "UpdatePayOrderOk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payReturnResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payPayOrderOk"
+            }
+          }
+        ],
+        "tags": [
+          "PayDatabaseService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "payBasePayOrder": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "out_trade_no": {
+          "type": "string",
+          "title": "业务订单号"
+        },
+        "channel_account": {
+          "type": "string",
+          "title": "渠道账号"
+        },
+        "channel_order_id": {
+          "type": "string",
+          "title": "渠道订单号"
+        },
+        "gateway_order_id": {
+          "type": "string",
+          "title": "网关订单号"
+        },
+        "pay_amount": {
+          "type": "integer",
+          "format": "int64",
+          "title": "支付金额（分）"
+        },
+        "currency": {
+          "type": "string",
+          "title": "币种"
+        },
+        "notify_url": {
+          "type": "string",
+          "title": "接收通知的地址，不能带参数（即：不能包含问号）"
+        },
+        "return_url": {
+          "type": "string",
+          "title": "支付后跳转的前端地址"
+        },
+        "app_id": {
+          "type": "string",
+          "title": "系统给商户分配的app_id"
+        },
+        "sign_type": {
+          "type": "string",
+          "title": "加密方法，rsa和md5，默认rsa"
+        },
+        "order_time": {
+          "type": "string",
+          "title": "下单时间"
+        },
+        "request_time": {
+          "type": "string",
+          "title": "请求到网关的时间"
+        },
+        "create_date": {
+          "type": "string",
+          "title": "订单创建日期"
+        },
+        "user_ip": {
+          "type": "string",
+          "title": "发起支付的用户ip"
+        },
+        "user_id": {
+          "type": "string",
+          "title": "用户在业务系统的id"
+        },
+        "payer_account": {
+          "type": "string",
+          "title": "支付者账号，可选"
+        },
+        "product_id": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "product_name": {
+          "type": "string",
+          "title": "商品名称"
+        },
+        "product_describe": {
+          "type": "string",
+          "title": "商品描述"
+        },
+        "callback_json": {
+          "type": "string",
+          "title": "回调业务系统时需要带上的字符串"
+        },
+        "ext_json": {
+          "type": "string",
+          "title": "扩展json"
+        },
+        "channel_response_json": {
+          "type": "string",
+          "title": "渠道返回的json"
+        },
+        "error_message": {
+          "type": "string",
+          "title": "下单错误信息"
+        },
+        "channel_id": {
+          "type": "string",
+          "title": "渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id"
+        },
+        "method": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "payPayNotice": {
+      "type": "object",
+      "properties": {
+        "gateway_order_id": {
+          "type": "string"
+        },
+        "create_date": {
+          "type": "string"
+        },
+        "fail_times": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "notice_time": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "next_notify_time": {
+          "type": "string"
+        },
+        "error_message": {
+          "type": "string"
+        }
+      }
+    },
+    "payPayNoticeOk": {
+      "type": "object",
+      "properties": {
+        "gateway_order_id": {
+          "type": "string"
+        },
+        "create_date": {
+          "type": "string"
+        },
+        "fail_times": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "notice_time": {
+          "type": "string"
+        }
+      }
+    },
+    "payPayNoticeOkResponse": {
+      "type": "object",
+      "properties": {
+        "pay_notice_oks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/payPayNoticeOk"
+          }
+        }
+      }
+    },
+    "payPayNoticeResponse": {
+      "type": "object",
+      "properties": {
+        "pay_notices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/payPayNotice"
+          }
+        }
+      }
+    },
+    "payPayOrder": {
+      "type": "object",
+      "properties": {
+        "base_pay_order": {
+          "$ref": "#/definitions/payBasePayOrder"
+        },
+        "order_status": {
+          "type": "string"
+        }
+      }
+    },
+    "payPayOrderOk": {
+      "type": "object",
+      "properties": {
+        "base_pay_order": {
+          "$ref": "#/definitions/payBasePayOrder"
+        },
+        "success_time": {
+          "type": "string"
+        },
+        "balance_date": {
+          "type": "string"
+        },
+        "fare_amt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "fact_amt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "send_notice_stats": {
+          "type": "string"
+        }
+      }
+    },
+    "payPayOrderOkResponse": {
+      "type": "object",
+      "properties": {
+        "pay_order_oks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/payPayOrderOk"
+          }
+        }
+      }
+    },
+    "payPayOrderResponse": {
+      "type": "object",
+      "properties": {
+        "pay_orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/payPayOrder"
+          }
+        }
+      }
+    },
+    "payReturnResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/payReturnResultCode"
+        },
+        "message": {
+          "type": "string"
+        },
+        "describe": {
+          "type": "string"
+        }
+      }
+    },
+    "payReturnResultCode": {
+      "type": "string",
+      "enum": [
+        "CODE_SUCCESS",
+        "CODE_PARAMS_ERROR",
+        "CODE_CHECK_SIGN_ERROR",
+        "CODE_SYSTEM_ERROR"
+      ],
+      "default": "CODE_SUCCESS",
+      "title": "- CODE_PARAMS_ERROR: Params error start--------------------------------\nParams validate error\n - CODE_CHECK_SIGN_ERROR: Check sign error\n - CODE_SYSTEM_ERROR: --------------------------------"
+    }
+  }
+}

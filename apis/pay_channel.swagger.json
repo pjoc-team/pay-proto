@@ -1,0 +1,290 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pay_channel.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/notify/{payment_account}": {
+      "post": {
+        "operationId": "Notify",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payNotifyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "payment_account",
+            "description": "支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payNotifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PayChannel"
+        ]
+      }
+    },
+    "/v1/pay/{method}": {
+      "post": {
+        "operationId": "Pay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/payChannelPayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "method",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "WEB",
+              "WAP",
+              "APP",
+              "SDK",
+              "QR_CODE",
+              "SERVER"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payChannelPayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PayChannel"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "HTTPRequestHttpMehod": {
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST"
+      ],
+      "default": "GET"
+    },
+    "payChannelPayRequest": {
+      "type": "object",
+      "properties": {
+        "gateway_order_id": {
+          "type": "string"
+        },
+        "channel_account": {
+          "type": "string"
+        },
+        "pay_amount": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "product": {
+          "$ref": "#/definitions/payProduct"
+        },
+        "notify_url": {
+          "type": "string"
+        },
+        "return_url": {
+          "type": "string"
+        },
+        "user_ip": {
+          "type": "string"
+        },
+        "method": {
+          "$ref": "#/definitions/payMethod"
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "payChannelPayResponse": {
+      "type": "object",
+      "properties": {
+        "channel_order_id": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "payHTTPRequest": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/HTTPRequestHttpMehod",
+          "title": "请求方法： GET or POST"
+        },
+        "header": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "其他附加信息，可选返回商户返回的meta信息"
+        },
+        "url": {
+          "type": "string",
+          "title": "请求的第三方的url，包含 /some?a=b\u0026c=d, 也可以简化为：?a=b\u0026c=d,不填写具体URL PATH"
+        },
+        "body": {
+          "type": "string",
+          "format": "byte",
+          "title": "请求二进制，可能是：xml或json"
+        }
+      },
+      "title": "来自第三方的请求body"
+    },
+    "payHTTPResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "其他附加信息，可选返回商户返回的meta信息"
+        },
+        "body": {
+          "type": "string",
+          "format": "byte",
+          "title": "请求二进制，可能是：xml或json"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "请求响应状态码，默认200"
+        }
+      },
+      "title": "向第三方响应的Response"
+    },
+    "payMethod": {
+      "type": "string",
+      "enum": [
+        "WEB",
+        "WAP",
+        "APP",
+        "SDK",
+        "QR_CODE",
+        "SERVER"
+      ],
+      "default": "WEB",
+      "title": "- WEB: 银联\n - WAP: 手机wap支付\n - APP: 原生扫码支付\n - SDK: SDK支付\n - QR_CODE: 二维码支付\n跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码\n - SERVER: 用于后台转账"
+    },
+    "payNotifyRequest": {
+      "type": "object",
+      "properties": {
+        "payment_account": {
+          "type": "string",
+          "title": "支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件"
+        },
+        "type": {
+          "$ref": "#/definitions/payPayType",
+          "title": "支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。"
+        },
+        "request": {
+          "$ref": "#/definitions/payHTTPRequest",
+          "title": "请求的HTTP详情"
+        },
+        "method": {
+          "type": "string",
+          "title": "可选，支付方式， 可用于统一网关层"
+        }
+      },
+      "title": "来自第三方的请求的Notify"
+    },
+    "payNotifyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/payPayStatus",
+          "title": "付款状态"
+        },
+        "response": {
+          "$ref": "#/definitions/payHTTPResponse",
+          "title": "同步返回的数据"
+        }
+      },
+      "title": "来自第三方的请求的Notify"
+    },
+    "payPayStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "DEALING",
+        "FAIL"
+      ],
+      "default": "SUCCESS",
+      "title": "- SUCCESS: 成功\n - DEALING: 处理中\n - FAIL: 失败"
+    },
+    "payPayType": {
+      "type": "string",
+      "enum": [
+        "PAY",
+        "SIGN_PAY",
+        "REFUND",
+        "UNSIGN",
+        "TRANSFER"
+      ],
+      "default": "PAY",
+      "description": "- PAY: 直接付款\n - SIGN_PAY: 签约付款\n - REFUND: 退款\n - UNSIGN: 取消签约\n - TRANSFER: 向用户转账",
+      "title": "付款状态类型"
+    },
+    "payProduct": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "描述"
+        }
+      }
+    }
+  }
+}
