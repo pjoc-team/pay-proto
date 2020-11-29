@@ -8,191 +8,191 @@ import "google/protobuf/timestamp.proto";
 import "common.proto";
 
 service PayDatabaseService {
-    rpc SavePayOrder (PayOrder) returns (ReturnResult) {
-        option (google.api.http) = {
-			post: "/v1/pay_order"
-			body:"*"
-        };
-    }
+  rpc SavePayOrder (PayOrder) returns (ReturnResult) {
+    option (google.api.http) = {
+      post: "/v1/pay_order"
+      body:"*"
+    };
+  }
 
-    rpc UpdatePayOrder (PayOrder) returns (ReturnResult) {
-        option (google.api.http) = {
-			put: "/v1/pay_order"
-			body:"*"
-        };
-    }
+  rpc UpdatePayOrder (PayOrder) returns (ReturnResult) {
+    option (google.api.http) = {
+      put: "/v1/pay_order"
+      body:"*"
+    };
+  }
 
-    rpc FindPayOrder (PayOrder) returns (PayOrderResponse) {
-        option (google.api.http) = {
-			get: "/v1/pay_order"
-        };
-    }
+  rpc FindPayOrder (PayOrder) returns (PayOrderResponse) {
+    option (google.api.http) = {
+      get: "/v1/pay_order"
+    };
+  }
 
 
-    rpc SavePayOrderOk (PayOrderOk) returns (ReturnResult) {
-        option (google.api.http) = {
-			post: "/v1/pay_order_ok"
-			body:"*"
-        };
-    }
+  rpc SavePayOrderOk (PayOrderOk) returns (ReturnResult) {
+    option (google.api.http) = {
+      post: "/v1/pay_order_ok"
+      body:"*"
+    };
+  }
 
-    rpc UpdatePayOrderOk (PayOrderOk) returns (ReturnResult) {
-        option (google.api.http) = {
-			put: "/v1/pay_order_ok"
-			body:"*"
-        };
-    }
+  rpc UpdatePayOrderOk (PayOrderOk) returns (ReturnResult) {
+    option (google.api.http) = {
+      put: "/v1/pay_order_ok"
+      body:"*"
+    };
+  }
 
-    rpc FindPayOrderOk (PayOrderOk) returns (PayOrderOkResponse) {
-        option (google.api.http) = {
-			get: "/v1/pay_order_ok"
-        };
-    }
+  rpc FindPayOrderOk (PayOrderOk) returns (PayOrderOkResponse) {
+    option (google.api.http) = {
+      get: "/v1/pay_order_ok"
+    };
+  }
 
-    rpc SavePayNotice (PayNotice) returns (ReturnResult) {
-        option (google.api.http) = {
-			post: "/v1/pay_notice"
-			body:"*"
-        };
-    }
+  rpc SavePayNotice (PayNotice) returns (ReturnResult) {
+    option (google.api.http) = {
+      post: "/v1/pay_notice"
+      body:"*"
+    };
+  }
 
-    rpc UpdatePayNotice (PayNotice) returns (ReturnResult) {
-        option (google.api.http) = {
-			put: "/v1/pay_notice"
-			body:"*"
-        };
-    }
+  rpc UpdatePayNotice (PayNotice) returns (ReturnResult) {
+    option (google.api.http) = {
+      put: "/v1/pay_notice"
+      body:"*"
+    };
+  }
 
-    rpc FindPayNotice (PayNotice) returns (PayNoticeResponse) {
-        option (google.api.http) = {
-			get: "/v1/pay_notice"
-        };
-    }
-    rpc FindPayNoticeLessThenTime (PayNotice) returns (PayNoticeResponse) {
-        option (google.api.http) = {
-			get: "/v1/pay_notice/before_time"
-        };
-    }
+  rpc FindPayNotice (PayNotice) returns (PayNoticeResponse) {
+    option (google.api.http) = {
+      get: "/v1/pay_notice"
+    };
+  }
+  rpc FindPayNoticeLessThenTime (PayNotice) returns (PayNoticeResponse) {
+    option (google.api.http) = {
+      get: "/v1/pay_notice/before_time"
+    };
+  }
 
-    rpc SavePayNotifyOk (PayNoticeOk) returns (ReturnResult) {
-        option (google.api.http) = {
-			post: "/v1/pay_notice_ok"
-			body:"*"
-        };
-    }
+  rpc SavePayNotifyOk (PayNoticeOk) returns (ReturnResult) {
+    option (google.api.http) = {
+      post: "/v1/pay_notice_ok"
+      body:"*"
+    };
+  }
 
-    rpc FindPayNotifyOk (PayNoticeOk) returns (PayNoticeOkResponse) {
-        option (google.api.http) = {
-			get: "/v1/pay_notice_ok"
-        };
-    }
+  rpc FindPayNotifyOk (PayNoticeOk) returns (PayNoticeOkResponse) {
+    option (google.api.http) = {
+      get: "/v1/pay_notice_ok"
+    };
+  }
 
-    rpc UpdatePayNoticeOk (PayNoticeOk) returns (ReturnResult) {
-        option (google.api.http) = {
-			put: "/v1/pay_notice_ok"
-			body:"*"
-        };
-    }
+  rpc UpdatePayNoticeOk (PayNoticeOk) returns (ReturnResult) {
+    option (google.api.http) = {
+      put: "/v1/pay_notice_ok"
+      body:"*"
+    };
+  }
 }
 
 message BasePayOrder {
-    string version = 100;
-    // 业务订单号
-    string out_trade_no = 1;
-    // 渠道账号
-    string channel_account = 2;
-    // 渠道订单号
-    string channel_order_id = 21;
-    // 网关订单号
-    string gateway_order_id = 22;
-    // 支付金额（分）
-    uint32 pay_amount = 3;
-    // 币种
-    string currency = 25;
-    // 接收通知的地址，不能带参数（即：不能包含问号）
-    string notify_url = 4;
-    // 支付后跳转的前端地址
-    string return_url = 5;
-    // 系统给商户分配的app_id
-    string app_id = 6;
-    // 加密方法，rsa和md5，默认rsa
-    string sign_type = 7;
-    // 下单时间
-    string order_time = 8;
-    // 请求到网关的时间
-    string request_time = 20;
-    // 订单创建日期
-    string create_date = 23;
-    // 发起支付的用户ip
-    string user_ip = 9;
-    // 用户在业务系统的id
-    string user_id = 18;
-    // 支付者账号，可选
-    string payer_account = 10;
-    // 产品id
-    string product_id = 11;
-    // 商品名称
-    string product_name = 12;
-    // 商品描述
-    string product_describe = 13;
-    // 回调业务系统时需要带上的字符串
-    string callback_json = 16;
-    // 扩展json
-    string ext_json = 17;
-    // 渠道返回的json
-    string channel_response_json = 26;
-    // 下单错误信息
-    string error_message = 27;
-    // 渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id
-    string channel_id = 19;
-    string method = 98;
-    string remark = 24;
+  string version = 100;
+  // 业务订单号
+  string out_trade_no = 1;
+  // 渠道账号
+  string channel_account = 2;
+  // 渠道订单号
+  string channel_order_id = 21;
+  // 网关订单号
+  string gateway_order_id = 22;
+  // 支付金额（分）
+  uint32 pay_amount = 3;
+  // 币种
+  string currency = 25;
+  // 接收通知的地址，不能带参数（即：不能包含问号）
+  string notify_url = 4;
+  // 支付后跳转的前端地址
+  string return_url = 5;
+  // 系统给商户分配的app_id
+  string app_id = 6;
+  // 加密方法，rsa和md5，默认rsa
+  string sign_type = 7;
+  // 下单时间
+  string order_time = 8;
+  // 请求到网关的时间
+  string request_time = 20;
+  // 订单创建日期
+  string create_date = 23;
+  // 发起支付的用户ip
+  string user_ip = 9;
+  // 用户在业务系统的id
+  string user_id = 18;
+  // 支付者账号，可选
+  string payer_account = 10;
+  // 产品id
+  string product_id = 11;
+  // 商品名称
+  string product_name = 12;
+  // 商品描述
+  string product_describe = 13;
+  // 回调业务系统时需要带上的字符串
+  string callback_json = 16;
+  // 扩展json
+  string ext_json = 17;
+  // 渠道返回的json
+  string channel_response_json = 26;
+  // 下单错误信息
+  string error_message = 27;
+  // 渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id
+  string channel_id = 19;
+  string method = 98;
+  string remark = 24;
 }
 
 message PayOrder {
-    BasePayOrder base_pay_order = 1;
-    string order_status = 2;
+  BasePayOrder base_pay_order = 1;
+  string order_status = 2;
 }
 
 
 message PayOrderOk {
-    BasePayOrder base_pay_order = 1;
-    string success_time = 2;
-    string balance_date = 3;
-    uint32 fare_amt = 4;
-    uint32 fact_amt = 5;
-    string send_notice_stats = 6;
+  BasePayOrder base_pay_order = 1;
+  string success_time = 2;
+  string balance_date = 3;
+  uint32 fare_amt = 4;
+  uint32 fact_amt = 5;
+  string send_notice_stats = 6;
 }
 
 message PayNotice {
-    string gateway_order_id = 1;
-    string create_date = 2;
-    uint32 fail_times = 3;
-    string notice_time = 4;
-    string status = 5;
-    string next_notify_time = 7;
-    string error_message = 6;
+  string gateway_order_id = 1;
+  string create_date = 2;
+  uint32 fail_times = 3;
+  string notice_time = 4;
+  string status = 5;
+  string next_notify_time = 7;
+  string error_message = 6;
 }
 
 message PayNoticeOk {
-    string gateway_order_id = 1;
-    string create_date = 2;
-    uint32 fail_times = 3;
-    string notice_time = 4;
+  string gateway_order_id = 1;
+  string create_date = 2;
+  uint32 fail_times = 3;
+  string notice_time = 4;
 }
 
 
 message PayOrderResponse {
-    repeated PayOrder payOrders = 1;
+  repeated PayOrder pay_orders = 1;
 }
 
 message PayOrderOkResponse {
-    repeated PayOrderOk payOrderOks = 1;
+  repeated PayOrderOk pay_order_oks = 1;
 }
 message PayNoticeResponse {
-    repeated PayNotice payNotices = 1;
+  repeated PayNotice pay_notices = 1;
 }
 
 message PayNoticeOkResponse {
-    repeated PayNoticeOk payNoticeOks = 1;
+  repeated PayNoticeOk pay_notice_oks = 1;
 }

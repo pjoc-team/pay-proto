@@ -981,7 +981,7 @@
     "payPayNoticeOkResponse": {
       "type": "object",
       "properties": {
-        "payNoticeOks": {
+        "pay_notice_oks": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/payPayNoticeOk"
@@ -992,7 +992,7 @@
     "payPayNoticeResponse": {
       "type": "object",
       "properties": {
-        "payNotices": {
+        "pay_notices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/payPayNotice"
@@ -1039,7 +1039,7 @@
     "payPayOrderOkResponse": {
       "type": "object",
       "properties": {
-        "payOrderOks": {
+        "pay_order_oks": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/payPayOrderOk"
@@ -1050,7 +1050,7 @@
     "payPayOrderResponse": {
       "type": "object",
       "properties": {
-        "payOrders": {
+        "pay_orders": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/payPayOrder"

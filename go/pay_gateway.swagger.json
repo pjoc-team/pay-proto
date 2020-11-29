@@ -17,7 +17,7 @@
   "paths": {
     "/v1/pay/{method}": {
       "post": {
-        "operationId": "pay",
+        "operationId": "Pay",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -32,7 +32,15 @@
             "description": "例如：二维码支付，银联支付等。",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "WEB",
+              "WAP",
+              "APP",
+              "SDK",
+              "QR_CODE",
+              "SERVER"
+            ]
           },
           {
             "name": "body",
@@ -50,19 +58,33 @@
     }
   },
   "definitions": {
+    "payMethod": {
+      "type": "string",
+      "enum": [
+        "WEB",
+        "WAP",
+        "APP",
+        "SDK",
+        "QR_CODE",
+        "SERVER"
+      ],
+      "default": "WEB",
+      "title": "- WEB: 银联\n - WAP: 手机wap支付\n - APP: 原生扫码支付\n - SDK: SDK支付\n - QR_CODE: 二维码支付\n跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码\n - SERVER: 用于后台转账"
+    },
     "payPayRequest": {
       "type": "object",
       "properties": {
         "version": {
-          "type": "string"
+          "type": "string",
+          "title": "版本"
         },
         "out_trade_no": {
           "type": "string",
           "title": "业务订单号"
         },
         "pay_amount": {
-          "type": "integer",
-          "format": "int64",
+          "type": "string",
+          "format": "uint64",
           "title": "支付金额（分）"
         },
         "currency": {
@@ -91,6 +113,7 @@
         },
         "order_time": {
           "type": "string",
+          "format": "date-time",
           "title": "业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05"
         },
         "user_ip": {
@@ -134,7 +157,7 @@
           "title": "渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id"
         },
         "method": {
-          "type": "string",
+          "$ref": "#/definitions/payMethod",
           "title": "例如：二维码支付，银联支付等。"
         }
       }
