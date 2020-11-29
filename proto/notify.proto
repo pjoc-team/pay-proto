@@ -12,7 +12,7 @@ import "common.proto";
 
 // Notify handle channel's notify
 service Notify {
-  rpc PostNotify(HttpNotifyRequest) returns(google.api.HttpBody){
+  rpc NotifyByPost(HttpNotifyRequest) returns(google.api.HttpBody){
     option (google.api.http) = {
       additional_bindings {
         post: "/v1/notify/channel/{channel}"
@@ -30,7 +30,7 @@ service Notify {
       body: "body"
     };
   }
-  rpc GetNotify(HttpNotifyRequest) returns(google.api.HttpBody){
+  rpc NotifyByGet(HttpNotifyRequest) returns(google.api.HttpBody){
     option (google.api.http) = {
       get: "/v1/notify/channel/{channel}/account/{account}/order/{order_id}"
     };

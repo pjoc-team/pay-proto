@@ -17,7 +17,7 @@
   "paths": {
     "/v1/notify/channel/{channel}": {
       "post": {
-        "operationId": "PostNotify2",
+        "operationId": "NotifyByPost2",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -49,7 +49,7 @@
     },
     "/v1/notify/channel/{channel}/account/{account}": {
       "post": {
-        "operationId": "PostNotify3",
+        "operationId": "NotifyByPost3",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -87,7 +87,7 @@
     },
     "/v1/notify/channel/{channel}/account/{account}/order/{order_id}": {
       "get": {
-        "operationId": "GetNotify",
+        "operationId": "NotifyByGet",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -142,7 +142,7 @@
         ]
       },
       "post": {
-        "operationId": "PostNotify",
+        "operationId": "NotifyByPost",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -186,7 +186,7 @@
     },
     "/v1/notify/order/{order_id}": {
       "post": {
-        "operationId": "PostNotify4",
+        "operationId": "NotifyByPost4",
         "responses": {
           "200": {
             "description": "A successful response.",

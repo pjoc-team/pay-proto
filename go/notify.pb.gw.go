@@ -29,10 +29,10 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_Notify_PostNotify_0 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2, "order_id": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
+	filter_Notify_NotifyByPost_0 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2, "order_id": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_Notify_PostNotify_0(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Notify_NotifyByPost_0(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -87,16 +87,16 @@ func request_Notify_PostNotify_0(ctx context.Context, marshaler runtime.Marshale
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_PostNotify_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_NotifyByPost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.PostNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NotifyByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Notify_PostNotify_0(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_Notify_NotifyByPost_0(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -148,20 +148,20 @@ func local_request_Notify_PostNotify_0(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_PostNotify_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_NotifyByPost_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.PostNotify(ctx, &protoReq)
+	msg, err := server.NotifyByPost(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_Notify_PostNotify_1 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_Notify_NotifyByPost_1 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Notify_PostNotify_1(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Notify_NotifyByPost_1(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -194,16 +194,16 @@ func request_Notify_PostNotify_1(ctx context.Context, marshaler runtime.Marshale
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_PostNotify_1); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_NotifyByPost_1); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.PostNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NotifyByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Notify_PostNotify_1(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_Notify_NotifyByPost_1(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -233,20 +233,20 @@ func local_request_Notify_PostNotify_1(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_PostNotify_1); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_NotifyByPost_1); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.PostNotify(ctx, &protoReq)
+	msg, err := server.NotifyByPost(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_Notify_PostNotify_2 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
+	filter_Notify_NotifyByPost_2 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
 )
 
-func request_Notify_PostNotify_2(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Notify_NotifyByPost_2(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -290,16 +290,16 @@ func request_Notify_PostNotify_2(ctx context.Context, marshaler runtime.Marshale
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_PostNotify_2); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_NotifyByPost_2); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.PostNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NotifyByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Notify_PostNotify_2(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_Notify_NotifyByPost_2(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -340,20 +340,20 @@ func local_request_Notify_PostNotify_2(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_PostNotify_2); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_NotifyByPost_2); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.PostNotify(ctx, &protoReq)
+	msg, err := server.NotifyByPost(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_Notify_PostNotify_3 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "order_id": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_Notify_NotifyByPost_3 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "order_id": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Notify_PostNotify_3(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Notify_NotifyByPost_3(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -386,16 +386,16 @@ func request_Notify_PostNotify_3(ctx context.Context, marshaler runtime.Marshale
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_PostNotify_3); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_NotifyByPost_3); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.PostNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NotifyByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Notify_PostNotify_3(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_Notify_NotifyByPost_3(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -425,20 +425,20 @@ func local_request_Notify_PostNotify_3(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_PostNotify_3); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_NotifyByPost_3); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.PostNotify(ctx, &protoReq)
+	msg, err := server.NotifyByPost(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_Notify_GetNotify_0 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0, "account": 1, "order_id": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
+	filter_Notify_NotifyByGet_0 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0, "account": 1, "order_id": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
 )
 
-func request_Notify_GetNotify_0(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_Notify_NotifyByGet_0(ctx context.Context, marshaler runtime.Marshaler, client NotifyClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -485,16 +485,16 @@ func request_Notify_GetNotify_0(ctx context.Context, marshaler runtime.Marshaler
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_GetNotify_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notify_NotifyByGet_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NotifyByGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_Notify_GetNotify_0(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_Notify_NotifyByGet_0(ctx context.Context, marshaler runtime.Marshaler, server NotifyServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HttpNotifyRequest
 	var metadata runtime.ServerMetadata
 
@@ -538,11 +538,11 @@ func local_request_Notify_GetNotify_0(ctx context.Context, marshaler runtime.Mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_GetNotify_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Notify_NotifyByGet_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.GetNotify(ctx, &protoReq)
+	msg, err := server.NotifyByGet(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -552,7 +552,7 @@ func local_request_Notify_GetNotify_0(ctx context.Context, marshaler runtime.Mar
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, server NotifyServer) error {
 
-	mux.Handle("POST", pattern_Notify_PostNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -561,18 +561,18 @@ func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Notify_PostNotify_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Notify_NotifyByPost_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -581,18 +581,18 @@ func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Notify_PostNotify_1(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Notify_NotifyByPost_1(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -601,18 +601,18 @@ func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Notify_PostNotify_2(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Notify_NotifyByPost_2(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -621,18 +621,18 @@ func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Notify_PostNotify_3(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Notify_NotifyByPost_3(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Notify_GetNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Notify_NotifyByGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -641,14 +641,14 @@ func RegisterNotifyHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Notify_GetNotify_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Notify_NotifyByGet_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_GetNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -693,7 +693,7 @@ func RegisterNotifyHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 // "NotifyClient" to call the correct interceptors.
 func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, client NotifyClient) error {
 
-	mux.Handle("POST", pattern_Notify_PostNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -702,18 +702,18 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Notify_PostNotify_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Notify_NotifyByPost_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -722,18 +722,18 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Notify_PostNotify_1(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Notify_NotifyByPost_1(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -742,18 +742,18 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Notify_PostNotify_2(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Notify_NotifyByPost_2(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Notify_PostNotify_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Notify_NotifyByPost_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -762,18 +762,18 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Notify_PostNotify_3(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Notify_NotifyByPost_3(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_PostNotify_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByPost_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_Notify_GetNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Notify_NotifyByGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -782,14 +782,14 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Notify_GetNotify_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Notify_NotifyByGet_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Notify_GetNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Notify_NotifyByGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -797,25 +797,25 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 }
 
 var (
-	pattern_Notify_PostNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Notify_NotifyByPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Notify_PostNotify_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "notify", "channel"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Notify_NotifyByPost_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "notify", "channel"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Notify_PostNotify_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "notify", "channel", "account"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Notify_NotifyByPost_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "notify", "channel", "account"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Notify_PostNotify_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "notify", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Notify_NotifyByPost_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "notify", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Notify_GetNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Notify_NotifyByGet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_Notify_PostNotify_0 = runtime.ForwardResponseMessage
+	forward_Notify_NotifyByPost_0 = runtime.ForwardResponseMessage
 
-	forward_Notify_PostNotify_1 = runtime.ForwardResponseMessage
+	forward_Notify_NotifyByPost_1 = runtime.ForwardResponseMessage
 
-	forward_Notify_PostNotify_2 = runtime.ForwardResponseMessage
+	forward_Notify_NotifyByPost_2 = runtime.ForwardResponseMessage
 
-	forward_Notify_PostNotify_3 = runtime.ForwardResponseMessage
+	forward_Notify_NotifyByPost_3 = runtime.ForwardResponseMessage
 
-	forward_Notify_GetNotify_0 = runtime.ForwardResponseMessage
+	forward_Notify_NotifyByGet_0 = runtime.ForwardResponseMessage
 )
