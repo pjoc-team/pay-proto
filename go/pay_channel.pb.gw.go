@@ -104,8 +104,8 @@ func local_request_PayChannel_Pay_0(ctx context.Context, marshaler runtime.Marsh
 
 }
 
-func request_PayChannel_Notify_0(ctx context.Context, marshaler runtime.Marshaler, client PayChannelClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq NotifyRequest
+func request_PayChannel_ChannelNotify_0(ctx context.Context, marshaler runtime.Marshaler, client PayChannelClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ChannelNotifyRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -134,13 +134,13 @@ func request_PayChannel_Notify_0(ctx context.Context, marshaler runtime.Marshale
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "payment_account", err)
 	}
 
-	msg, err := client.Notify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ChannelNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayChannel_Notify_0(ctx context.Context, marshaler runtime.Marshaler, server PayChannelServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq NotifyRequest
+func local_request_PayChannel_ChannelNotify_0(ctx context.Context, marshaler runtime.Marshaler, server PayChannelServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ChannelNotifyRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -169,7 +169,7 @@ func local_request_PayChannel_Notify_0(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "payment_account", err)
 	}
 
-	msg, err := server.Notify(ctx, &protoReq)
+	msg, err := server.ChannelNotify(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -199,7 +199,7 @@ func RegisterPayChannelHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 
 	})
 
-	mux.Handle("POST", pattern_PayChannel_Notify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayChannel_ChannelNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -208,14 +208,14 @@ func RegisterPayChannelHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayChannel_Notify_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayChannel_ChannelNotify_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayChannel_Notify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayChannel_ChannelNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -280,7 +280,7 @@ func RegisterPayChannelHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 
 	})
 
-	mux.Handle("POST", pattern_PayChannel_Notify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayChannel_ChannelNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -289,14 +289,14 @@ func RegisterPayChannelHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayChannel_Notify_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayChannel_ChannelNotify_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayChannel_Notify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayChannel_ChannelNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -306,11 +306,11 @@ func RegisterPayChannelHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 var (
 	pattern_PayChannel_Pay_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "pay", "method"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayChannel_Notify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "notify", "payment_account"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayChannel_ChannelNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "notify", "payment_account"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
 	forward_PayChannel_Pay_0 = runtime.ForwardResponseMessage
 
-	forward_PayChannel_Notify_0 = runtime.ForwardResponseMessage
+	forward_PayChannel_ChannelNotify_0 = runtime.ForwardResponseMessage
 )

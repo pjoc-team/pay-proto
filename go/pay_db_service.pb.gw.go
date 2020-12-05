@@ -230,8 +230,8 @@ func local_request_PayDatabaseService_FindPayOrderOk_0(ctx context.Context, mars
 
 }
 
-func request_PayDatabaseService_SavePayNotice_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func request_PayDatabaseService_SavePayNotify_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -242,13 +242,13 @@ func request_PayDatabaseService_SavePayNotice_0(ctx context.Context, marshaler r
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.SavePayNotice(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.SavePayNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayDatabaseService_SavePayNotice_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func local_request_PayDatabaseService_SavePayNotify_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -259,13 +259,13 @@ func local_request_PayDatabaseService_SavePayNotice_0(ctx context.Context, marsh
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.SavePayNotice(ctx, &protoReq)
+	msg, err := server.SavePayNotify(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-func request_PayDatabaseService_UpdatePayNotice_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func request_PayDatabaseService_UpdatePayNotify_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -276,13 +276,13 @@ func request_PayDatabaseService_UpdatePayNotice_0(ctx context.Context, marshaler
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.UpdatePayNotice(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.UpdatePayNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayDatabaseService_UpdatePayNotice_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func local_request_PayDatabaseService_UpdatePayNotify_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -293,79 +293,79 @@ func local_request_PayDatabaseService_UpdatePayNotice_0(ctx context.Context, mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.UpdatePayNotice(ctx, &protoReq)
+	msg, err := server.UpdatePayNotify(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_PayDatabaseService_FindPayNotice_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_PayDatabaseService_FindPayNotify_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_PayDatabaseService_FindPayNotice_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func request_PayDatabaseService_FindPayNotify_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_PayDatabaseService_FindPayNotice_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_PayDatabaseService_FindPayNotify_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.FindPayNotice(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.FindPayNotify(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayDatabaseService_FindPayNotice_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func local_request_PayDatabaseService_FindPayNotify_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PayDatabaseService_FindPayNotice_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PayDatabaseService_FindPayNotify_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.FindPayNotice(ctx, &protoReq)
+	msg, err := server.FindPayNotify(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_PayDatabaseService_FindPayNoticeLessThenTime_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_PayDatabaseService_FindPayNotifyLessThenTime_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_PayDatabaseService_FindPayNoticeLessThenTime_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func request_PayDatabaseService_FindPayNotifyLessThenTime_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_PayDatabaseService_FindPayNoticeLessThenTime_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_PayDatabaseService_FindPayNotifyLessThenTime_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.FindPayNoticeLessThenTime(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.FindPayNotifyLessThenTime(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayDatabaseService_FindPayNoticeLessThenTime_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNotice
+func local_request_PayDatabaseService_FindPayNotifyLessThenTime_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotify
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PayDatabaseService_FindPayNoticeLessThenTime_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PayDatabaseService_FindPayNotifyLessThenTime_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.FindPayNoticeLessThenTime(ctx, &protoReq)
+	msg, err := server.FindPayNotifyLessThenTime(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 func request_PayDatabaseService_SavePayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -382,7 +382,7 @@ func request_PayDatabaseService_SavePayNotifyOk_0(ctx context.Context, marshaler
 }
 
 func local_request_PayDatabaseService_SavePayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -403,7 +403,7 @@ var (
 )
 
 func request_PayDatabaseService_FindPayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
@@ -419,7 +419,7 @@ func request_PayDatabaseService_FindPayNotifyOk_0(ctx context.Context, marshaler
 }
 
 func local_request_PayDatabaseService_FindPayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PayDatabaseService_FindPayNotifyOk_0); err != nil {
@@ -431,8 +431,8 @@ func local_request_PayDatabaseService_FindPayNotifyOk_0(ctx context.Context, mar
 
 }
 
-func request_PayDatabaseService_UpdatePayNoticeOk_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+func request_PayDatabaseService_UpdatePayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, client PayDatabaseServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -443,13 +443,13 @@ func request_PayDatabaseService_UpdatePayNoticeOk_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.UpdatePayNoticeOk(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.UpdatePayNotifyOk(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_PayDatabaseService_UpdatePayNoticeOk_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PayNoticeOk
+func local_request_PayDatabaseService_UpdatePayNotifyOk_0(ctx context.Context, marshaler runtime.Marshaler, server PayDatabaseServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PayNotifyOk
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -460,7 +460,7 @@ func local_request_PayDatabaseService_UpdatePayNoticeOk_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.UpdatePayNoticeOk(ctx, &protoReq)
+	msg, err := server.UpdatePayNotifyOk(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -590,7 +590,7 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 
 	})
 
-	mux.Handle("POST", pattern_PayDatabaseService_SavePayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_PayDatabaseService_SavePayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -599,18 +599,18 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayDatabaseService_SavePayNotice_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayDatabaseService_SavePayNotify_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_SavePayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_SavePayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -619,18 +619,18 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayDatabaseService_UpdatePayNotice_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayDatabaseService_UpdatePayNotify_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_UpdatePayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_UpdatePayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -639,18 +639,18 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayDatabaseService_FindPayNotice_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayDatabaseService_FindPayNotify_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_FindPayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_FindPayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_PayDatabaseService_FindPayNoticeLessThenTime_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotifyLessThenTime_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -659,14 +659,14 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayDatabaseService_FindPayNoticeLessThenTime_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayDatabaseService_FindPayNotifyLessThenTime_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_FindPayNoticeLessThenTime_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_FindPayNotifyLessThenTime_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -710,7 +710,7 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 
 	})
 
-	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNoticeOk_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotifyOk_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -719,14 +719,14 @@ func RegisterPayDatabaseServiceHandlerServer(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_PayDatabaseService_UpdatePayNoticeOk_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_PayDatabaseService_UpdatePayNotifyOk_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_UpdatePayNoticeOk_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_UpdatePayNotifyOk_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -891,7 +891,7 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 
 	})
 
-	mux.Handle("POST", pattern_PayDatabaseService_SavePayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_PayDatabaseService_SavePayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -900,18 +900,18 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayDatabaseService_SavePayNotice_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayDatabaseService_SavePayNotify_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_SavePayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_SavePayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -920,18 +920,18 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayDatabaseService_UpdatePayNotice_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayDatabaseService_UpdatePayNotify_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_UpdatePayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_UpdatePayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotice_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotify_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -940,18 +940,18 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayDatabaseService_FindPayNotice_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayDatabaseService_FindPayNotify_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_FindPayNotice_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_FindPayNotify_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_PayDatabaseService_FindPayNoticeLessThenTime_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_PayDatabaseService_FindPayNotifyLessThenTime_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -960,14 +960,14 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayDatabaseService_FindPayNoticeLessThenTime_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayDatabaseService_FindPayNotifyLessThenTime_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_FindPayNoticeLessThenTime_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_FindPayNotifyLessThenTime_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1011,7 +1011,7 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 
 	})
 
-	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNoticeOk_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_PayDatabaseService_UpdatePayNotifyOk_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -1020,14 +1020,14 @@ func RegisterPayDatabaseServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_PayDatabaseService_UpdatePayNoticeOk_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_PayDatabaseService_UpdatePayNotifyOk_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_PayDatabaseService_UpdatePayNoticeOk_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_PayDatabaseService_UpdatePayNotifyOk_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1047,19 +1047,19 @@ var (
 
 	pattern_PayDatabaseService_FindPayOrderOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_order_ok"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_SavePayNotice_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_SavePayNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_UpdatePayNotice_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_UpdatePayNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_FindPayNotice_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_FindPayNotify_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_FindPayNoticeLessThenTime_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "pay_notice", "before_time"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_FindPayNotifyLessThenTime_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "pay_notify", "before_time"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_SavePayNotifyOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice_ok"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_SavePayNotifyOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify_ok"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_FindPayNotifyOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice_ok"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_FindPayNotifyOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify_ok"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_PayDatabaseService_UpdatePayNoticeOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notice_ok"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_PayDatabaseService_UpdatePayNotifyOk_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "pay_notify_ok"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
@@ -1075,17 +1075,17 @@ var (
 
 	forward_PayDatabaseService_FindPayOrderOk_0 = runtime.ForwardResponseMessage
 
-	forward_PayDatabaseService_SavePayNotice_0 = runtime.ForwardResponseMessage
+	forward_PayDatabaseService_SavePayNotify_0 = runtime.ForwardResponseMessage
 
-	forward_PayDatabaseService_UpdatePayNotice_0 = runtime.ForwardResponseMessage
+	forward_PayDatabaseService_UpdatePayNotify_0 = runtime.ForwardResponseMessage
 
-	forward_PayDatabaseService_FindPayNotice_0 = runtime.ForwardResponseMessage
+	forward_PayDatabaseService_FindPayNotify_0 = runtime.ForwardResponseMessage
 
-	forward_PayDatabaseService_FindPayNoticeLessThenTime_0 = runtime.ForwardResponseMessage
+	forward_PayDatabaseService_FindPayNotifyLessThenTime_0 = runtime.ForwardResponseMessage
 
 	forward_PayDatabaseService_SavePayNotifyOk_0 = runtime.ForwardResponseMessage
 
 	forward_PayDatabaseService_FindPayNotifyOk_0 = runtime.ForwardResponseMessage
 
-	forward_PayDatabaseService_UpdatePayNoticeOk_0 = runtime.ForwardResponseMessage
+	forward_PayDatabaseService_UpdatePayNotifyOk_0 = runtime.ForwardResponseMessage
 )

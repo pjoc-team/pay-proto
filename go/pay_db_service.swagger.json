@@ -15,14 +15,14 @@
     "application/json"
   ],
   "paths": {
-    "/v1/pay_notice": {
+    "/v1/pay_notify": {
       "get": {
-        "operationId": "FindPayNotice",
+        "operationId": "FindPayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/payPayNoticeResponse"
+              "$ref": "#/definitions/payPayNotifyResponse"
             }
           }
         },
@@ -47,7 +47,7 @@
             "format": "int64"
           },
           {
-            "name": "notice_time",
+            "name": "notify_time",
             "in": "query",
             "required": false,
             "type": "string"
@@ -76,7 +76,7 @@
         ]
       },
       "post": {
-        "operationId": "SavePayNotice",
+        "operationId": "SavePayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -91,7 +91,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/payPayNotice"
+              "$ref": "#/definitions/payPayNotify"
             }
           }
         ],
@@ -100,7 +100,7 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayNotice",
+        "operationId": "UpdatePayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -115,7 +115,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/payPayNotice"
+              "$ref": "#/definitions/payPayNotify"
             }
           }
         ],
@@ -124,14 +124,14 @@
         ]
       }
     },
-    "/v1/pay_notice/before_time": {
+    "/v1/pay_notify/before_time": {
       "get": {
-        "operationId": "FindPayNoticeLessThenTime",
+        "operationId": "FindPayNotifyLessThenTime",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/payPayNoticeResponse"
+              "$ref": "#/definitions/payPayNotifyResponse"
             }
           }
         },
@@ -156,7 +156,7 @@
             "format": "int64"
           },
           {
-            "name": "notice_time",
+            "name": "notify_time",
             "in": "query",
             "required": false,
             "type": "string"
@@ -185,14 +185,14 @@
         ]
       }
     },
-    "/v1/pay_notice_ok": {
+    "/v1/pay_notify_ok": {
       "get": {
         "operationId": "FindPayNotifyOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/payPayNoticeOkResponse"
+              "$ref": "#/definitions/payPayNotifyOkResponse"
             }
           }
         },
@@ -217,7 +217,7 @@
             "format": "int64"
           },
           {
-            "name": "notice_time",
+            "name": "notify_time",
             "in": "query",
             "required": false,
             "type": "string"
@@ -243,7 +243,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/payPayNoticeOk"
+              "$ref": "#/definitions/payPayNotifyOk"
             }
           }
         ],
@@ -252,7 +252,7 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayNoticeOk",
+        "operationId": "UpdatePayNotifyOk",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -267,7 +267,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/payPayNoticeOk"
+              "$ref": "#/definitions/payPayNotifyOk"
             }
           }
         ],
@@ -761,7 +761,7 @@
             "format": "int64"
           },
           {
-            "name": "send_notice_stats",
+            "name": "send_notify_stats",
             "in": "query",
             "required": false,
             "type": "string"
@@ -933,7 +933,7 @@
         }
       }
     },
-    "payPayNotice": {
+    "payPayNotify": {
       "type": "object",
       "properties": {
         "gateway_order_id": {
@@ -946,7 +946,7 @@
           "type": "integer",
           "format": "int64"
         },
-        "notice_time": {
+        "notify_time": {
           "type": "string"
         },
         "status": {
@@ -960,7 +960,7 @@
         }
       }
     },
-    "payPayNoticeOk": {
+    "payPayNotifyOk": {
       "type": "object",
       "properties": {
         "gateway_order_id": {
@@ -973,29 +973,29 @@
           "type": "integer",
           "format": "int64"
         },
-        "notice_time": {
+        "notify_time": {
           "type": "string"
         }
       }
     },
-    "payPayNoticeOkResponse": {
+    "payPayNotifyOkResponse": {
       "type": "object",
       "properties": {
-        "pay_notice_oks": {
+        "pay_notify_oks": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/payPayNoticeOk"
+            "$ref": "#/definitions/payPayNotifyOk"
           }
         }
       }
     },
-    "payPayNoticeResponse": {
+    "payPayNotifyResponse": {
       "type": "object",
       "properties": {
-        "pay_notices": {
+        "pay_notifies": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/payPayNotice"
+            "$ref": "#/definitions/payPayNotify"
           }
         }
       }
@@ -1031,7 +1031,7 @@
           "type": "integer",
           "format": "int64"
         },
-        "send_notice_stats": {
+        "send_notify_stats": {
           "type": "string"
         }
       }

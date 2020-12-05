@@ -10,42 +10,97 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
 
-// Notify handle channel's notify
-service Notify {
-  rpc NotifyByPost(HttpNotifyRequest) returns(google.api.HttpBody){
+service Notifier {
+  rpc Notify(NotifyRequest) returns(NotifyResponse){
     option (google.api.http) = {
-      additional_bindings {
-        post: "/v1/notify/channel/{channel}"
-        body: "body"
-      }
-      additional_bindings {
-        post: "/v1/notify/channel/{channel}/account/{account}"
-        body: "body"
-      }
-      additional_bindings {
-        post: "/v1/notify/order/{order_id}"
-        body: "body"
-      }
-      post: "/v1/notify/channel/{channel}/account/{account}/order/{order_id}"
-      body: "body"
-    };
-  }
-  rpc NotifyByGet(HttpNotifyRequest) returns(google.api.HttpBody){
-    option (google.api.http) = {
-      get: "/v1/notify/channel/{channel}/account/{account}/order/{order_id}"
+      put: "/v1/notify/out_trade_no/{out_trade_no}"
+      body: "*"
     };
   }
 }
 
-message HttpNotifyRequest {
-  string channel = 1;
-  string account = 2;
-  string order_id = 3;
-  string http_method = 4;
-  google.api.HttpBody body = 5;
+// NotifyRequest notify to biz
+message NotifyRequest {
+  // version api version
+  string version = 1;
+
+  // out_trade_no 业务订单号
+  string out_trade_no = 2;
+
+  // pay_amount 支付金额（分）
+  uint32 pay_amount = 3;
+
+  // Currency 币种
+  string currency = 4;
+
+  // return_url 支付后跳转的前端地址
+  string return_url = 5;
+
+  // app_id 系统给商户分配的app_id
+  string app_id = 6;
+
+  // sign_type 加密方法，RSA和MD5，默认RSA
+  string sign_type = 7;
+
+  // sign 签名
+  string sign = 8;
+
+  // order_time 业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05
+  string order_time = 9;
+
+  // user_ip 发起支付的用户ip
+  string user_ip = 10;
+
+  // user_id 用户在业务系统的id
+  string user_id = 11;
+
+  // payer_account 支付者账号，可选
+  string payer_account = 12;
+
+  // product_id 业务系统的产品id
+  string product_id = 13;
+
+  // product_name 商品名称
+  string product_name = 14;
+
+  // product_describe 商品描述
+  string product_describe = 15;
+
+  // charset 参数编码，只允许utf-8编码；签名时一定要使用该编码获取字节然后再进行签名
+  string charset = 16;
+
+  // callback_json 回调业务系统时需要带上的字符串
+  string callback_json = 17;
+
+  // ext_json 扩展json
+  string ext_json = 18;
+
+  // channel_id 渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id
+  string channel_id = 19;
+
+  // method 例如：二维码支付，银联支付等。
+  string method = 20;
+
+  // fact_amt 实际金额
+  uint32 fact_amt = 21;
+
+  // fare_amt 手续费
+  uint32 fare_amt = 22;
 }
 
-message HttpNotifyResponse {
-  bytes body = 1;
-  map<string, string> header = 2;
+// NotifyResponse response of biz
+message NotifyResponse {
+  // status notify status
+  NotifyStatus status = 1;
+
+  enum NotifyStatus {
+    // STATUS_UNKNOWN bad status
+    STATUS_UNKNOWN = 0;
+
+    // STATUS_FAILED failed to process notify
+    STATUS_FAILED = 1;
+
+    // STATUS_SUCCESS succeed to process notify
+    STATUS_SUCCESS = 2;
+  }
 }

@@ -18,9 +18,9 @@ service PayChannel {
     };
   }
 
-  rpc Notify (NotifyRequest) returns (NotifyResponse) {
+  rpc ChannelNotify (ChannelNotifyRequest) returns (ChannelNotifyResponse) {
     option (google.api.http) = {
-      post: "/v1/notify/{payment_account}"
+      put: "/v1/notify/{payment_account}"
       body:"*"
     };
   }
@@ -44,7 +44,7 @@ message ChannelPayResponse  {
 }
 
 //来自第三方的请求的Notify
-message NotifyRequest {
+message ChannelNotifyRequest {
   //支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件
   string payment_account = 1;
   //支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。
@@ -57,7 +57,7 @@ message NotifyRequest {
 }
 
 //来自第三方的请求的Notify
-message NotifyResponse {
+message ChannelNotifyResponse {
   //付款状态
   PayStatus status = 1;
   //同步返回的数据
@@ -66,12 +66,13 @@ message NotifyResponse {
 
 //来自第三方的请求body
 message HTTPRequest {
-  enum HttpMehod {
+  enum HttpMethod {
     GET = 0;
     POST = 1;
+    PUT = 2;
   }
   //请求方法： GET or POST
-  HttpMehod method = 1;
+  HttpMethod method = 1;
   //其他附加信息，可选返回商户返回的meta信息
   map<string, string> header = 2;
   //请求的第三方的url，包含 /some?a=b&c=d, 也可以简化为：?a=b&c=d,不填写具体URL PATH

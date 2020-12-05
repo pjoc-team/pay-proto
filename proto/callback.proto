@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package pay;
+
+option java_package = "pub.pjoc.pay.channel";
+
+
+import "google/api/httpbody.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+
+// ChannelCallback handle channel's callback notify
+service ChannelCallback {
+
+  rpc CallbackByGet(HttpCallbackRequest) returns(google.api.HttpBody){
+    option(google.api.http) = {
+      additional_bindings {
+        get: "/v1/callback/channel/{channel}"
+      }
+      additional_bindings {
+        get: "/v1/callback/channel/{channel}/account/{account}"
+      }
+      additional_bindings {
+        get: "/v1/callback/order/{order_id}"
+      }
+      get: "/v1/notify/channel/{channel}/account/{account}/order/{order_id}"
+    };
+  }
+
+  rpc CallbackByPost(HttpCallbackRequest) returns(google.api.HttpBody){
+    option (google.api.http) = {
+      additional_bindings {
+        post: "/v1/callback/channel/{channel}"
+        body: "body"
+      }
+      additional_bindings {
+        post: "/v1/callback/channel/{channel}/account/{account}"
+        body: "body"
+      }
+      additional_bindings {
+        post: "/v1/callback/order/{order_id}"
+        body: "body"
+      }
+      post: "/v1/callback/channel/{channel}/account/{account}/order/{order_id}"
+      body: "body"
+    };
+  }
+
+
+}
+
+message HttpCallbackRequest {
+  string channel = 1;
+  string account = 2;
+  string order_id = 3;
+  string http_method = 4;
+  google.api.HttpBody body = 5;
+}
+
+message HttpCallbackResponse {
+  bytes body = 1;
+  map<string, string> header = 2;
+}

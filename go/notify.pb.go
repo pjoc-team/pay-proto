@@ -9,7 +9,7 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
+	_ "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -27,163 +27,358 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type HttpNotifyRequest struct {
-	Channel              string             `protobuf:"bytes,1,opt,name=channel,proto3" json:"channel,omitempty"`
-	Account              string             `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
-	OrderId              string             `protobuf:"bytes,3,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
-	HttpMethod           string             `protobuf:"bytes,4,opt,name=http_method,json=httpMethod,proto3" json:"http_method,omitempty"`
-	Body                 *httpbody.HttpBody `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+type NotifyResponse_NotifyStatus int32
+
+const (
+	// STATUS_UNKNOWN bad status
+	NotifyResponse_STATUS_UNKNOWN NotifyResponse_NotifyStatus = 0
+	// STATUS_FAILED failed to process notify
+	NotifyResponse_STATUS_FAILED NotifyResponse_NotifyStatus = 1
+	// STATUS_SUCCESS succeed to process notify
+	NotifyResponse_STATUS_SUCCESS NotifyResponse_NotifyStatus = 2
+)
+
+var NotifyResponse_NotifyStatus_name = map[int32]string{
+	0: "STATUS_UNKNOWN",
+	1: "STATUS_FAILED",
+	2: "STATUS_SUCCESS",
 }
 
-func (m *HttpNotifyRequest) Reset()         { *m = HttpNotifyRequest{} }
-func (m *HttpNotifyRequest) String() string { return proto.CompactTextString(m) }
-func (*HttpNotifyRequest) ProtoMessage()    {}
-func (*HttpNotifyRequest) Descriptor() ([]byte, []int) {
+var NotifyResponse_NotifyStatus_value = map[string]int32{
+	"STATUS_UNKNOWN": 0,
+	"STATUS_FAILED":  1,
+	"STATUS_SUCCESS": 2,
+}
+
+func (x NotifyResponse_NotifyStatus) String() string {
+	return proto.EnumName(NotifyResponse_NotifyStatus_name, int32(x))
+}
+
+func (NotifyResponse_NotifyStatus) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_aba76cc4ebe272d4, []int{1, 0}
+}
+
+// NotifyRequest notify to biz
+type NotifyRequest struct {
+	// version api version
+	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	// out_trade_no 业务订单号
+	OutTradeNo string `protobuf:"bytes,2,opt,name=out_trade_no,json=outTradeNo,proto3" json:"out_trade_no,omitempty"`
+	// pay_amount 支付金额（分）
+	PayAmount uint32 `protobuf:"varint,3,opt,name=pay_amount,json=payAmount,proto3" json:"pay_amount,omitempty"`
+	// Currency 币种
+	Currency string `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
+	// return_url 支付后跳转的前端地址
+	ReturnUrl string `protobuf:"bytes,5,opt,name=return_url,json=returnUrl,proto3" json:"return_url,omitempty"`
+	// app_id 系统给商户分配的app_id
+	AppId string `protobuf:"bytes,6,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// sign_type 加密方法，RSA和MD5，默认RSA
+	SignType string `protobuf:"bytes,7,opt,name=sign_type,json=signType,proto3" json:"sign_type,omitempty"`
+	// sign 签名
+	Sign string `protobuf:"bytes,8,opt,name=sign,proto3" json:"sign,omitempty"`
+	// order_time 业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05
+	OrderTime string `protobuf:"bytes,9,opt,name=order_time,json=orderTime,proto3" json:"order_time,omitempty"`
+	// user_ip 发起支付的用户ip
+	UserIp string `protobuf:"bytes,10,opt,name=user_ip,json=userIp,proto3" json:"user_ip,omitempty"`
+	// user_id 用户在业务系统的id
+	UserId string `protobuf:"bytes,11,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	// payer_account 支付者账号，可选
+	PayerAccount string `protobuf:"bytes,12,opt,name=payer_account,json=payerAccount,proto3" json:"payer_account,omitempty"`
+	// product_id 业务系统的产品id
+	ProductId string `protobuf:"bytes,13,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
+	// product_name 商品名称
+	ProductName string `protobuf:"bytes,14,opt,name=product_name,json=productName,proto3" json:"product_name,omitempty"`
+	// product_describe 商品描述
+	ProductDescribe string `protobuf:"bytes,15,opt,name=product_describe,json=productDescribe,proto3" json:"product_describe,omitempty"`
+	// charset 参数编码，只允许utf-8编码；签名时一定要使用该编码获取字节然后再进行签名
+	Charset string `protobuf:"bytes,16,opt,name=charset,proto3" json:"charset,omitempty"`
+	// callback_json 回调业务系统时需要带上的字符串
+	CallbackJson string `protobuf:"bytes,17,opt,name=callback_json,json=callbackJson,proto3" json:"callback_json,omitempty"`
+	// ext_json 扩展json
+	ExtJson string `protobuf:"bytes,18,opt,name=ext_json,json=extJson,proto3" json:"ext_json,omitempty"`
+	// channel_id 渠道id（非必须），如果未指定method，系统会根据method来找到可用的channel_id
+	ChannelId string `protobuf:"bytes,19,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
+	// method 例如：二维码支付，银联支付等。
+	Method string `protobuf:"bytes,20,opt,name=method,proto3" json:"method,omitempty"`
+	// fact_amt 实际金额
+	FactAmt uint32 `protobuf:"varint,21,opt,name=fact_amt,json=factAmt,proto3" json:"fact_amt,omitempty"`
+	// fare_amt 手续费
+	FareAmt              uint32   `protobuf:"varint,22,opt,name=fare_amt,json=fareAmt,proto3" json:"fare_amt,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *NotifyRequest) Reset()         { *m = NotifyRequest{} }
+func (m *NotifyRequest) String() string { return proto.CompactTextString(m) }
+func (*NotifyRequest) ProtoMessage()    {}
+func (*NotifyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_aba76cc4ebe272d4, []int{0}
 }
 
-func (m *HttpNotifyRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HttpNotifyRequest.Unmarshal(m, b)
+func (m *NotifyRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NotifyRequest.Unmarshal(m, b)
 }
-func (m *HttpNotifyRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HttpNotifyRequest.Marshal(b, m, deterministic)
+func (m *NotifyRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NotifyRequest.Marshal(b, m, deterministic)
 }
-func (m *HttpNotifyRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HttpNotifyRequest.Merge(m, src)
+func (m *NotifyRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NotifyRequest.Merge(m, src)
 }
-func (m *HttpNotifyRequest) XXX_Size() int {
-	return xxx_messageInfo_HttpNotifyRequest.Size(m)
+func (m *NotifyRequest) XXX_Size() int {
+	return xxx_messageInfo_NotifyRequest.Size(m)
 }
-func (m *HttpNotifyRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_HttpNotifyRequest.DiscardUnknown(m)
+func (m *NotifyRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NotifyRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_HttpNotifyRequest proto.InternalMessageInfo
+var xxx_messageInfo_NotifyRequest proto.InternalMessageInfo
 
-func (m *HttpNotifyRequest) GetChannel() string {
+func (m *NotifyRequest) GetVersion() string {
 	if m != nil {
-		return m.Channel
+		return m.Version
 	}
 	return ""
 }
 
-func (m *HttpNotifyRequest) GetAccount() string {
+func (m *NotifyRequest) GetOutTradeNo() string {
 	if m != nil {
-		return m.Account
+		return m.OutTradeNo
 	}
 	return ""
 }
 
-func (m *HttpNotifyRequest) GetOrderId() string {
+func (m *NotifyRequest) GetPayAmount() uint32 {
 	if m != nil {
-		return m.OrderId
+		return m.PayAmount
+	}
+	return 0
+}
+
+func (m *NotifyRequest) GetCurrency() string {
+	if m != nil {
+		return m.Currency
 	}
 	return ""
 }
 
-func (m *HttpNotifyRequest) GetHttpMethod() string {
+func (m *NotifyRequest) GetReturnUrl() string {
 	if m != nil {
-		return m.HttpMethod
+		return m.ReturnUrl
 	}
 	return ""
 }
 
-func (m *HttpNotifyRequest) GetBody() *httpbody.HttpBody {
+func (m *NotifyRequest) GetAppId() string {
 	if m != nil {
-		return m.Body
+		return m.AppId
 	}
-	return nil
+	return ""
 }
 
-type HttpNotifyResponse struct {
-	Body                 []byte            `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
-	Header               map[string]string `protobuf:"bytes,2,rep,name=header,proto3" json:"header,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+func (m *NotifyRequest) GetSignType() string {
+	if m != nil {
+		return m.SignType
+	}
+	return ""
 }
 
-func (m *HttpNotifyResponse) Reset()         { *m = HttpNotifyResponse{} }
-func (m *HttpNotifyResponse) String() string { return proto.CompactTextString(m) }
-func (*HttpNotifyResponse) ProtoMessage()    {}
-func (*HttpNotifyResponse) Descriptor() ([]byte, []int) {
+func (m *NotifyRequest) GetSign() string {
+	if m != nil {
+		return m.Sign
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetOrderTime() string {
+	if m != nil {
+		return m.OrderTime
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetUserIp() string {
+	if m != nil {
+		return m.UserIp
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetUserId() string {
+	if m != nil {
+		return m.UserId
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetPayerAccount() string {
+	if m != nil {
+		return m.PayerAccount
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetProductId() string {
+	if m != nil {
+		return m.ProductId
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetProductName() string {
+	if m != nil {
+		return m.ProductName
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetProductDescribe() string {
+	if m != nil {
+		return m.ProductDescribe
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetCharset() string {
+	if m != nil {
+		return m.Charset
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetCallbackJson() string {
+	if m != nil {
+		return m.CallbackJson
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetExtJson() string {
+	if m != nil {
+		return m.ExtJson
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetChannelId() string {
+	if m != nil {
+		return m.ChannelId
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetMethod() string {
+	if m != nil {
+		return m.Method
+	}
+	return ""
+}
+
+func (m *NotifyRequest) GetFactAmt() uint32 {
+	if m != nil {
+		return m.FactAmt
+	}
+	return 0
+}
+
+func (m *NotifyRequest) GetFareAmt() uint32 {
+	if m != nil {
+		return m.FareAmt
+	}
+	return 0
+}
+
+// NotifyResponse response of biz
+type NotifyResponse struct {
+	// status notify status
+	Status               NotifyResponse_NotifyStatus `protobuf:"varint,1,opt,name=status,proto3,enum=pay.NotifyResponse_NotifyStatus" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
+}
+
+func (m *NotifyResponse) Reset()         { *m = NotifyResponse{} }
+func (m *NotifyResponse) String() string { return proto.CompactTextString(m) }
+func (*NotifyResponse) ProtoMessage()    {}
+func (*NotifyResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_aba76cc4ebe272d4, []int{1}
 }
 
-func (m *HttpNotifyResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HttpNotifyResponse.Unmarshal(m, b)
+func (m *NotifyResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NotifyResponse.Unmarshal(m, b)
 }
-func (m *HttpNotifyResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HttpNotifyResponse.Marshal(b, m, deterministic)
+func (m *NotifyResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NotifyResponse.Marshal(b, m, deterministic)
 }
-func (m *HttpNotifyResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HttpNotifyResponse.Merge(m, src)
+func (m *NotifyResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NotifyResponse.Merge(m, src)
 }
-func (m *HttpNotifyResponse) XXX_Size() int {
-	return xxx_messageInfo_HttpNotifyResponse.Size(m)
+func (m *NotifyResponse) XXX_Size() int {
+	return xxx_messageInfo_NotifyResponse.Size(m)
 }
-func (m *HttpNotifyResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_HttpNotifyResponse.DiscardUnknown(m)
+func (m *NotifyResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NotifyResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_HttpNotifyResponse proto.InternalMessageInfo
+var xxx_messageInfo_NotifyResponse proto.InternalMessageInfo
 
-func (m *HttpNotifyResponse) GetBody() []byte {
+func (m *NotifyResponse) GetStatus() NotifyResponse_NotifyStatus {
 	if m != nil {
-		return m.Body
+		return m.Status
 	}
-	return nil
-}
-
-func (m *HttpNotifyResponse) GetHeader() map[string]string {
-	if m != nil {
-		return m.Header
-	}
-	return nil
+	return NotifyResponse_STATUS_UNKNOWN
 }
 
 func init() {
-	proto.RegisterType((*HttpNotifyRequest)(nil), "pay.HttpNotifyRequest")
-	proto.RegisterType((*HttpNotifyResponse)(nil), "pay.HttpNotifyResponse")
-	proto.RegisterMapType((map[string]string)(nil), "pay.HttpNotifyResponse.HeaderEntry")
+	proto.RegisterEnum("pay.NotifyResponse_NotifyStatus", NotifyResponse_NotifyStatus_name, NotifyResponse_NotifyStatus_value)
+	proto.RegisterType((*NotifyRequest)(nil), "pay.NotifyRequest")
+	proto.RegisterType((*NotifyResponse)(nil), "pay.NotifyResponse")
 }
 
 func init() { proto.RegisterFile("notify.proto", fileDescriptor_aba76cc4ebe272d4) }
 
 var fileDescriptor_aba76cc4ebe272d4 = []byte{
-	// 457 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x53, 0x41, 0x6b, 0xd4, 0x40,
-	0x14, 0x66, 0x92, 0x76, 0xd5, 0xc9, 0x1e, 0x74, 0x58, 0x4a, 0xba, 0x16, 0xba, 0xa4, 0x1e, 0xf6,
-	0x34, 0x83, 0x2b, 0x88, 0xd6, 0x83, 0xb8, 0x20, 0xad, 0x07, 0x45, 0xf6, 0xe8, 0xa5, 0xcc, 0x26,
-	0xd3, 0x26, 0xba, 0x99, 0x37, 0x26, 0x93, 0x42, 0x58, 0xf6, 0x22, 0xfe, 0x00, 0xc1, 0x3f, 0x20,
-	0xde, 0xfd, 0x23, 0xde, 0xc4, 0xbf, 0xe0, 0x0f, 0x91, 0xcc, 0xbc, 0x85, 0x40, 0x8b, 0x50, 0xbc,
-	0xbd, 0x6f, 0xbe, 0xf7, 0xcd, 0x7c, 0xef, 0x7b, 0x09, 0x1d, 0x6a, 0xb0, 0xc5, 0x79, 0xcb, 0x4d,
-	0x05, 0x16, 0x58, 0x68, 0x64, 0x3b, 0xde, 0xbf, 0x00, 0xb8, 0x58, 0x29, 0x21, 0x4d, 0x21, 0x72,
-	0x6b, 0xcd, 0x12, 0x32, 0xe4, 0xc7, 0x07, 0x3d, 0x4a, 0x6a, 0x0d, 0x56, 0xda, 0x02, 0x74, 0x8d,
-	0xec, 0x21, 0xb2, 0x0e, 0x2d, 0x9b, 0x73, 0x61, 0x8b, 0x52, 0xd5, 0x56, 0x96, 0x06, 0x1b, 0x86,
-	0x29, 0x94, 0x25, 0x68, 0x8f, 0x92, 0x1f, 0x84, 0xde, 0x3b, 0xb5, 0xd6, 0xbc, 0x71, 0x0e, 0x16,
-	0xea, 0x63, 0xa3, 0x6a, 0xcb, 0x62, 0x7a, 0x2b, 0xcd, 0xa5, 0xd6, 0x6a, 0x15, 0x93, 0x09, 0x99,
-	0xde, 0x59, 0x6c, 0x61, 0xc7, 0xc8, 0x34, 0x85, 0x46, 0xdb, 0x38, 0xf0, 0x0c, 0x42, 0xb6, 0x4f,
-	0x6f, 0x43, 0x95, 0xa9, 0xea, 0xac, 0xc8, 0xe2, 0xd0, 0x53, 0x0e, 0xbf, 0xca, 0xd8, 0x21, 0x8d,
-	0xba, 0x19, 0xce, 0x4a, 0x65, 0x73, 0xc8, 0xe2, 0x1d, 0xc7, 0xd2, 0xee, 0xe8, 0xb5, 0x3b, 0x61,
-	0x53, 0xba, 0xd3, 0x0d, 0x18, 0xef, 0x4e, 0xc8, 0x34, 0x9a, 0x8d, 0xb8, 0x9f, 0x81, 0x4b, 0x53,
-	0xf0, 0xce, 0xdc, 0x1c, 0xb2, 0x76, 0xe1, 0x3a, 0x92, 0x6f, 0x84, 0xb2, 0xbe, 0xdf, 0xda, 0x80,
-	0xae, 0x15, 0x63, 0x78, 0x41, 0xe7, 0x76, 0xe8, 0x5b, 0xd9, 0x33, 0x3a, 0xc8, 0x95, 0xcc, 0x54,
-	0x15, 0x07, 0x93, 0x70, 0x1a, 0xcd, 0x8e, 0xb8, 0x91, 0x2d, 0xbf, 0x2a, 0xe6, 0xa7, 0xae, 0xeb,
-	0xa5, 0xb6, 0x55, 0xbb, 0x40, 0xc9, 0xf8, 0x29, 0x8d, 0x7a, 0xc7, 0xec, 0x2e, 0x0d, 0x3f, 0xa8,
-	0x16, 0xc3, 0xe8, 0x4a, 0x36, 0xa2, 0xbb, 0x97, 0x72, 0xd5, 0x28, 0x8c, 0xc1, 0x83, 0xe3, 0xe0,
-	0x09, 0x99, 0x7d, 0x0f, 0xe9, 0xc0, 0xbf, 0xc0, 0xbe, 0x04, 0x74, 0xe8, 0xcb, 0x79, 0xfb, 0x16,
-	0x6a, 0xcb, 0xf6, 0xae, 0x78, 0x70, 0x81, 0x8f, 0xaf, 0x1d, 0x39, 0xf9, 0x45, 0x3e, 0xfd, 0xfe,
-	0xf3, 0x35, 0xf8, 0x49, 0x92, 0xe7, 0xe2, 0xf2, 0xa1, 0xf0, 0x5f, 0x89, 0xc0, 0x55, 0x88, 0x35,
-	0x16, 0x1b, 0x81, 0x2b, 0x10, 0x6b, 0x2c, 0x36, 0xc2, 0x25, 0x2f, 0xd6, 0xdb, 0x85, 0x6c, 0x8e,
-	0x5d, 0x24, 0xef, 0x1e, 0x24, 0x07, 0xff, 0xba, 0x08, 0xbb, 0x1e, 0x27, 0xfc, 0x66, 0xcf, 0xa1,
-	0xee, 0x28, 0xb9, 0xdf, 0xd3, 0x5d, 0x6f, 0x81, 0x7d, 0x26, 0x34, 0xda, 0x46, 0x72, 0xa2, 0x6e,
-	0x9a, 0xc8, 0x89, 0x0b, 0xe4, 0x05, 0xfb, 0xdf, 0x3c, 0xe6, 0x7b, 0x74, 0x64, 0x9a, 0x25, 0x37,
-	0xef, 0x21, 0x75, 0x06, 0x50, 0xbb, 0x1c, 0xb8, 0xdf, 0xe2, 0xd1, 0xdf, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0xd9, 0x60, 0x63, 0xff, 0x93, 0x03, 0x00, 0x00,
+	// 640 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x93, 0xcb, 0x6e, 0x13, 0x3d,
+	0x14, 0xc7, 0xbf, 0xf4, 0x92, 0xcb, 0x69, 0x92, 0xa6, 0xee, 0xe5, 0x73, 0x03, 0x15, 0x21, 0x48,
+	0xa8, 0x80, 0x94, 0x51, 0xcb, 0x06, 0xb1, 0x0b, 0x6d, 0x91, 0x02, 0x28, 0x48, 0xb9, 0x88, 0xe5,
+	0xc8, 0x99, 0x39, 0x6d, 0xa6, 0x64, 0x6c, 0x63, 0x7b, 0xaa, 0x8e, 0x10, 0x1b, 0x5e, 0x01, 0x21,
+	0x1e, 0x8c, 0x57, 0xe0, 0x41, 0xd0, 0xd8, 0x0e, 0xa4, 0x12, 0xbb, 0xf9, 0xff, 0x7e, 0xc7, 0xc7,
+	0x97, 0xb1, 0xa1, 0xce, 0x85, 0x49, 0x2e, 0xf3, 0x9e, 0x54, 0xc2, 0x08, 0xb2, 0x2e, 0x59, 0xde,
+	0x3e, 0xbc, 0x12, 0xe2, 0x6a, 0x81, 0x01, 0x93, 0x49, 0x30, 0x37, 0x46, 0xce, 0x44, 0xec, 0x7d,
+	0xfb, 0xfe, 0x8a, 0x62, 0x9c, 0x0b, 0xc3, 0x4c, 0x22, 0xb8, 0xf6, 0xf6, 0x81, 0xb7, 0x36, 0xcd,
+	0xb2, 0xcb, 0xc0, 0x24, 0x29, 0x6a, 0xc3, 0x52, 0xe9, 0x0b, 0xea, 0x91, 0x48, 0x53, 0xc1, 0x5d,
+	0xea, 0xfe, 0xd8, 0x84, 0xc6, 0xd0, 0xce, 0x3e, 0xc2, 0x4f, 0x19, 0x6a, 0x43, 0x28, 0x54, 0x6e,
+	0x50, 0xe9, 0x44, 0x70, 0x5a, 0xea, 0x94, 0x8e, 0x6b, 0xa3, 0x65, 0x24, 0x1d, 0xa8, 0x8b, 0xcc,
+	0x84, 0x46, 0xb1, 0x18, 0x43, 0x2e, 0xe8, 0x9a, 0xd5, 0x20, 0x32, 0x33, 0x29, 0xd0, 0x50, 0x90,
+	0x23, 0x00, 0xc9, 0xf2, 0x90, 0xa5, 0x22, 0xe3, 0x86, 0xae, 0x77, 0x4a, 0xc7, 0x8d, 0x51, 0x4d,
+	0xb2, 0xbc, 0x6f, 0x01, 0x69, 0x43, 0x35, 0xca, 0x94, 0x42, 0x1e, 0xe5, 0x74, 0xc3, 0x0e, 0xfe,
+	0x93, 0x8b, 0xa1, 0x0a, 0x4d, 0xa6, 0x78, 0x98, 0xa9, 0x05, 0xdd, 0xb4, 0xb6, 0xe6, 0xc8, 0x54,
+	0x2d, 0xc8, 0x3e, 0x94, 0x99, 0x94, 0x61, 0x12, 0xd3, 0xb2, 0x55, 0x9b, 0x4c, 0xca, 0x41, 0x4c,
+	0xee, 0x41, 0x4d, 0x27, 0x57, 0x3c, 0x34, 0xb9, 0x44, 0x5a, 0x71, 0x2d, 0x0b, 0x30, 0xc9, 0x25,
+	0x12, 0x02, 0x1b, 0xc5, 0x37, 0xad, 0x5a, 0x6e, 0xbf, 0x8b, 0x69, 0x84, 0x8a, 0x51, 0x85, 0xc5,
+	0xb1, 0xd0, 0x9a, 0x9b, 0xc6, 0x92, 0x49, 0x92, 0x22, 0xf9, 0x1f, 0x2a, 0x99, 0x46, 0x15, 0x26,
+	0x92, 0x82, 0x75, 0xe5, 0x22, 0x0e, 0xe4, 0x5f, 0x11, 0xd3, 0xad, 0x15, 0x11, 0x93, 0x47, 0xd0,
+	0x90, 0x2c, 0x47, 0x15, 0xb2, 0x28, 0xb2, 0xbb, 0xae, 0x5b, 0x5d, 0xb7, 0xb0, 0xef, 0x98, 0x3d,
+	0x17, 0x25, 0xe2, 0x2c, 0x32, 0x45, 0x83, 0x86, 0x9b, 0xd5, 0x93, 0x41, 0x4c, 0x1e, 0x42, 0x7d,
+	0xa9, 0x39, 0x4b, 0x91, 0x36, 0x6d, 0xc1, 0x96, 0x67, 0x43, 0x96, 0x22, 0x79, 0x02, 0xad, 0x65,
+	0x49, 0x8c, 0x3a, 0x52, 0xc9, 0x0c, 0xe9, 0xb6, 0x2d, 0xdb, 0xf6, 0xfc, 0xdc, 0xe3, 0xe2, 0x07,
+	0x46, 0x73, 0xa6, 0x34, 0x1a, 0xda, 0x72, 0x3f, 0xd0, 0xc7, 0x62, 0xad, 0x11, 0x5b, 0x2c, 0x66,
+	0x2c, 0xfa, 0x18, 0x5e, 0x6b, 0xc1, 0xe9, 0x8e, 0x5b, 0xeb, 0x12, 0xbe, 0xd1, 0x82, 0x93, 0x43,
+	0xa8, 0xe2, 0xad, 0x71, 0x9e, 0xb8, 0xf1, 0x78, 0x6b, 0xac, 0x3a, 0x02, 0x88, 0xe6, 0x8c, 0x73,
+	0x5c, 0x14, 0xdb, 0xd8, 0x75, 0xdb, 0xf0, 0x64, 0x10, 0x93, 0x03, 0x28, 0xa7, 0x68, 0xe6, 0x22,
+	0xa6, 0x7b, 0xee, 0x88, 0x5c, 0x2a, 0x3a, 0x5e, 0xb2, 0xc8, 0x84, 0x2c, 0x35, 0x74, 0xdf, 0xde,
+	0x89, 0x4a, 0x91, 0xfb, 0xa9, 0x71, 0x4a, 0xa1, 0x55, 0x07, 0x4b, 0xa5, 0xb0, 0x9f, 0x9a, 0xee,
+	0xf7, 0x12, 0x34, 0x97, 0x37, 0x53, 0x4b, 0xc1, 0x35, 0x92, 0x17, 0x50, 0xd6, 0x86, 0x99, 0x4c,
+	0xdb, 0x9b, 0xd9, 0x3c, 0xed, 0xf4, 0x24, 0xcb, 0x7b, 0x77, 0x8b, 0x7c, 0x1c, 0xdb, 0xba, 0x91,
+	0xaf, 0xef, 0x0e, 0xa0, 0xbe, 0xca, 0x09, 0x81, 0xe6, 0x78, 0xd2, 0x9f, 0x4c, 0xc7, 0xe1, 0x74,
+	0xf8, 0x76, 0xf8, 0xfe, 0xc3, 0xb0, 0xf5, 0x1f, 0xd9, 0x81, 0x86, 0x67, 0xaf, 0xfb, 0x83, 0x77,
+	0x17, 0xe7, 0xad, 0xd2, 0x4a, 0xd9, 0x78, 0x7a, 0x76, 0x76, 0x31, 0x1e, 0xb7, 0xd6, 0x4e, 0x25,
+	0x54, 0x6d, 0xab, 0x04, 0x15, 0x89, 0xa1, 0xec, 0xda, 0x12, 0x72, 0x67, 0x29, 0xf6, 0x25, 0xb5,
+	0x77, 0xff, 0xb1, 0xbc, 0xee, 0xc9, 0xd7, 0x9f, 0xbf, 0xbe, 0xad, 0x3d, 0x6b, 0x3f, 0x0e, 0x6e,
+	0x4e, 0x02, 0xf7, 0xee, 0x83, 0xd5, 0x57, 0x15, 0x7c, 0x5e, 0x4d, 0x5f, 0x5e, 0x96, 0x9e, 0xbe,
+	0x3a, 0x80, 0x3d, 0x99, 0xcd, 0x7a, 0xf2, 0x5a, 0x44, 0xb6, 0xa3, 0x3f, 0xf1, 0x59, 0xd9, 0x3e,
+	0xe1, 0xe7, 0xbf, 0x03, 0x00, 0x00, 0xff, 0xff, 0x33, 0x21, 0xc5, 0xbb, 0x3f, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -194,108 +389,72 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// NotifyClient is the client API for Notify service.
+// NotifierClient is the client API for Notifier service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type NotifyClient interface {
-	NotifyByPost(ctx context.Context, in *HttpNotifyRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
-	NotifyByGet(ctx context.Context, in *HttpNotifyRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
+type NotifierClient interface {
+	Notify(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error)
 }
 
-type notifyClient struct {
+type notifierClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewNotifyClient(cc *grpc.ClientConn) NotifyClient {
-	return &notifyClient{cc}
+func NewNotifierClient(cc *grpc.ClientConn) NotifierClient {
+	return &notifierClient{cc}
 }
 
-func (c *notifyClient) NotifyByPost(ctx context.Context, in *HttpNotifyRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error) {
-	out := new(httpbody.HttpBody)
-	err := c.cc.Invoke(ctx, "/pay.Notify/NotifyByPost", in, out, opts...)
+func (c *notifierClient) Notify(ctx context.Context, in *NotifyRequest, opts ...grpc.CallOption) (*NotifyResponse, error) {
+	out := new(NotifyResponse)
+	err := c.cc.Invoke(ctx, "/pay.Notifier/Notify", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *notifyClient) NotifyByGet(ctx context.Context, in *HttpNotifyRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error) {
-	out := new(httpbody.HttpBody)
-	err := c.cc.Invoke(ctx, "/pay.Notify/NotifyByGet", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+// NotifierServer is the server API for Notifier service.
+type NotifierServer interface {
+	Notify(context.Context, *NotifyRequest) (*NotifyResponse, error)
 }
 
-// NotifyServer is the server API for Notify service.
-type NotifyServer interface {
-	NotifyByPost(context.Context, *HttpNotifyRequest) (*httpbody.HttpBody, error)
-	NotifyByGet(context.Context, *HttpNotifyRequest) (*httpbody.HttpBody, error)
+// UnimplementedNotifierServer can be embedded to have forward compatible implementations.
+type UnimplementedNotifierServer struct {
 }
 
-// UnimplementedNotifyServer can be embedded to have forward compatible implementations.
-type UnimplementedNotifyServer struct {
+func (*UnimplementedNotifierServer) Notify(ctx context.Context, req *NotifyRequest) (*NotifyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Notify not implemented")
 }
 
-func (*UnimplementedNotifyServer) NotifyByPost(ctx context.Context, req *HttpNotifyRequest) (*httpbody.HttpBody, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method NotifyByPost not implemented")
-}
-func (*UnimplementedNotifyServer) NotifyByGet(ctx context.Context, req *HttpNotifyRequest) (*httpbody.HttpBody, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method NotifyByGet not implemented")
+func RegisterNotifierServer(s *grpc.Server, srv NotifierServer) {
+	s.RegisterService(&_Notifier_serviceDesc, srv)
 }
 
-func RegisterNotifyServer(s *grpc.Server, srv NotifyServer) {
-	s.RegisterService(&_Notify_serviceDesc, srv)
-}
-
-func _Notify_NotifyByPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HttpNotifyRequest)
+func _Notifier_Notify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotifyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NotifyServer).NotifyByPost(ctx, in)
+		return srv.(NotifierServer).Notify(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pay.Notify/NotifyByPost",
+		FullMethod: "/pay.Notifier/Notify",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).NotifyByPost(ctx, req.(*HttpNotifyRequest))
+		return srv.(NotifierServer).Notify(ctx, req.(*NotifyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Notify_NotifyByGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HttpNotifyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).NotifyByGet(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pay.Notify/NotifyByGet",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).NotifyByGet(ctx, req.(*HttpNotifyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _Notify_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "pay.Notify",
-	HandlerType: (*NotifyServer)(nil),
+var _Notifier_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "pay.Notifier",
+	HandlerType: (*NotifierServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "NotifyByPost",
-			Handler:    _Notify_NotifyByPost_Handler,
-		},
-		{
-			MethodName: "NotifyByGet",
-			Handler:    _Notify_NotifyByGet_Handler,
+			MethodName: "Notify",
+			Handler:    _Notifier_Notify_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

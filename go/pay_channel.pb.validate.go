@@ -200,10 +200,10 @@ var _ interface {
 	ErrorName() string
 } = ChannelPayResponseValidationError{}
 
-// Validate checks the field values on NotifyRequest with the rules defined in
-// the proto definition for this message. If any rules are violated, an error
-// is returned.
-func (m *NotifyRequest) Validate() error {
+// Validate checks the field values on ChannelNotifyRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *ChannelNotifyRequest) Validate() error {
 	if m == nil {
 		return nil
 	}
@@ -214,7 +214,7 @@ func (m *NotifyRequest) Validate() error {
 
 	if v, ok := interface{}(m.GetRequest()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return NotifyRequestValidationError{
+			return ChannelNotifyRequestValidationError{
 				field:  "Request",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -227,9 +227,9 @@ func (m *NotifyRequest) Validate() error {
 	return nil
 }
 
-// NotifyRequestValidationError is the validation error returned by
-// NotifyRequest.Validate if the designated constraints aren't met.
-type NotifyRequestValidationError struct {
+// ChannelNotifyRequestValidationError is the validation error returned by
+// ChannelNotifyRequest.Validate if the designated constraints aren't met.
+type ChannelNotifyRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -237,22 +237,24 @@ type NotifyRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e NotifyRequestValidationError) Field() string { return e.field }
+func (e ChannelNotifyRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e NotifyRequestValidationError) Reason() string { return e.reason }
+func (e ChannelNotifyRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e NotifyRequestValidationError) Cause() error { return e.cause }
+func (e ChannelNotifyRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e NotifyRequestValidationError) Key() bool { return e.key }
+func (e ChannelNotifyRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e NotifyRequestValidationError) ErrorName() string { return "NotifyRequestValidationError" }
+func (e ChannelNotifyRequestValidationError) ErrorName() string {
+	return "ChannelNotifyRequestValidationError"
+}
 
 // Error satisfies the builtin error interface
-func (e NotifyRequestValidationError) Error() string {
+func (e ChannelNotifyRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -264,14 +266,14 @@ func (e NotifyRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sNotifyRequest.%s: %s%s",
+		"invalid %sChannelNotifyRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = NotifyRequestValidationError{}
+var _ error = ChannelNotifyRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -279,12 +281,12 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = NotifyRequestValidationError{}
+} = ChannelNotifyRequestValidationError{}
 
-// Validate checks the field values on NotifyResponse with the rules defined in
-// the proto definition for this message. If any rules are violated, an error
-// is returned.
-func (m *NotifyResponse) Validate() error {
+// Validate checks the field values on ChannelNotifyResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *ChannelNotifyResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
@@ -293,7 +295,7 @@ func (m *NotifyResponse) Validate() error {
 
 	if v, ok := interface{}(m.GetResponse()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return NotifyResponseValidationError{
+			return ChannelNotifyResponseValidationError{
 				field:  "Response",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -304,9 +306,9 @@ func (m *NotifyResponse) Validate() error {
 	return nil
 }
 
-// NotifyResponseValidationError is the validation error returned by
-// NotifyResponse.Validate if the designated constraints aren't met.
-type NotifyResponseValidationError struct {
+// ChannelNotifyResponseValidationError is the validation error returned by
+// ChannelNotifyResponse.Validate if the designated constraints aren't met.
+type ChannelNotifyResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -314,22 +316,24 @@ type NotifyResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e NotifyResponseValidationError) Field() string { return e.field }
+func (e ChannelNotifyResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e NotifyResponseValidationError) Reason() string { return e.reason }
+func (e ChannelNotifyResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e NotifyResponseValidationError) Cause() error { return e.cause }
+func (e ChannelNotifyResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e NotifyResponseValidationError) Key() bool { return e.key }
+func (e ChannelNotifyResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e NotifyResponseValidationError) ErrorName() string { return "NotifyResponseValidationError" }
+func (e ChannelNotifyResponseValidationError) ErrorName() string {
+	return "ChannelNotifyResponseValidationError"
+}
 
 // Error satisfies the builtin error interface
-func (e NotifyResponseValidationError) Error() string {
+func (e ChannelNotifyResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -341,14 +345,14 @@ func (e NotifyResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sNotifyResponse.%s: %s%s",
+		"invalid %sChannelNotifyResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = NotifyResponseValidationError{}
+var _ error = ChannelNotifyResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -356,7 +360,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = NotifyResponseValidationError{}
+} = ChannelNotifyResponseValidationError{}
 
 // Validate checks the field values on HTTPRequest with the rules defined in
 // the proto definition for this message. If any rules are violated, an error

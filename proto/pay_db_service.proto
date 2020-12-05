@@ -49,47 +49,47 @@ service PayDatabaseService {
     };
   }
 
-  rpc SavePayNotice (PayNotice) returns (ReturnResult) {
+  rpc SavePayNotify (PayNotify) returns (ReturnResult) {
     option (google.api.http) = {
-      post: "/v1/pay_notice"
+      post: "/v1/pay_notify"
       body:"*"
     };
   }
 
-  rpc UpdatePayNotice (PayNotice) returns (ReturnResult) {
+  rpc UpdatePayNotify (PayNotify) returns (ReturnResult) {
     option (google.api.http) = {
-      put: "/v1/pay_notice"
+      put: "/v1/pay_notify"
       body:"*"
     };
   }
 
-  rpc FindPayNotice (PayNotice) returns (PayNoticeResponse) {
+  rpc FindPayNotify (PayNotify) returns (PayNotifyResponse) {
     option (google.api.http) = {
-      get: "/v1/pay_notice"
+      get: "/v1/pay_notify"
     };
   }
-  rpc FindPayNoticeLessThenTime (PayNotice) returns (PayNoticeResponse) {
+  rpc FindPayNotifyLessThenTime (PayNotify) returns (PayNotifyResponse) {
     option (google.api.http) = {
-      get: "/v1/pay_notice/before_time"
+      get: "/v1/pay_notify/before_time"
     };
   }
 
-  rpc SavePayNotifyOk (PayNoticeOk) returns (ReturnResult) {
+  rpc SavePayNotifyOk (PayNotifyOk) returns (ReturnResult) {
     option (google.api.http) = {
-      post: "/v1/pay_notice_ok"
+      post: "/v1/pay_notify_ok"
       body:"*"
     };
   }
 
-  rpc FindPayNotifyOk (PayNoticeOk) returns (PayNoticeOkResponse) {
+  rpc FindPayNotifyOk (PayNotifyOk) returns (PayNotifyOkResponse) {
     option (google.api.http) = {
-      get: "/v1/pay_notice_ok"
+      get: "/v1/pay_notify_ok"
     };
   }
 
-  rpc UpdatePayNoticeOk (PayNoticeOk) returns (ReturnResult) {
+  rpc UpdatePayNotifyOk (PayNotifyOk) returns (ReturnResult) {
     option (google.api.http) = {
-      put: "/v1/pay_notice_ok"
+      put: "/v1/pay_notify_ok"
       body:"*"
     };
   }
@@ -161,24 +161,24 @@ message PayOrderOk {
   string balance_date = 3;
   uint32 fare_amt = 4;
   uint32 fact_amt = 5;
-  string send_notice_stats = 6;
+  string send_notify_stats = 6;
 }
 
-message PayNotice {
+message PayNotify {
   string gateway_order_id = 1;
   string create_date = 2;
   uint32 fail_times = 3;
-  string notice_time = 4;
+  string notify_time = 4;
   string status = 5;
   string next_notify_time = 7;
   string error_message = 6;
 }
 
-message PayNoticeOk {
+message PayNotifyOk {
   string gateway_order_id = 1;
   string create_date = 2;
   uint32 fail_times = 3;
-  string notice_time = 4;
+  string notify_time = 4;
 }
 
 
@@ -189,10 +189,10 @@ message PayOrderResponse {
 message PayOrderOkResponse {
   repeated PayOrderOk pay_order_oks = 1;
 }
-message PayNoticeResponse {
-  repeated PayNotice pay_notices = 1;
+message PayNotifyResponse {
+  repeated PayNotify pay_notifies = 1;
 }
 
-message PayNoticeOkResponse {
-  repeated PayNoticeOk pay_notice_oks = 1;
+message PayNotifyOkResponse {
+  repeated PayNotifyOk pay_notify_oks = 1;
 }

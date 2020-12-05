@@ -16,13 +16,13 @@
   ],
   "paths": {
     "/v1/notify/{payment_account}": {
-      "post": {
-        "operationId": "Notify",
+      "put": {
+        "operationId": "ChannelNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/payNotifyResponse"
+              "$ref": "#/definitions/payChannelNotifyResponse"
             }
           }
         },
@@ -39,7 +39,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/payNotifyRequest"
+              "$ref": "#/definitions/payChannelNotifyRequest"
             }
           }
         ],
@@ -90,13 +90,50 @@
     }
   },
   "definitions": {
-    "HTTPRequestHttpMehod": {
+    "HTTPRequestHttpMethod": {
       "type": "string",
       "enum": [
         "GET",
-        "POST"
+        "POST",
+        "PUT"
       ],
       "default": "GET"
+    },
+    "payChannelNotifyRequest": {
+      "type": "object",
+      "properties": {
+        "payment_account": {
+          "type": "string",
+          "title": "支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件"
+        },
+        "type": {
+          "$ref": "#/definitions/payPayType",
+          "title": "支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。"
+        },
+        "request": {
+          "$ref": "#/definitions/payHTTPRequest",
+          "title": "请求的HTTP详情"
+        },
+        "method": {
+          "type": "string",
+          "title": "可选，支付方式， 可用于统一网关层"
+        }
+      },
+      "title": "来自第三方的请求的Notify"
+    },
+    "payChannelNotifyResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/payPayStatus",
+          "title": "付款状态"
+        },
+        "response": {
+          "$ref": "#/definitions/payHTTPResponse",
+          "title": "同步返回的数据"
+        }
+      },
+      "title": "来自第三方的请求的Notify"
     },
     "payChannelPayRequest": {
       "type": "object",
@@ -152,7 +189,7 @@
       "type": "object",
       "properties": {
         "method": {
-          "$ref": "#/definitions/HTTPRequestHttpMehod",
+          "$ref": "#/definitions/HTTPRequestHttpMethod",
           "title": "请求方法： GET or POST"
         },
         "header": {
@@ -209,42 +246,6 @@
       ],
       "default": "WEB",
       "title": "- WEB: 银联\n - WAP: 手机wap支付\n - APP: 原生扫码支付\n - SDK: SDK支付\n - QR_CODE: 二维码支付\n跟APP的区别在于，改支付方式直接返回二维码，而APP则可能返回url响应，需要商户根据url生成二维码\n - SERVER: 用于后台转账"
-    },
-    "payNotifyRequest": {
-      "type": "object",
-      "properties": {
-        "payment_account": {
-          "type": "string",
-          "title": "支付账户（可选）, 允许用户配置多个支付宝账户, 如果为空，则默认选择第一个配置文件"
-        },
-        "type": {
-          "$ref": "#/definitions/payPayType",
-          "title": "支付类型：  pay（付款相关通知）,sign_pay（签约）, 根据具体通知配置而定。"
-        },
-        "request": {
-          "$ref": "#/definitions/payHTTPRequest",
-          "title": "请求的HTTP详情"
-        },
-        "method": {
-          "type": "string",
-          "title": "可选，支付方式， 可用于统一网关层"
-        }
-      },
-      "title": "来自第三方的请求的Notify"
-    },
-    "payNotifyResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/payPayStatus",
-          "title": "付款状态"
-        },
-        "response": {
-          "$ref": "#/definitions/payHTTPResponse",
-          "title": "同步返回的数据"
-        }
-      },
-      "title": "来自第三方的请求的Notify"
     },
     "payPayStatus": {
       "type": "string",

@@ -256,7 +256,7 @@ func (m *PayOrderOk) Validate() error {
 
 	// no validation rules for FactAmt
 
-	// no validation rules for SendNoticeStats
+	// no validation rules for SendNotifyStats
 
 	return nil
 }
@@ -315,9 +315,9 @@ var _ interface {
 	ErrorName() string
 } = PayOrderOkValidationError{}
 
-// Validate checks the field values on PayNotice with the rules defined in the
+// Validate checks the field values on PayNotify with the rules defined in the
 // proto definition for this message. If any rules are violated, an error is returned.
-func (m *PayNotice) Validate() error {
+func (m *PayNotify) Validate() error {
 	if m == nil {
 		return nil
 	}
@@ -328,7 +328,7 @@ func (m *PayNotice) Validate() error {
 
 	// no validation rules for FailTimes
 
-	// no validation rules for NoticeTime
+	// no validation rules for NotifyTime
 
 	// no validation rules for Status
 
@@ -339,9 +339,9 @@ func (m *PayNotice) Validate() error {
 	return nil
 }
 
-// PayNoticeValidationError is the validation error returned by
-// PayNotice.Validate if the designated constraints aren't met.
-type PayNoticeValidationError struct {
+// PayNotifyValidationError is the validation error returned by
+// PayNotify.Validate if the designated constraints aren't met.
+type PayNotifyValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -349,22 +349,22 @@ type PayNoticeValidationError struct {
 }
 
 // Field function returns field value.
-func (e PayNoticeValidationError) Field() string { return e.field }
+func (e PayNotifyValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PayNoticeValidationError) Reason() string { return e.reason }
+func (e PayNotifyValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PayNoticeValidationError) Cause() error { return e.cause }
+func (e PayNotifyValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PayNoticeValidationError) Key() bool { return e.key }
+func (e PayNotifyValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PayNoticeValidationError) ErrorName() string { return "PayNoticeValidationError" }
+func (e PayNotifyValidationError) ErrorName() string { return "PayNotifyValidationError" }
 
 // Error satisfies the builtin error interface
-func (e PayNoticeValidationError) Error() string {
+func (e PayNotifyValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -376,14 +376,14 @@ func (e PayNoticeValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPayNotice.%s: %s%s",
+		"invalid %sPayNotify.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PayNoticeValidationError{}
+var _ error = PayNotifyValidationError{}
 
 var _ interface {
 	Field() string
@@ -391,12 +391,12 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PayNoticeValidationError{}
+} = PayNotifyValidationError{}
 
-// Validate checks the field values on PayNoticeOk with the rules defined in
+// Validate checks the field values on PayNotifyOk with the rules defined in
 // the proto definition for this message. If any rules are violated, an error
 // is returned.
-func (m *PayNoticeOk) Validate() error {
+func (m *PayNotifyOk) Validate() error {
 	if m == nil {
 		return nil
 	}
@@ -407,14 +407,14 @@ func (m *PayNoticeOk) Validate() error {
 
 	// no validation rules for FailTimes
 
-	// no validation rules for NoticeTime
+	// no validation rules for NotifyTime
 
 	return nil
 }
 
-// PayNoticeOkValidationError is the validation error returned by
-// PayNoticeOk.Validate if the designated constraints aren't met.
-type PayNoticeOkValidationError struct {
+// PayNotifyOkValidationError is the validation error returned by
+// PayNotifyOk.Validate if the designated constraints aren't met.
+type PayNotifyOkValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -422,22 +422,22 @@ type PayNoticeOkValidationError struct {
 }
 
 // Field function returns field value.
-func (e PayNoticeOkValidationError) Field() string { return e.field }
+func (e PayNotifyOkValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PayNoticeOkValidationError) Reason() string { return e.reason }
+func (e PayNotifyOkValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PayNoticeOkValidationError) Cause() error { return e.cause }
+func (e PayNotifyOkValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PayNoticeOkValidationError) Key() bool { return e.key }
+func (e PayNotifyOkValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PayNoticeOkValidationError) ErrorName() string { return "PayNoticeOkValidationError" }
+func (e PayNotifyOkValidationError) ErrorName() string { return "PayNotifyOkValidationError" }
 
 // Error satisfies the builtin error interface
-func (e PayNoticeOkValidationError) Error() string {
+func (e PayNotifyOkValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -449,14 +449,14 @@ func (e PayNoticeOkValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPayNoticeOk.%s: %s%s",
+		"invalid %sPayNotifyOk.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PayNoticeOkValidationError{}
+var _ error = PayNotifyOkValidationError{}
 
 var _ interface {
 	Field() string
@@ -464,7 +464,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PayNoticeOkValidationError{}
+} = PayNotifyOkValidationError{}
 
 // Validate checks the field values on PayOrderResponse with the rules defined
 // in the proto definition for this message. If any rules are violated, an
@@ -628,21 +628,21 @@ var _ interface {
 	ErrorName() string
 } = PayOrderOkResponseValidationError{}
 
-// Validate checks the field values on PayNoticeResponse with the rules defined
+// Validate checks the field values on PayNotifyResponse with the rules defined
 // in the proto definition for this message. If any rules are violated, an
 // error is returned.
-func (m *PayNoticeResponse) Validate() error {
+func (m *PayNotifyResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	for idx, item := range m.GetPayNotices() {
+	for idx, item := range m.GetPayNotifies() {
 		_, _ = idx, item
 
 		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return PayNoticeResponseValidationError{
-					field:  fmt.Sprintf("PayNotices[%v]", idx),
+				return PayNotifyResponseValidationError{
+					field:  fmt.Sprintf("PayNotifies[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -654,9 +654,9 @@ func (m *PayNoticeResponse) Validate() error {
 	return nil
 }
 
-// PayNoticeResponseValidationError is the validation error returned by
-// PayNoticeResponse.Validate if the designated constraints aren't met.
-type PayNoticeResponseValidationError struct {
+// PayNotifyResponseValidationError is the validation error returned by
+// PayNotifyResponse.Validate if the designated constraints aren't met.
+type PayNotifyResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -664,24 +664,24 @@ type PayNoticeResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e PayNoticeResponseValidationError) Field() string { return e.field }
+func (e PayNotifyResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PayNoticeResponseValidationError) Reason() string { return e.reason }
+func (e PayNotifyResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PayNoticeResponseValidationError) Cause() error { return e.cause }
+func (e PayNotifyResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PayNoticeResponseValidationError) Key() bool { return e.key }
+func (e PayNotifyResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PayNoticeResponseValidationError) ErrorName() string {
-	return "PayNoticeResponseValidationError"
+func (e PayNotifyResponseValidationError) ErrorName() string {
+	return "PayNotifyResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e PayNoticeResponseValidationError) Error() string {
+func (e PayNotifyResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -693,14 +693,14 @@ func (e PayNoticeResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPayNoticeResponse.%s: %s%s",
+		"invalid %sPayNotifyResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PayNoticeResponseValidationError{}
+var _ error = PayNotifyResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -708,23 +708,23 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PayNoticeResponseValidationError{}
+} = PayNotifyResponseValidationError{}
 
-// Validate checks the field values on PayNoticeOkResponse with the rules
+// Validate checks the field values on PayNotifyOkResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, an error is returned.
-func (m *PayNoticeOkResponse) Validate() error {
+func (m *PayNotifyOkResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	for idx, item := range m.GetPayNoticeOks() {
+	for idx, item := range m.GetPayNotifyOks() {
 		_, _ = idx, item
 
 		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return PayNoticeOkResponseValidationError{
-					field:  fmt.Sprintf("PayNoticeOks[%v]", idx),
+				return PayNotifyOkResponseValidationError{
+					field:  fmt.Sprintf("PayNotifyOks[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -736,9 +736,9 @@ func (m *PayNoticeOkResponse) Validate() error {
 	return nil
 }
 
-// PayNoticeOkResponseValidationError is the validation error returned by
-// PayNoticeOkResponse.Validate if the designated constraints aren't met.
-type PayNoticeOkResponseValidationError struct {
+// PayNotifyOkResponseValidationError is the validation error returned by
+// PayNotifyOkResponse.Validate if the designated constraints aren't met.
+type PayNotifyOkResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -746,24 +746,24 @@ type PayNoticeOkResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e PayNoticeOkResponseValidationError) Field() string { return e.field }
+func (e PayNotifyOkResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e PayNoticeOkResponseValidationError) Reason() string { return e.reason }
+func (e PayNotifyOkResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e PayNoticeOkResponseValidationError) Cause() error { return e.cause }
+func (e PayNotifyOkResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e PayNoticeOkResponseValidationError) Key() bool { return e.key }
+func (e PayNotifyOkResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e PayNoticeOkResponseValidationError) ErrorName() string {
-	return "PayNoticeOkResponseValidationError"
+func (e PayNotifyOkResponseValidationError) ErrorName() string {
+	return "PayNotifyOkResponseValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e PayNoticeOkResponseValidationError) Error() string {
+func (e PayNotifyOkResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -775,14 +775,14 @@ func (e PayNoticeOkResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sPayNoticeOkResponse.%s: %s%s",
+		"invalid %sPayNotifyOkResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = PayNoticeOkResponseValidationError{}
+var _ error = PayNotifyOkResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -790,4 +790,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = PayNoticeOkResponseValidationError{}
+} = PayNotifyOkResponseValidationError{}

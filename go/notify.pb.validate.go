@@ -36,38 +36,64 @@ var (
 // define the regex for a UUID once up-front
 var _notify_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
 
-// Validate checks the field values on HttpNotifyRequest with the rules defined
-// in the proto definition for this message. If any rules are violated, an
-// error is returned.
-func (m *HttpNotifyRequest) Validate() error {
+// Validate checks the field values on NotifyRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, an error
+// is returned.
+func (m *NotifyRequest) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Channel
+	// no validation rules for Version
 
-	// no validation rules for Account
+	// no validation rules for OutTradeNo
 
-	// no validation rules for OrderId
+	// no validation rules for PayAmount
 
-	// no validation rules for HttpMethod
+	// no validation rules for Currency
 
-	if v, ok := interface{}(m.GetBody()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return HttpNotifyRequestValidationError{
-				field:  "Body",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for ReturnUrl
+
+	// no validation rules for AppId
+
+	// no validation rules for SignType
+
+	// no validation rules for Sign
+
+	// no validation rules for OrderTime
+
+	// no validation rules for UserIp
+
+	// no validation rules for UserId
+
+	// no validation rules for PayerAccount
+
+	// no validation rules for ProductId
+
+	// no validation rules for ProductName
+
+	// no validation rules for ProductDescribe
+
+	// no validation rules for Charset
+
+	// no validation rules for CallbackJson
+
+	// no validation rules for ExtJson
+
+	// no validation rules for ChannelId
+
+	// no validation rules for Method
+
+	// no validation rules for FactAmt
+
+	// no validation rules for FareAmt
 
 	return nil
 }
 
-// HttpNotifyRequestValidationError is the validation error returned by
-// HttpNotifyRequest.Validate if the designated constraints aren't met.
-type HttpNotifyRequestValidationError struct {
+// NotifyRequestValidationError is the validation error returned by
+// NotifyRequest.Validate if the designated constraints aren't met.
+type NotifyRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -75,24 +101,22 @@ type HttpNotifyRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e HttpNotifyRequestValidationError) Field() string { return e.field }
+func (e NotifyRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e HttpNotifyRequestValidationError) Reason() string { return e.reason }
+func (e NotifyRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e HttpNotifyRequestValidationError) Cause() error { return e.cause }
+func (e NotifyRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e HttpNotifyRequestValidationError) Key() bool { return e.key }
+func (e NotifyRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e HttpNotifyRequestValidationError) ErrorName() string {
-	return "HttpNotifyRequestValidationError"
-}
+func (e NotifyRequestValidationError) ErrorName() string { return "NotifyRequestValidationError" }
 
 // Error satisfies the builtin error interface
-func (e HttpNotifyRequestValidationError) Error() string {
+func (e NotifyRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -104,14 +128,14 @@ func (e HttpNotifyRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sHttpNotifyRequest.%s: %s%s",
+		"invalid %sNotifyRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = HttpNotifyRequestValidationError{}
+var _ error = NotifyRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -119,26 +143,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = HttpNotifyRequestValidationError{}
+} = NotifyRequestValidationError{}
 
-// Validate checks the field values on HttpNotifyResponse with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, an error is returned.
-func (m *HttpNotifyResponse) Validate() error {
+// Validate checks the field values on NotifyResponse with the rules defined in
+// the proto definition for this message. If any rules are violated, an error
+// is returned.
+func (m *NotifyResponse) Validate() error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Body
-
-	// no validation rules for Header
+	// no validation rules for Status
 
 	return nil
 }
 
-// HttpNotifyResponseValidationError is the validation error returned by
-// HttpNotifyResponse.Validate if the designated constraints aren't met.
-type HttpNotifyResponseValidationError struct {
+// NotifyResponseValidationError is the validation error returned by
+// NotifyResponse.Validate if the designated constraints aren't met.
+type NotifyResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -146,24 +168,22 @@ type HttpNotifyResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e HttpNotifyResponseValidationError) Field() string { return e.field }
+func (e NotifyResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e HttpNotifyResponseValidationError) Reason() string { return e.reason }
+func (e NotifyResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e HttpNotifyResponseValidationError) Cause() error { return e.cause }
+func (e NotifyResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e HttpNotifyResponseValidationError) Key() bool { return e.key }
+func (e NotifyResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e HttpNotifyResponseValidationError) ErrorName() string {
-	return "HttpNotifyResponseValidationError"
-}
+func (e NotifyResponseValidationError) ErrorName() string { return "NotifyResponseValidationError" }
 
 // Error satisfies the builtin error interface
-func (e HttpNotifyResponseValidationError) Error() string {
+func (e NotifyResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -175,14 +195,14 @@ func (e HttpNotifyResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sHttpNotifyResponse.%s: %s%s",
+		"invalid %sNotifyResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = HttpNotifyResponseValidationError{}
+var _ error = NotifyResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -190,4 +210,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = HttpNotifyResponseValidationError{}
+} = NotifyResponseValidationError{}
