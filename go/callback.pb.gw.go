@@ -32,7 +32,7 @@ var (
 	filter_ChannelCallback_CallbackByGet_0 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0, "account": 1, "order_id": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
 )
 
-func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByGetClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -83,61 +83,16 @@ func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runt
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByGet(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["account"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account")
-	}
-
-	protoReq.Account, err = runtime.String(val)
-
+	header, err := stream.Header()
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["order_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
-	}
-
-	protoReq.OrderId, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByGet_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.CallbackByGet(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -145,7 +100,7 @@ var (
 	filter_ChannelCallback_CallbackByGet_1 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_ChannelCallback_CallbackByGet_1(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByGet_1(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByGetClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -174,39 +129,16 @@ func request_ChannelCallback_CallbackByGet_1(ctx context.Context, marshaler runt
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByGet_1(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByGet(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByGet_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	header, err := stream.Header()
+	if err != nil {
+		return nil, metadata, err
 	}
-
-	msg, err := server.CallbackByGet(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -214,7 +146,7 @@ var (
 	filter_ChannelCallback_CallbackByGet_2 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0, "account": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByGetClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -254,50 +186,16 @@ func request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runt
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByGet(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["account"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account")
-	}
-
-	protoReq.Account, err = runtime.String(val)
-
+	header, err := stream.Header()
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByGet_2); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.CallbackByGet(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -305,7 +203,7 @@ var (
 	filter_ChannelCallback_CallbackByGet_3 = &utilities.DoubleArray{Encoding: map[string]int{"order_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_ChannelCallback_CallbackByGet_3(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByGet_3(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByGetClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -334,39 +232,16 @@ func request_ChannelCallback_CallbackByGet_3(ctx context.Context, marshaler runt
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByGet(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByGet_3(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["order_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
-	}
-
-	protoReq.OrderId, err = runtime.String(val)
-
+	stream, err := client.CallbackByGet(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByGet_3); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	header, err := stream.Header()
+	if err != nil {
+		return nil, metadata, err
 	}
-
-	msg, err := server.CallbackByGet(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -374,7 +249,7 @@ var (
 	filter_ChannelCallback_CallbackByPost_0 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2, "order_id": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByPostClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -433,69 +308,16 @@ func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler run
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq.Body); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByPost(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["account"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account")
-	}
-
-	protoReq.Account, err = runtime.String(val)
-
+	header, err := stream.Header()
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["order_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
-	}
-
-	protoReq.OrderId, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByPost_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.CallbackByPost(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -503,7 +325,7 @@ var (
 	filter_ChannelCallback_CallbackByPost_1 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_ChannelCallback_CallbackByPost_1(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByPost_1(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByPostClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -540,47 +362,16 @@ func request_ChannelCallback_CallbackByPost_1(ctx context.Context, marshaler run
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByPost_1(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq.Body); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByPost(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByPost_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	header, err := stream.Header()
+	if err != nil {
+		return nil, metadata, err
 	}
-
-	msg, err := server.CallbackByPost(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -588,7 +379,7 @@ var (
 	filter_ChannelCallback_CallbackByPost_2 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "channel": 1, "account": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
 )
 
-func request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByPostClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -636,58 +427,16 @@ func request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler run
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq.Body); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["channel"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "channel")
-	}
-
-	protoReq.Channel, err = runtime.String(val)
-
+	stream, err := client.CallbackByPost(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
+		return nil, metadata, err
 	}
-
-	val, ok = pathParams["account"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account")
-	}
-
-	protoReq.Account, err = runtime.String(val)
-
+	header, err := stream.Header()
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByPost_2); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.CallbackByPost(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -695,7 +444,7 @@ var (
 	filter_ChannelCallback_CallbackByPost_3 = &utilities.DoubleArray{Encoding: map[string]int{"body": 0, "order_id": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler runtime.Marshaler, client ChannelCallbackClient, req *http.Request, pathParams map[string]string) (ChannelCallback_CallbackByPostClient, runtime.ServerMetadata, error) {
 	var protoReq HttpCallbackRequest
 	var metadata runtime.ServerMetadata
 
@@ -732,47 +481,16 @@ func request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler run
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CallbackByPost(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler runtime.Marshaler, server ChannelCallbackServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq HttpCallbackRequest
-	var metadata runtime.ServerMetadata
-
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
-	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq.Body); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["order_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "order_id")
-	}
-
-	protoReq.OrderId, err = runtime.String(val)
-
+	stream, err := client.CallbackByPost(ctx, &protoReq)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
+		return nil, metadata, err
 	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ChannelCallback_CallbackByPost_3); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	header, err := stream.Header()
+	if err != nil {
+		return nil, metadata, err
 	}
-
-	msg, err := server.CallbackByPost(ctx, &protoReq)
-	return msg, metadata, err
+	metadata.HeaderMD = header
+	return stream, metadata, nil
 
 }
 
@@ -782,163 +500,59 @@ func local_request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshal
 func RegisterChannelCallbackHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ChannelCallbackServer) error {
 
 	mux.Handle("GET", pattern_ChannelCallback_CallbackByGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByGet_0(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("GET", pattern_ChannelCallback_CallbackByGet_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByGet_1(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByGet_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("GET", pattern_ChannelCallback_CallbackByGet_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByGet_2(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByGet_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("GET", pattern_ChannelCallback_CallbackByGet_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByGet_3(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByGet_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("POST", pattern_ChannelCallback_CallbackByPost_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByPost_0(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByPost_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("POST", pattern_ChannelCallback_CallbackByPost_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByPost_1(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByPost_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("POST", pattern_ChannelCallback_CallbackByPost_2, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByPost_2(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByPost_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	mux.Handle("POST", pattern_ChannelCallback_CallbackByPost_3, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChannelCallback_CallbackByPost_3(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChannelCallback_CallbackByPost_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
 	})
 
 	return nil
@@ -998,7 +612,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByGet_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByGet_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1018,7 +632,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByGet_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByGet_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1038,7 +652,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByGet_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByGet_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1058,7 +672,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByGet_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByGet_3(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1078,7 +692,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByPost_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByPost_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1098,7 +712,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByPost_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByPost_1(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1118,7 +732,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByPost_2(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByPost_2(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1138,7 +752,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 			return
 		}
 
-		forward_ChannelCallback_CallbackByPost_3(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChannelCallback_CallbackByPost_3(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1164,19 +778,19 @@ var (
 )
 
 var (
-	forward_ChannelCallback_CallbackByGet_0 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByGet_0 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByGet_1 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByGet_1 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByGet_2 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByGet_2 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByGet_3 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByGet_3 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByPost_0 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByPost_0 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByPost_1 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByPost_1 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByPost_2 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByPost_2 = runtime.ForwardResponseStream
 
-	forward_ChannelCallback_CallbackByPost_3 = runtime.ForwardResponseMessage
+	forward_ChannelCallback_CallbackByPost_3 = runtime.ForwardResponseStream
 )

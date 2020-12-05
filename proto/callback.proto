@@ -13,7 +13,7 @@ import "common.proto";
 // ChannelCallback handle channel's callback notify
 service ChannelCallback {
 
-  rpc CallbackByGet(HttpCallbackRequest) returns(google.api.HttpBody){
+  rpc CallbackByGet(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option(google.api.http) = {
       additional_bindings {
         get: "/v1/callback/channel/{channel}"
@@ -28,7 +28,7 @@ service ChannelCallback {
     };
   }
 
-  rpc CallbackByPost(HttpCallbackRequest) returns(google.api.HttpBody){
+  rpc CallbackByPost(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option (google.api.http) = {
       additional_bindings {
         post: "/v1/callback/channel/{channel}"
