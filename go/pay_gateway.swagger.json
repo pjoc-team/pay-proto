@@ -4,10 +4,6 @@
     "title": "pay_gateway.proto",
     "version": "version not set"
   },
-  "schemes": [
-    "http",
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
@@ -17,12 +13,18 @@
   "paths": {
     "/v1/pay/{method}": {
       "post": {
-        "operationId": "Pay",
+        "operationId": "PayGateway_Pay",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -203,6 +205,36 @@
       ],
       "default": "CODE_SUCCESS",
       "title": "- CODE_PARAMS_ERROR: Params error start--------------------------------\nParams validate error\n - CODE_CHECK_SIGN_ERROR: Check sign error\n - CODE_SYSTEM_ERROR: --------------------------------"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
     }
   }
 }

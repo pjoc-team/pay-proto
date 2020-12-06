@@ -6,7 +6,7 @@ option java_package = "pub.pjoc.pay.gateway";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
-import "github.com/envoyproxy/protoc-gen-validate/validate/validate.proto";
+import "validate/validate.proto"; // github.com/envoyproxy/protoc-gen-validate/validate/validate.proto
 
 
 service PayGateway {

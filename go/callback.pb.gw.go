@@ -13,20 +13,23 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/golang/protobuf/proto"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/grpc-ecosystem/grpc-gateway/utilities"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
+// Suppress "imported and not used" errors
 var _ codes.Code
 var _ io.Reader
 var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
+var _ = metadata.Join
 
 var (
 	filter_ChannelCallback_CallbackByGet_0 = &utilities.DoubleArray{Encoding: map[string]int{"channel": 0, "account": 1, "order_id": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
@@ -49,7 +52,6 @@ func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runt
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -60,7 +62,6 @@ func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runt
 	}
 
 	protoReq.Account, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
 	}
@@ -71,7 +72,6 @@ func request_ChannelCallback_CallbackByGet_0(ctx context.Context, marshaler runt
 	}
 
 	protoReq.OrderId, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
@@ -117,7 +117,6 @@ func request_ChannelCallback_CallbackByGet_1(ctx context.Context, marshaler runt
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -163,7 +162,6 @@ func request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runt
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -174,7 +172,6 @@ func request_ChannelCallback_CallbackByGet_2(ctx context.Context, marshaler runt
 	}
 
 	protoReq.Account, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
 	}
@@ -220,7 +217,6 @@ func request_ChannelCallback_CallbackByGet_3(ctx context.Context, marshaler runt
 	}
 
 	protoReq.OrderId, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
@@ -274,7 +270,6 @@ func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler run
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -285,7 +280,6 @@ func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler run
 	}
 
 	protoReq.Account, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
 	}
@@ -296,7 +290,6 @@ func request_ChannelCallback_CallbackByPost_0(ctx context.Context, marshaler run
 	}
 
 	protoReq.OrderId, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
@@ -350,7 +343,6 @@ func request_ChannelCallback_CallbackByPost_1(ctx context.Context, marshaler run
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -404,7 +396,6 @@ func request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler run
 	}
 
 	protoReq.Channel, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "channel", err)
 	}
@@ -415,7 +406,6 @@ func request_ChannelCallback_CallbackByPost_2(ctx context.Context, marshaler run
 	}
 
 	protoReq.Account, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account", err)
 	}
@@ -469,7 +459,6 @@ func request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler run
 	}
 
 	protoReq.OrderId, err = runtime.String(val)
-
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "order_id", err)
 	}
@@ -497,6 +486,7 @@ func request_ChannelCallback_CallbackByPost_3(ctx context.Context, marshaler run
 // RegisterChannelCallbackHandlerServer registers the http handlers for service ChannelCallback to "mux".
 // UnaryRPC     :call ChannelCallbackServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterChannelCallbackHandlerFromEndpoint instead.
 func RegisterChannelCallbackHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ChannelCallbackServer) error {
 
 	mux.Handle("GET", pattern_ChannelCallback_CallbackByGet_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
@@ -600,7 +590,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByGet")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -620,7 +610,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByGet")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -640,7 +630,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByGet")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -660,7 +650,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByGet")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -680,7 +670,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByPost")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -700,7 +690,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByPost")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -720,7 +710,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByPost")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -740,7 +730,7 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/pay.ChannelCallback/CallbackByPost")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -760,21 +750,21 @@ func RegisterChannelCallbackHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_ChannelCallback_CallbackByGet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByGet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "notify", "channel", "account", "order", "order_id"}, ""))
 
-	pattern_ChannelCallback_CallbackByGet_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "callback", "channel"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByGet_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "callback", "channel"}, ""))
 
-	pattern_ChannelCallback_CallbackByGet_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "channel", "account"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByGet_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "channel", "account"}, ""))
 
-	pattern_ChannelCallback_CallbackByGet_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByGet_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "order", "order_id"}, ""))
 
-	pattern_ChannelCallback_CallbackByPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "callback", "channel", "account", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"v1", "callback", "channel", "account", "order", "order_id"}, ""))
 
-	pattern_ChannelCallback_CallbackByPost_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "callback", "channel"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByPost_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"v1", "callback", "channel"}, ""))
 
-	pattern_ChannelCallback_CallbackByPost_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "channel", "account"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByPost_2 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "channel", "account"}, ""))
 
-	pattern_ChannelCallback_CallbackByPost_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "order", "order_id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ChannelCallback_CallbackByPost_3 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "callback", "order", "order_id"}, ""))
 )
 
 var (

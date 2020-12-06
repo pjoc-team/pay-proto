@@ -8,8 +8,6 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
 import "pay_db_service.proto";
-//https://github.com/mwitkow/go-proto-validators
-import "github.com/mwitkow/go-proto-validators/validator.proto";
 
 
 message SettlementRequest {
