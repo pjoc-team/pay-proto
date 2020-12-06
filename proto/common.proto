@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package pay;
 option java_package = "pub.pjoc.channel";
+option go_package = "pay";
 
 import "google/protobuf/descriptor.proto";
 

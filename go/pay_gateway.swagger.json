@@ -1,9 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "pay_gateway.proto",
+    "title": "pay-gateway api",
     "version": "version not set"
   },
+  "host": "pay-gateway.pjoc.pub",
+  "schemes": [
+    "http"
+  ],
   "consumes": [
     "application/json"
   ],
@@ -236,5 +240,18 @@
         }
       }
     }
-  }
+  },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "description": "Authentication token, prefixed by Bearer: Bearer \u003ctoken\u003e",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    }
+  ]
 }
