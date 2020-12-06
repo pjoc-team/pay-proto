@@ -4,10 +4,6 @@
     "title": "pay_settlement.proto",
     "version": "version not set"
   },
-  "schemes": [
-    "http",
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
@@ -17,12 +13,18 @@
   "paths": {
     "/v1/notify": {
       "post": {
-        "operationId": "NotifyOrder",
+        "operationId": "SettlementGateway_NotifyOrder",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/paySettlementResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -43,12 +45,18 @@
     },
     "/v1/settlement": {
       "post": {
-        "operationId": "ProcessOrderSuccess",
+        "operationId": "SettlementGateway_ProcessOrderSuccess",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/paySettlementResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -69,12 +77,18 @@
     },
     "/v1/settlement/{gateway_order_id}": {
       "post": {
-        "operationId": "ProcessSuccess",
+        "operationId": "SettlementGateway_ProcessSuccess",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/paySettlementResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -275,6 +289,36 @@
       "properties": {
         "result": {
           "$ref": "#/definitions/payReturnResult"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
         }
       }
     }

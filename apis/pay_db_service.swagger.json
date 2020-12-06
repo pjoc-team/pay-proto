@@ -4,10 +4,6 @@
     "title": "pay_db_service.proto",
     "version": "version not set"
   },
-  "schemes": [
-    "http",
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
@@ -17,12 +13,18 @@
   "paths": {
     "/v1/pay_notify": {
       "get": {
-        "operationId": "FindPayNotify",
+        "operationId": "PayDatabaseService_FindPayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayNotifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -76,12 +78,18 @@
         ]
       },
       "post": {
-        "operationId": "SavePayNotify",
+        "operationId": "PayDatabaseService_SavePayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -100,12 +108,18 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayNotify",
+        "operationId": "PayDatabaseService_UpdatePayNotify",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -126,12 +140,18 @@
     },
     "/v1/pay_notify/before_time": {
       "get": {
-        "operationId": "FindPayNotifyLessThenTime",
+        "operationId": "PayDatabaseService_FindPayNotifyLessThenTime",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayNotifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -187,12 +207,18 @@
     },
     "/v1/pay_notify_ok": {
       "get": {
-        "operationId": "FindPayNotifyOk",
+        "operationId": "PayDatabaseService_FindPayNotifyOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayNotifyOkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -228,12 +254,18 @@
         ]
       },
       "post": {
-        "operationId": "SavePayNotifyOk",
+        "operationId": "PayDatabaseService_SavePayNotifyOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -252,12 +284,18 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayNotifyOk",
+        "operationId": "PayDatabaseService_UpdatePayNotifyOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -278,12 +316,18 @@
     },
     "/v1/pay_order": {
       "get": {
-        "operationId": "FindPayOrder",
+        "operationId": "PayDatabaseService_FindPayOrder",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -487,12 +531,18 @@
         ]
       },
       "post": {
-        "operationId": "SavePayOrder",
+        "operationId": "PayDatabaseService_SavePayOrder",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -511,12 +561,18 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayOrder",
+        "operationId": "PayDatabaseService_UpdatePayOrder",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -537,12 +593,18 @@
     },
     "/v1/pay_order_ok": {
       "get": {
-        "operationId": "FindPayOrderOk",
+        "operationId": "PayDatabaseService_FindPayOrderOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payPayOrderOkResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -772,12 +834,18 @@
         ]
       },
       "post": {
-        "operationId": "SavePayOrderOk",
+        "operationId": "PayDatabaseService_SavePayOrderOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -796,12 +864,18 @@
         ]
       },
       "put": {
-        "operationId": "UpdatePayOrderOk",
+        "operationId": "PayDatabaseService_UpdatePayOrderOk",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/payReturnResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           }
         },
@@ -1082,6 +1156,36 @@
       ],
       "default": "CODE_SUCCESS",
       "title": "- CODE_PARAMS_ERROR: Params error start--------------------------------\nParams validate error\n - CODE_CHECK_SIGN_ERROR: Check sign error\n - CODE_SYSTEM_ERROR: --------------------------------"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
     }
   }
 }
