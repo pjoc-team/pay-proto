@@ -63,15 +63,7 @@
             "type": "string"
           },
           {
-            "name": "body.content_type",
-            "description": "The HTTP Content-Type string representing the content type of the body.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "body.data",
-            "description": "HTTP body binary data.",
+            "name": "body",
             "in": "query",
             "required": false,
             "type": "string",
@@ -119,7 +111,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiHttpBody"
+              "type": "string",
+              "format": "byte"
             }
           },
           {
@@ -198,15 +191,7 @@
             "type": "string"
           },
           {
-            "name": "body.content_type",
-            "description": "The HTTP Content-Type string representing the content type of the body.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "body.data",
-            "description": "HTTP body binary data.",
+            "name": "body",
             "in": "query",
             "required": false,
             "type": "string",
@@ -260,7 +245,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiHttpBody"
+              "type": "string",
+              "format": "byte"
             }
           },
           {
@@ -282,6 +268,68 @@
       }
     },
     "/v1/callback/channel/{channel}/account/{account}/order/{order_id}": {
+      "get": {
+        "operationId": "ChannelCallback_CallbackByGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/apiHttpBody"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of apiHttpBody"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "http_method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "byte"
+          }
+        ],
+        "tags": [
+          "ChannelCallback"
+        ]
+      },
       "post": {
         "operationId": "ChannelCallback_CallbackByPost",
         "responses": {
@@ -331,7 +379,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiHttpBody"
+              "type": "string",
+              "format": "byte"
             }
           },
           {
@@ -398,15 +447,7 @@
             "type": "string"
           },
           {
-            "name": "body.content_type",
-            "description": "The HTTP Content-Type string representing the content type of the body.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "body.data",
-            "description": "HTTP body binary data.",
+            "name": "body",
             "in": "query",
             "required": false,
             "type": "string",
@@ -454,7 +495,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiHttpBody"
+              "type": "string",
+              "format": "byte"
             }
           },
           {
@@ -474,78 +516,6 @@
             "in": "query",
             "required": false,
             "type": "string"
-          }
-        ],
-        "tags": [
-          "ChannelCallback"
-        ]
-      }
-    },
-    "/v1/notify/channel/{channel}/account/{account}/order/{order_id}": {
-      "get": {
-        "operationId": "ChannelCallback_CallbackByGet",
-        "responses": {
-          "200": {
-            "description": "A successful response.(streaming responses)",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "result": {
-                  "$ref": "#/definitions/apiHttpBody"
-                },
-                "error": {
-                  "$ref": "#/definitions/rpcStatus"
-                }
-              },
-              "title": "Stream result of apiHttpBody"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "channel",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "account",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "order_id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "http_method",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "body.content_type",
-            "description": "The HTTP Content-Type string representing the content type of the body.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "body.data",
-            "description": "HTTP body binary data.",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "byte"
           }
         ],
         "tags": [

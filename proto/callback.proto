@@ -10,7 +10,7 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
 
-// ChannelCallback handle channel's callback notify
+// ChannelCallback handle channel's callback callback
 service ChannelCallback {
 
   rpc CallbackByGet(HttpCallbackRequest) returns(stream google.api.HttpBody){
@@ -24,7 +24,7 @@ service ChannelCallback {
       additional_bindings {
         get: "/v1/callback/order/{order_id}"
       }
-      get: "/v1/notify/channel/{channel}/account/{account}/order/{order_id}"
+      get: "/v1/callback/channel/{channel}/account/{account}/order/{order_id}"
     };
   }
 
@@ -55,7 +55,8 @@ message HttpCallbackRequest {
   string account = 2;
   string order_id = 3;
   string http_method = 4;
-  google.api.HttpBody body = 5;
+  bytes body = 5;
+//  google.api.HttpBody body = 5;
 }
 
 message HttpCallbackResponse {

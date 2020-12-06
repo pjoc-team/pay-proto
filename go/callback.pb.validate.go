@@ -52,15 +52,7 @@ func (m *HttpCallbackRequest) Validate() error {
 
 	// no validation rules for HttpMethod
 
-	if v, ok := interface{}(m.GetBody()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return HttpCallbackRequestValidationError{
-				field:  "Body",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Body
 
 	return nil
 }
