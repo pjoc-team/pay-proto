@@ -63,7 +63,15 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "body.content_type",
+            "description": "The HTTP Content-Type string representing the content type of the body.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body.data",
+            "description": "HTTP body binary data.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -108,11 +116,11 @@
           },
           {
             "name": "body",
+            "description": "bytes body = 5;",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "byte"
+              "$ref": "#/definitions/apiHttpBody"
             }
           },
           {
@@ -191,7 +199,15 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "body.content_type",
+            "description": "The HTTP Content-Type string representing the content type of the body.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body.data",
+            "description": "HTTP body binary data.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -242,11 +258,11 @@
           },
           {
             "name": "body",
+            "description": "bytes body = 5;",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "byte"
+              "$ref": "#/definitions/apiHttpBody"
             }
           },
           {
@@ -319,7 +335,15 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "body.content_type",
+            "description": "The HTTP Content-Type string representing the content type of the body.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body.data",
+            "description": "HTTP body binary data.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -376,11 +400,11 @@
           },
           {
             "name": "body",
+            "description": "bytes body = 5;",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "byte"
+              "$ref": "#/definitions/apiHttpBody"
             }
           },
           {
@@ -447,7 +471,15 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "body.content_type",
+            "description": "The HTTP Content-Type string representing the content type of the body.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body.data",
+            "description": "HTTP body binary data.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -492,11 +524,11 @@
           },
           {
             "name": "body",
+            "description": "bytes body = 5;",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "byte"
+              "$ref": "#/definitions/apiHttpBody"
             }
           },
           {
