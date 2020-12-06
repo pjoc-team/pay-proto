@@ -13,7 +13,7 @@ import "common.proto";
 // ChannelCallback handle channel's callback callback
 service ChannelCallback {
 
-  rpc CallbackByGet(HttpCallbackRequest) returns(stream google.api.HttpBody){
+  rpc CallbackByGet(stream google.api.HttpBody) returns(stream google.api.HttpBody){
     option(google.api.http) = {
       additional_bindings {
         get: "/v1/callback/channel/{channel}"
@@ -55,8 +55,8 @@ message HttpCallbackRequest {
   string account = 2;
   string order_id = 3;
   string http_method = 4;
-  bytes body = 5;
-//  google.api.HttpBody body = 5;
+//  bytes body = 5;
+  google.api.HttpBody body = 5;
 }
 
 message HttpCallbackResponse {
