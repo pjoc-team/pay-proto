@@ -28,7 +28,7 @@ service ChannelCallback {
     };
   }
 
-  rpc CallbackByPost(HttpCallbackRequest) returns(stream google.api.HttpBody){
+  rpc CallbackByPost(stream google.api.HttpBody) returns(stream google.api.HttpBody){
     option (google.api.http) = {
       additional_bindings {
         post: "/v1/callback/channel/{channel}"

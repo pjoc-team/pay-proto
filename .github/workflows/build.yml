@@ -1,0 +1,49 @@
+name: Builder
+
+on:
+  push:
+    branches:
+      - master
+
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+jobs:
+  push:
+    # Ensure test job passes before pushing image.
+    needs:
+      - make
+
+    runs-on: ubuntu-latest
+
+    steps:
+#      - name: Download math result for build job
+#        uses: actions/download-artifact@v1
+#        with:
+#          name: bin
+
+      - uses: actions/checkout@v2
+
+#      - uses: actions/cache@v1
+#        with:
+#          path: ~/go/pkg/mod
+#          key: ${{ runner.os }}-go-${{ hashFiles('**/go.mod') }}
+#          restore-keys: |
+#            ${{ runner.os }}-go-
+
+      - name: Run build
+        run: make
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Generate proto" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release
