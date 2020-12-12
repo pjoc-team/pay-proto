@@ -12,7 +12,7 @@ on:
   pull_request:
 
 jobs:
-  push:
+  builder:
     runs-on: ubuntu-latest
 
     steps:
