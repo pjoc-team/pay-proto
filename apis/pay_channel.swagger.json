@@ -4,6 +4,11 @@
     "title": "pay_channel.proto",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "PayChannel"
+    }
+  ],
   "consumes": [
     "application/json"
   ],

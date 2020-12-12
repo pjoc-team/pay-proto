@@ -4,6 +4,11 @@
     "title": "pay_settlement.proto",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "SettlementGateway"
+    }
+  ],
   "consumes": [
     "application/json"
   ],
