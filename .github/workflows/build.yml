@@ -2,6 +2,8 @@ name: Builder
 
 on:
   push:
+    paths: 
+      - "proto"
     branches:
       - master
 
