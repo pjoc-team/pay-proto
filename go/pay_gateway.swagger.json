@@ -4,6 +4,11 @@
     "title": "pay-gateway api",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "PayGateway"
+    }
+  ],
   "host": "pay-gateway.pjoc.pub",
   "schemes": [
     "http"
