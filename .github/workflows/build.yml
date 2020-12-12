@@ -3,7 +3,7 @@ name: Builder
 on:
   push:
     paths: 
-      - "/proto"
+      - '**.proto'
     branches:
       - master
 
