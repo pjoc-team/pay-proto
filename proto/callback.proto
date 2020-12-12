@@ -13,6 +13,7 @@ import "common.proto";
 // ChannelCallback handle channel's callback callback
 service ChannelCallback {
 
+  // http get
   rpc CallbackByGet(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option(google.api.http) = {
       additional_bindings {
@@ -28,6 +29,7 @@ service ChannelCallback {
     };
   }
 
+  // http post
   rpc CallbackByPost(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option (google.api.http) = {
       additional_bindings {
