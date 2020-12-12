@@ -4,6 +4,11 @@
     "title": "callback.proto",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "ChannelCallback"
+    }
+  ],
   "consumes": [
     "application/json"
   ],
@@ -11,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/v1/callback/channel/{channel}": {
+    "/v1/web/callback/channel/{channel}": {
       "get": {
         "operationId": "ChannelCallback_CallbackByGet2",
         "responses": {
@@ -147,7 +152,7 @@
         ]
       }
     },
-    "/v1/callback/channel/{channel}/account/{account}": {
+    "/v1/web/callback/channel/{channel}/account/{account}": {
       "get": {
         "operationId": "ChannelCallback_CallbackByGet3",
         "responses": {
@@ -283,7 +288,7 @@
         ]
       }
     },
-    "/v1/callback/channel/{channel}/account/{account}/order/{order_id}": {
+    "/v1/web/callback/channel/{channel}/account/{account}/order/{order_id}": {
       "get": {
         "operationId": "ChannelCallback_CallbackByGet",
         "responses": {
@@ -419,7 +424,7 @@
         ]
       }
     },
-    "/v1/callback/order/{order_id}": {
+    "/v1/web/callback/order/{order_id}": {
       "get": {
         "operationId": "ChannelCallback_CallbackByGet4",
         "responses": {

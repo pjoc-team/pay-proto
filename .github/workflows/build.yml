@@ -31,10 +31,13 @@ jobs:
 #            ${{ runner.os }}-go-
 
       - name: Run build
-        run: make
+        run: |
+          make
+          find .
 
       - name: Commit files
         run: |
+          git status
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "generate proto" -a
