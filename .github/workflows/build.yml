@@ -13,10 +13,6 @@ on:
 
 jobs:
   push:
-    # Ensure test job passes before pushing image.
-    needs:
-      - make
-
     runs-on: ubuntu-latest
 
     steps:

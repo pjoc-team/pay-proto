@@ -16,33 +16,33 @@ service ChannelCallback {
   rpc CallbackByGet(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option(google.api.http) = {
       additional_bindings {
-        get: "/v1/callback/channel/{channel}"
+        get: "/v1/web/callback/channel/{channel}"
       }
       additional_bindings {
-        get: "/v1/callback/channel/{channel}/account/{account}"
+        get: "/v1/web/callback/channel/{channel}/account/{account}"
       }
       additional_bindings {
-        get: "/v1/callback/order/{order_id}"
+        get: "/v1/web/callback/order/{order_id}"
       }
-      get: "/v1/callback/channel/{channel}/account/{account}/order/{order_id}"
+      get: "/v1/web/callback/channel/{channel}/account/{account}/order/{order_id}"
     };
   }
 
-  rpc CallbackByPost(stream google.api.HttpBody) returns(stream google.api.HttpBody){
+  rpc CallbackByPost(HttpCallbackRequest) returns(stream google.api.HttpBody){
     option (google.api.http) = {
       additional_bindings {
-        post: "/v1/callback/channel/{channel}"
+        post: "/v1/web/callback/channel/{channel}"
         body: "body"
       }
       additional_bindings {
-        post: "/v1/callback/channel/{channel}/account/{account}"
+        post: "/v1/web/callback/channel/{channel}/account/{account}"
         body: "body"
       }
       additional_bindings {
-        post: "/v1/callback/order/{order_id}"
+        post: "/v1/web/callback/order/{order_id}"
         body: "body"
       }
-      post: "/v1/callback/channel/{channel}/account/{account}/order/{order_id}"
+      post: "/v1/web/callback/channel/{channel}/account/{account}/order/{order_id}"
       body: "body"
     };
   }
