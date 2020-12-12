@@ -334,7 +334,9 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ChannelCallbackClient interface {
+	// CallbackByGet http get
 	CallbackByGet(ctx context.Context, in *HttpCallbackRequest, opts ...grpc.CallOption) (ChannelCallback_CallbackByGetClient, error)
+	// CallbackByPost http post
 	CallbackByPost(ctx context.Context, in *HttpCallbackRequest, opts ...grpc.CallOption) (ChannelCallback_CallbackByPostClient, error)
 }
 
@@ -412,7 +414,9 @@ func (x *channelCallbackCallbackByPostClient) Recv() (*httpbody.HttpBody, error)
 
 // ChannelCallbackServer is the server API for ChannelCallback service.
 type ChannelCallbackServer interface {
+	// CallbackByGet http get
 	CallbackByGet(*HttpCallbackRequest, ChannelCallback_CallbackByGetServer) error
+	// CallbackByPost http post
 	CallbackByPost(*HttpCallbackRequest, ChannelCallback_CallbackByPostServer) error
 }
 
