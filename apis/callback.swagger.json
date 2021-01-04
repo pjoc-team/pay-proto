@@ -18,6 +18,7 @@
   "paths": {
     "/v1/web/callback/channel/{channel}": {
       "get": {
+        "summary": "CallbackByGet http get",
         "operationId": "ChannelCallback_CallbackByGet2",
         "responses": {
           "200": {
@@ -88,6 +89,7 @@
         ]
       },
       "post": {
+        "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost2",
         "responses": {
           "200": {
@@ -154,6 +156,7 @@
     },
     "/v1/web/callback/channel/{channel}/account/{account}": {
       "get": {
+        "summary": "CallbackByGet http get",
         "operationId": "ChannelCallback_CallbackByGet3",
         "responses": {
           "200": {
@@ -224,6 +227,7 @@
         ]
       },
       "post": {
+        "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost3",
         "responses": {
           "200": {
@@ -290,6 +294,7 @@
     },
     "/v1/web/callback/channel/{channel}/account/{account}/order/{order_id}": {
       "get": {
+        "summary": "CallbackByGet http get",
         "operationId": "ChannelCallback_CallbackByGet",
         "responses": {
           "200": {
@@ -360,6 +365,7 @@
         ]
       },
       "post": {
+        "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost",
         "responses": {
           "200": {
@@ -426,6 +432,7 @@
     },
     "/v1/web/callback/order/{order_id}": {
       "get": {
+        "summary": "CallbackByGet http get",
         "operationId": "ChannelCallback_CallbackByGet4",
         "responses": {
           "200": {
@@ -496,6 +503,7 @@
         ]
       },
       "post": {
+        "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost4",
         "responses": {
           "200": {
