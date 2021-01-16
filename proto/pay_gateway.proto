@@ -73,8 +73,12 @@ message PayRequest {
   // 签名
   string sign = 14 [(validate.rules).string = {pattern:"^[A-Za-z0-9+/=\\s\\n\\r]+$", min_len: 1}];
 
-  // 业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05
-  google.protobuf.Timestamp order_time = 8 [(validate.rules).timestamp = {required: true}];
+  // 业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001Z+08:00
+  string order_time = 8 [(validate.rules).string = {
+    pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$",
+    min_len: 20,
+    max_len: 64
+  }];
 
   // 发起支付的用户ip
   string user_ip = 9;
@@ -113,5 +117,15 @@ message PayRequest {
 message PayResponse  {
   ReturnResult result = 1;
   string gateway_order_id = 2;
+  string create_time = 3 [(validate.rules).string = {
+    pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$",
+    min_len: 20,
+    max_len: 64
+  }];
+  string update_time = 4 [(validate.rules).string = {
+    pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$",
+    min_len: 20,
+    max_len: 64
+  }];
   map<string, string> data = 5;
 }

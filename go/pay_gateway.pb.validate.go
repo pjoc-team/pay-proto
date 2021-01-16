@@ -102,10 +102,17 @@ func (m *PayRequest) Validate() error {
 		}
 	}
 
-	if m.GetOrderTime() == nil {
+	if l := utf8.RuneCountInString(m.GetOrderTime()); l < 20 || l > 64 {
 		return PayRequestValidationError{
 			field:  "OrderTime",
-			reason: "value is required",
+			reason: "value length must be between 20 and 64 runes, inclusive",
+		}
+	}
+
+	if !_PayRequest_OrderTime_Pattern.MatchString(m.GetOrderTime()) {
+		return PayRequestValidationError{
+			field:  "OrderTime",
+			reason: "value does not match regex pattern \"^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$\"",
 		}
 	}
 
@@ -199,6 +206,8 @@ var _PayRequest_AppId_Pattern = regexp.MustCompile("^\\w+$")
 
 var _PayRequest_Sign_Pattern = regexp.MustCompile("^[A-Za-z0-9+/=\\s\\n\\r]+$")
 
+var _PayRequest_OrderTime_Pattern = regexp.MustCompile("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$")
+
 // Validate checks the field values on PayResponse with the rules defined in
 // the proto definition for this message. If any rules are violated, an error
 // is returned.
@@ -218,6 +227,34 @@ func (m *PayResponse) Validate() error {
 	}
 
 	// no validation rules for GatewayOrderId
+
+	if l := utf8.RuneCountInString(m.GetCreateTime()); l < 20 || l > 64 {
+		return PayResponseValidationError{
+			field:  "CreateTime",
+			reason: "value length must be between 20 and 64 runes, inclusive",
+		}
+	}
+
+	if !_PayResponse_CreateTime_Pattern.MatchString(m.GetCreateTime()) {
+		return PayResponseValidationError{
+			field:  "CreateTime",
+			reason: "value does not match regex pattern \"^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$\"",
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetUpdateTime()); l < 20 || l > 64 {
+		return PayResponseValidationError{
+			field:  "UpdateTime",
+			reason: "value length must be between 20 and 64 runes, inclusive",
+		}
+	}
+
+	if !_PayResponse_UpdateTime_Pattern.MatchString(m.GetUpdateTime()) {
+		return PayResponseValidationError{
+			field:  "UpdateTime",
+			reason: "value does not match regex pattern \"^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$\"",
+		}
+	}
 
 	// no validation rules for Data
 
@@ -277,3 +314,7 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PayResponseValidationError{}
+
+var _PayResponse_CreateTime_Pattern = regexp.MustCompile("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$")
+
+var _PayResponse_UpdateTime_Pattern = regexp.MustCompile("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$")
