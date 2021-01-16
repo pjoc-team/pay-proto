@@ -124,8 +124,7 @@
         },
         "order_time": {
           "type": "string",
-          "format": "date-time",
-          "title": "业务方下单时间，时间格式: 年年年年-月月-日日 时时:分分:秒秒，例如: 2006-01-02 15:04:05"
+          "title": "业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001Z+08:00"
         },
         "user_ip": {
           "type": "string",
@@ -180,6 +179,12 @@
           "$ref": "#/definitions/payReturnResult"
         },
         "gateway_order_id": {
+          "type": "string"
+        },
+        "create_time": {
+          "type": "string"
+        },
+        "update_time": {
           "type": "string"
         },
         "data": {
