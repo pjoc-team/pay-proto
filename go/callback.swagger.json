@@ -152,6 +152,71 @@
         "tags": [
           "ChannelCallback"
         ]
+      },
+      "put": {
+        "summary": "CallbackByPut http put",
+        "operationId": "ChannelCallback_CallbackByPut2",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/apiHttpBody"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of apiHttpBody"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "bytes body = 5;",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiHttpBody"
+            }
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "http_method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChannelCallback"
+        ]
       }
     },
     "/v1/web/callback/channel/{channel}/account/{account}": {
@@ -229,6 +294,71 @@
       "post": {
         "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost3",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/apiHttpBody"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of apiHttpBody"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "bytes body = 5;",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiHttpBody"
+            }
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "http_method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChannelCallback"
+        ]
+      },
+      "put": {
+        "summary": "CallbackByPut http put",
+        "operationId": "ChannelCallback_CallbackByPut3",
         "responses": {
           "200": {
             "description": "A successful response.(streaming responses)",
@@ -428,6 +558,71 @@
         "tags": [
           "ChannelCallback"
         ]
+      },
+      "put": {
+        "summary": "CallbackByPut http put",
+        "operationId": "ChannelCallback_CallbackByPut",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/apiHttpBody"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of apiHttpBody"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "bytes body = 5;",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiHttpBody"
+            }
+          },
+          {
+            "name": "http_method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChannelCallback"
+        ]
       }
     },
     "/v1/web/callback/order/{order_id}": {
@@ -505,6 +700,71 @@
       "post": {
         "summary": "CallbackByPost http post",
         "operationId": "ChannelCallback_CallbackByPost4",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/apiHttpBody"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of apiHttpBody"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "bytes body = 5;",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiHttpBody"
+            }
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "http_method",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChannelCallback"
+        ]
+      },
+      "put": {
+        "summary": "CallbackByPut http put",
+        "operationId": "ChannelCallback_CallbackByPut4",
         "responses": {
           "200": {
             "description": "A successful response.(streaming responses)",

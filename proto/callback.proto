@@ -49,6 +49,25 @@ service ChannelCallback {
     };
   }
 
+  // CallbackByPut http put
+  rpc CallbackByPut(HttpCallbackRequest) returns(stream google.api.HttpBody){
+    option (google.api.http) = {
+      additional_bindings {
+        put: "/v1/web/callback/channel/{channel}"
+        body: "body"
+      }
+      additional_bindings {
+        put: "/v1/web/callback/channel/{channel}/account/{account}"
+        body: "body"
+      }
+      additional_bindings {
+        put: "/v1/web/callback/order/{order_id}"
+        body: "body"
+      }
+      put: "/v1/web/callback/channel/{channel}/account/{account}/order/{order_id}" // support http raw body, see https://github.com/grpc-ecosystem/grpc-gateway/issues/652#issuecomment-428059210
+      body: "body"
+    };
+  }
 
 }
 
