@@ -124,7 +124,7 @@
         },
         "order_time": {
           "type": "string",
-          "title": "业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001Z+08:00"
+          "title": "业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001+08:00"
         },
         "user_ip": {
           "type": "string",
