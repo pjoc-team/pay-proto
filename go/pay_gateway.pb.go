@@ -51,7 +51,7 @@ type PayRequest struct {
 	SignType string `protobuf:"bytes,7,opt,name=sign_type,json=signType,proto3" json:"sign_type,omitempty"`
 	// 签名
 	Sign string `protobuf:"bytes,14,opt,name=sign,proto3" json:"sign,omitempty"`
-	// 业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001Z+08:00
+	// 业务方下单时间，时间格式: https://tools.ietf.org/html/rfc3339#section-5.6 例如：2021-01-01T01:01:01.001+08:00
 	OrderTime string `protobuf:"bytes,8,opt,name=order_time,json=orderTime,proto3" json:"order_time,omitempty"`
 	// 发起支付的用户ip
 	UserIp string `protobuf:"bytes,9,opt,name=user_ip,json=userIp,proto3" json:"user_ip,omitempty"`

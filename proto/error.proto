@@ -1,0 +1,156 @@
+syntax = "proto3";
+
+package pay;
+
+enum Error{
+  // UNKNOWN
+  UNKNOWN = 0;
+
+  // Currency of capture must be the same as currency of authorization.
+  AUTH_CAPTURE_CURRENCY_MISMATCH = 1;
+
+  // Authentication failed due to missing authorization header, or invalid authentication credentials.
+  AUTHENTICATION_FAILURE = 2;
+
+  // Authorization has already been captured.
+  AUTHORIZATION_ALREADY_CAPTURED = 3;
+
+  // A denied authorization cannot be captured.
+  AUTHORIZATION_DENIED = 4;
+
+  // An expired authorization cannot be captured.
+  AUTHORIZATION_EXPIRED = 5;
+
+  // A voided authorization cannot be captured or reauthorized.
+  AUTHORIZATION_VOIDED = 6;
+
+  // Must be greater than zero. If the currency supports decimals, only two decimal place precision is supported.
+  CANNOT_BE_ZERO_OR_NEGATIVE = 7;
+
+  // A reauthorization cannot be voided. Please void the original parent authorization.
+  CANNOT_BE_VOIDED = 8;
+
+  // The requested action could not be performed, semantically incorrect, or failed business validation.
+  REFUND_NOT_PERMITTED_DUE_TO_CHARGEBACK = 9;
+
+  // The requested action could not be performed, semantically incorrect, or failed business validation.
+  CAPTURE_DISPUTED_PARTIAL_REFUND_NOT_ALLOWED = 10;
+
+  // The capture has already been fully refunded.
+  CAPTURE_FULLY_REFUNDED = 11;
+
+  // The value of the field should not be more than two decimal places.
+  DECIMAL_PRECISION = 12;
+
+  // Currency does not support decimals.
+  DECIMALS_NOT_SUPPORTED = 13;
+
+  // Requested invoice number has been previously captured. Possible duplicate transaction.
+  DUPLICATE_INVOICE_ID = 14;
+
+  // Account validations failed for the user.
+  INVALID_ACCOUNT_STATUS = 15;
+
+  // An internal server error has occurred.
+  INTERNAL_SERVER_ERROR = 16;
+
+  // Currency code should be a three-character ISO-4217 currency code.
+  INVALID_CURRENCY_CODE = 17;
+
+  // Specified invoice_id does not exist.
+  INVALID_INVOICE_ID = 18;
+
+  // The value of the field does not conform to the expected format.
+  INVALID_PARAMETER_SYNTAX = 19;
+
+  // The value of a field is invalid.
+  INVALID_PARAMETER_VALUE = 20;
+
+  // Payee account is invalid.
+  INVALID_PAYEE_ACCOUNT = 21;
+
+  // The platform_fees amount cannot be greater than the capture amount.
+  INVALID_PLATFORM_FEES_AMOUNT = 22;
+
+  // Specified resource ID does not exist. Please check the resource ID and try again.
+  INVALID_RESOURCE_ID = 23;
+
+  // The value of a field is either too short or too long.
+  INVALID_STRING_LENGTH = 24;
+
+  // The value of a field is too long.
+  INVALID_STRING_MAX_LENGTH = 25;
+
+  // Capture amount exceeds allowable limit. Please contact customer service or your account manager to request the change to your overage limit. The default overage limit is 115%, which allows the sum of all captures to be up to 115% of the authorization amount.
+  MAX_CAPTURE_AMOUNT_EXCEEDED = 26;
+
+  // Maximum number of allowable captures has been reached. No additional captures are possible for this authorization. Please contact customer service or your account manager to change the number of captures that be made for a given authorization.
+  MAX_CAPTURE_COUNT_EXCEEDED = 27;
+
+  // You have exceeded the number of refunds that can be processed per capture.
+  MAX_NUMBER_OF_REFUNDS_EXCEEDED = 28;
+
+  // A required field / parameter is missing.
+  MISSING_REQUIRED_PARAMETER = 29;
+
+  // Cannot void multiple authorizations.
+  MULTIPLE_AUTHORIZATIONS_FOUND = 30;
+
+  // You do not have permission to access or perform operations on this resource.
+  NOT_AUTHORIZED = 31;
+
+  // You cannot do a refund for an amount less than the original capture amount.
+  PARTIAL_REFUND_NOT_ALLOWED = 32;
+
+  // Transaction could not complete because payee account is locked or closed.
+  PAYEE_ACCOUNT_LOCKED_OR_CLOSED = 33;
+
+  // Payee account is restricted.
+  PAYEE_ACCOUNT_RESTRICTED = 34;
+
+  // The payer account cannot be used for this transaction.
+  PAYER_ACCOUNT_LOCKED_OR_CLOSED = 35;
+
+  // Payer cannot pay for this transaction.
+  PAYER_CANNOT_PAY = 36;
+
+  // Cannot initiate a refund as the capture is pending.
+  PENDING_CAPTURE = 37;
+
+  // You do not have permission to access or perform operations on this resource.
+  PERMISSION_DENIED = 38;
+
+  // Payee of the authorization has not granted permission to perform capture on the authorization.
+  PERMISSION_NOT_GRANTED = 39;
+
+  // Authorization has been previously captured and hence cannot be voided.
+  PREVIOUSLY_CAPTURED = 40;
+
+  // Authorization has been previously voided and hence cannot be voided again.
+  PREVIOUSLY_VOIDED = 41;
+
+  // The refund amount must be less than or equal to the capture amount that has not yet been refunded.
+  REFUND_AMOUNT_EXCEEDED = 42;
+
+  // Refund must be in the same currency as the capture.
+  REFUND_CAPTURE_CURRENCY_MISMATCH = 43;
+
+  // Capture could not be refunded due to insufficient funds.
+  REFUND_FAILED_INSUFFICIENT_FUNDS = 44;
+
+  // Full refund refused - partial refund has already been done on this payment.
+  REFUND_NOT_ALLOWED = 45;
+
+  // You are over the time limit to perform a refund on this capture.
+  REFUND_TIME_LIMIT_EXCEEDED = 46;
+
+  // PayPal's internal controls prevent authorization from being captured.
+  TRANSACTION_REFUSED = 47;
+
+  // Refund was refused by the payment source.
+  REFUND_NOT_SUPPORTED_FOR_PAYMENT_SOURCE = 48;
+
+  // Refund was refused by the payment source.
+  REFUND_TIME_EXCEEDED_FOR_PAYMENT_SOURCE = 49;
+
+}
